@@ -1,0 +1,36 @@
+{
+  "visibility_levels": [
+    "admin_only",
+    "supervisor_only",
+    "internal",
+    "candidate_visible",
+    "sanitized_external"
+  ],
+  "roles": {
+    "ADMIN": {
+      "can_edit_local": true,
+      "can_archive": true,
+      "can_manage_visibility_labels": true,
+      "visible_levels": ["admin_only", "supervisor_only", "internal", "candidate_visible", "sanitized_external"]
+    },
+    "WRITER": {
+      "can_edit_local": true,
+      "can_archive": false,
+      "can_manage_visibility_labels": false,
+      "visible_levels": ["supervisor_only", "internal", "candidate_visible", "sanitized_external"]
+    },
+    "VIEWER": {
+      "can_edit_local": false,
+      "can_archive": false,
+      "can_manage_visibility_labels": false,
+      "visible_levels": ["internal", "candidate_visible", "sanitized_external"]
+    },
+    "RESTRICTED_EXTERNAL": {
+      "can_edit_local": false,
+      "can_archive": false,
+      "can_manage_visibility_labels": false,
+      "visible_levels": ["sanitized_external"]
+    }
+  },
+  "masked_text": "Confidential content hidden"
+}

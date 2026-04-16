@@ -1,151 +1,177 @@
 # research-lifecycle-manager
 
-research-lifecycle-manager is a full-stack academic research lifecycle and supervision management system for faculty supervisors. It manages Masters, Ph.D., and intern supervision alongside a faculty academic workbench for publications, books, conference papers, sponsored projects, consultancy, MOOCs, and custom academic activities.
+research-lifecycle-manager is a GitHub Pages-friendly academic research lifecycle portal for a faculty supervisor. It is designed as a static React + Vite application using repository JSON files as the data source.
 
-## Architecture
+The app supports two working areas:
 
-- Frontend: React + Vite static app in `frontend/`
-- Backend: Node.js + Express REST API in `backend/`
-- Database: SQLite schema in `database/schema.sql`
-- Auth: password login with bcrypt-compatible hashing and secure HTTP-only cookie sessions
-- Authorization: backend roles, permissions, and visibility masking
-- Deployment: frontend can be hosted on GitHub Pages; backend runs separately as a Node.js service
+- Research Supervision for Masters, PhD, and interns
+- Faculty Academic Workbench for publications, books, chapters, conference papers, projects, consultancy, MOOCs, and custom academic activities
 
-The frontend does not implement fake authentication. It calls the backend for login, current user, records, exports, and permissions-sensitive data.
+## GitHub Pages Architecture
 
-## Setup
+- App: React + Vite
+- Hosting: GitHub Pages
+- Routing: hash routing, for example `#/candidates`
+- Data: static JSON files under `public/config` and `public/data`
+- Deployment: GitHub Actions workflow in `.github/workflows/pages.yml`
+- Runtime backend: none required for core functionality
 
-1. Install dependencies:
+This version intentionally does not implement custom password login. GitHub Pages cannot securely enforce app-level password authentication by itself. Access is expected to be handled by repository/page visibility and trusted-user sharing.
 
-```bash
-npm run install:all
+## Static Role Model
+
+Roles are logical UI modes loaded from `public/config/users.json` and `public/config/permissions.json`.
+
+- `ADMIN`: full UI access, can archive records in local browser state, can manage visibility labels by editing config files
+- `WRITER`: can append notes and prepare exportable JSON changes, but deletion is disabled
+- `VIEWER`: read-only mode
+- `RESTRICTED_EXTERNAL`: sees only sanitized content
+
+These roles are not secure authentication. They are data and UI policies for a static trusted-user portal. The code is structured so these roles can later map to real backend auth.
+
+## Data Files
+
+Main files:
+
+- `public/config/users.json`
+- `public/config/permissions.json`
+- `public/data/candidates/candidates.json`
+- `public/data/meetings/meetings.json`
+- `public/data/workbench/workbench.json`
+
+Records are Git-friendly and human-readable. Normal editing uses append-only arrays:
+
+- `notes_append_only`
+- `comments_append_only`
+- `revision_history`
+
+Normal UI flows never delete historical entries. Admin archive changes update status and append a revision entry.
+
+## Confidentiality
+
+Visibility levels:
+
+- `admin_only`
+- `supervisor_only`
+- `internal`
+- `candidate_visible`
+- `sanitized_external`
+
+Restricted external users see:
+
+```text
+Confidential content hidden
 ```
 
-2. Create `.env` from `.env.example` and change `SESSION_SECRET`.
+Masking happens in the React UI based on the selected logical role and visibility metadata.
 
-3. Initialize the database:
+## Local Development
 
-```bash
-npm run db:init
-```
-
-4. Start the backend:
+Install dependencies:
 
 ```bash
-npm run dev:backend
+npm install
 ```
 
-5. Start the frontend:
+Start development server:
 
 ```bash
-npm run dev:frontend
+npm run dev
 ```
 
-Open `http://localhost:5173`.
+Build production static site:
 
-## Admin Login
+```bash
+npm run build
+```
 
-Seed credentials:
+Preview build:
 
-- Email: `admin@research-lifecycle-manager.local`
-- Password: `Admin@12345`
+```bash
+npm run preview
+```
 
-Additional seed users:
+## Editing JSON Data
 
-- Writer: `writer@research-lifecycle-manager.local` / `Writer@12345`
-- Restricted external intern: `intern@research-lifecycle-manager.local` / `Intern@12345`
+For simple edits:
 
-Change all seed passwords before any real deployment.
+1. Open the relevant JSON file under `public/data` or `public/config`.
+2. Add new records or append to `notes_append_only`, `comments_append_only`, or `revision_history`.
+3. Commit and push changes to GitHub.
 
-## Environment Variables
+For UI-assisted edits:
 
-Backend:
+1. Open the app.
+2. Choose `ADMIN` or `WRITER` logical role.
+3. Append notes or archive records in local browser state.
+4. Use the Data page to export a JSON bundle.
+5. Copy the changed sections into the repository JSON files.
+6. Commit and push.
 
-- `NODE_ENV`: `development` or `production`
-- `PORT`: backend port, default `4000`
-- `DB_PATH`: SQLite database path
-- `SESSION_SECRET`: long random value used to sign session cookies
-- `SESSION_COOKIE_NAME`: session cookie name
-- `SESSION_DAYS`: session lifetime
-- `FRONTEND_ORIGIN`: allowed browser origin for CORS
-- `SECURE_COOKIES`: set `true` for HTTPS cross-site deployment
-
-Frontend:
-
-- `VITE_API_BASE_URL`: public backend URL, for example `https://api.example.edu`
+The browser cannot directly commit to GitHub Pages. This is intentional for low-maintenance static hosting.
 
 ## GitHub Pages Deployment
 
-1. Create a repository variable named `VITE_API_BASE_URL` with the deployed backend URL.
-2. Build the frontend:
+The workflow `.github/workflows/pages.yml` builds and deploys the site from `main`.
 
-```bash
-npm --prefix frontend run build
+Repository name expected by default:
+
+```text
+research-lifecycle-manager
 ```
 
-3. Publish `frontend/dist` to GitHub Pages.
+Expected Pages URL:
 
-This repository includes `.github/workflows/pages.yml`, which builds `frontend/` and deploys to GitHub Pages from the `main` branch. The workflow sets `VITE_BASE_PATH=/research-life-cycle-manager/` for the requested repository name.
-
-## Backend Deployment
-
-1. Deploy `backend/` to a Node.js host.
-2. Provide production environment variables.
-3. Use HTTPS.
-4. Set `SECURE_COOKIES=true`.
-5. Set `FRONTEND_ORIGIN` to the GitHub Pages origin.
-6. Persist the SQLite database file from `DB_PATH`.
-7. Run:
-
-```bash
-npm --prefix backend install --omit=dev
-npm --prefix backend run db:init
-npm --prefix backend start
+```text
+https://<username>.github.io/research-lifecycle-manager/
 ```
 
-## Database
+The workflow sets:
 
-The schema includes:
+```text
+VITE_BASE_PATH=/research-lifecycle-manager/
+```
 
-- users, roles, permissions, user_roles
-- candidates, programmes, phases
-- meetings, attendance, notes, action_items, compliance_items
-- projects, publications, books, conferences, consultancy, moocs, custom_activities
-- attachments, audit_logs, visibility_rules, sessions
+If your repository name differs, update `.github/workflows/pages.yml` and `vite.config.js` to use the correct base path.
 
-Records use soft deletion through `deleted_at`. Meeting edits create `meeting_versions`. Notes are append-only for writers.
+In GitHub:
 
-## Main Features
+1. Open repository Settings.
+2. Go to Pages.
+3. Select GitHub Actions as the build and deployment source.
+4. Push to `main`.
 
-- Login and logout with backend sessions
-- Role-based access control
-- Candidate dashboards for Masters, Ph.D., and interns
-- Meeting minutes with agenda, decisions, action items, attendance, satisfaction, and PDF-friendly print view
-- Append-only notes
-- Confidentiality masking with `Confidential content hidden`
-- Faculty workbench dashboard
-- Project and publication tracking with kanban lifecycle views
-- Global search and filters
-- Audit logs
-- JSON exports for meetings, candidates, and projects
-- Admin APIs for user creation, password reset, role rotation, and soft archive
+## Import and Export
 
-## Security Notes
+The Data page supports:
 
-- Replace seed passwords immediately.
-- Use a strong `SESSION_SECRET`.
-- Use HTTPS in production.
-- Keep `SECURE_COOKIES=true` for deployed cross-origin frontend/backend.
-- Do not place secrets in the frontend.
-- Use backend exports and print views only over authenticated sessions.
-- Soft delete keeps history for auditability.
+- JSON bundle export
+- JSON bundle import into local browser state
 
-## Future Improvements
+Exports are useful for preparing Git commits. Imports are useful for review, testing, or restoring a local browser state.
 
-- Add file upload storage for attachments.
-- Add PostgreSQL adapter and migrations.
-- Add richer admin UI forms for user and archive management.
-- Add email reminders for deadlines.
-- Add automated backups.
-- Add fine-grained candidate workspace sharing.
-- Add Playwright end-to-end tests and API contract tests.
+## Print Support
+
+Candidate summaries, meetings, and project/workbench detail panels are print-friendly. Use the Print buttons or browser print dialog to save PDFs.
+
+## Future Backend Upgrade Path
+
+The static data model already includes:
+
+- role names
+- visibility metadata
+- timestamps
+- created_by and updated_by
+- append-only notes
+- revision_history arrays
+
+A later backend can map these fields to:
+
+- Node.js + Express APIs
+- real password login
+- secure cookie sessions
+- database persistence
+- server-side authorization
+- user management
+
+Do not treat the static role picker as security. True authentication and authorization require a backend or a protected hosting layer.

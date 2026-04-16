@@ -1,0 +1,33 @@
+{
+  "active_role": "ADMIN",
+  "users": [
+    {
+      "id": "u-admin",
+      "name": "Faculty Supervisor",
+      "role": "ADMIN",
+      "email": "faculty@example.edu",
+      "note": "Static GitHub Pages role profile. This is not authentication."
+    },
+    {
+      "id": "u-writer",
+      "name": "Research Associate",
+      "role": "WRITER",
+      "email": "writer@example.edu",
+      "note": "Can prepare append-only JSON changes for commit."
+    },
+    {
+      "id": "u-viewer",
+      "name": "Department Viewer",
+      "role": "VIEWER",
+      "email": "viewer@example.edu",
+      "note": "Read-only portal role."
+    },
+    {
+      "id": "u-external",
+      "name": "External Intern",
+      "role": "RESTRICTED_EXTERNAL",
+      "email": "intern@example.edu",
+      "note": "Sees only sanitized content."
+    }
+  ]
+}

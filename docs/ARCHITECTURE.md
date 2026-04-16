@@ -1,29 +1,26 @@
-# research-lifecycle-manager Architecture
+# Static Architecture
 
-research-lifecycle-manager is a split full-stack application:
+research-lifecycle-manager is currently a static GitHub Pages application.
 
-- `frontend/`: React + Vite static client for GitHub Pages.
-- `backend/`: Node.js + Express REST API with cookie sessions.
-- `database/`: SQLite schema and local database file location.
+## Runtime
 
-The frontend never stores secrets and never grants permissions locally. It renders what the backend returns after authentication, authorization, and confidentiality masking.
+- `index.html` loads the React app.
+- Vite builds static assets into `dist/`.
+- GitHub Pages serves the files.
+- Hash routing keeps navigation compatible with static hosting.
 
-## Security Model
+## Data
 
-- Passwords are hashed with bcrypt-compatible `bcryptjs`.
-- Sessions are opaque random IDs stored in SQLite and signed in an HTTP-only cookie.
-- Authorization is enforced through backend role and permission middleware.
-- Records carry a `visibility` value. The backend masks sensitive fields with `Confidential content hidden` for users who may know a record exists but cannot read its confidential content.
-- Writers can create records and append notes. Meeting revisions are admin-only and create a version snapshot.
-- Admin archive actions are soft deletes and emit audit records.
+All core data is stored as JSON under `public/`.
 
-## Role Summary
+- Config files define roles, logical users, visibility levels, and masking text.
+- Candidate, meeting, and workbench files define records.
+- Append-only arrays and Git history provide auditability.
 
-- `ADMIN`: full control, confidential reads, audit logs, archiving, user management.
-- `WRITER`: create permitted records and append notes.
-- `VIEWER`: read permitted records.
-- `RESTRICTED_EXTERNAL`: limited sanitized reads.
+## Security Boundary
 
-## Future PostgreSQL Path
+Static GitHub Pages cannot enforce app-level password security. The app provides role-aware views for trusted users and masks content based on JSON metadata. Real enforcement belongs in a future backend.
 
-The database access is isolated in backend modules and SQL statements. Moving to PostgreSQL later should start by replacing `better-sqlite3` setup, parameter syntax where needed, and timestamp defaults.
+## Upgrade Path
+
+The UI masking, role names, record IDs, timestamps, and revision arrays are intentionally shaped so a Node.js API and database can replace static JSON later without redesigning the records.
