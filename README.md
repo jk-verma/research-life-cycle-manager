@@ -126,13 +126,13 @@ Expected Pages URL:
 https://<username>.github.io/research-lifecycle-manager/
 ```
 
-The workflow sets:
+The workflow sets the Vite base path from the actual GitHub repository name:
 
 ```text
-VITE_BASE_PATH=/research-lifecycle-manager/
+VITE_BASE_PATH=/${{ github.event.repository.name }}/
 ```
 
-If your repository name differs, update `.github/workflows/pages.yml` and `vite.config.js` to use the correct base path.
+For local production builds, `vite.config.js` defaults to `/research-lifecycle-manager/`. If your repository name differs and you are building locally, set `VITE_BASE_PATH` before running `npm run build`.
 
 In GitHub:
 
