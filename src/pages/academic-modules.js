@@ -30,7 +30,7 @@ export function supervisionPage(ctx) {
 
 export function projectsPage(ctx) {
   const items = ctx.visibleWorkbench().filter((item) => projectModules.includes(item.module));
-  return `${pageHeader('Projects & Sponsored Work', 'Sponsored projects, consultancy, and research projects.')}
+  return `${pageHeader('Projects & Sponsored Work', 'Sponsored projects, consultancy, visiting faculty assignments, MOOC course-development consultancy, and research projects.')}
     <div class="quick-actions">${actionLink('Add Project', '#/workbench/projects')}</div>
     ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`)}`;
 }

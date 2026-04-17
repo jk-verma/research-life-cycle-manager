@@ -164,7 +164,9 @@
                                                           },
                                            "visibility":  "internal",
                                            "final_deadline":  "2026-05-30",
-                                           "subtasks":  []
+                                           "subtasks":  [
+
+                                                        ]
                                        }
                                    ],
                     "external_engagements":  [
@@ -204,167 +206,13 @@
                                                                     },
                                                      "visibility":  "internal",
                                                      "final_deadline":  "2026-05-08",
-                                                     "subtasks":  []
+                                                     "subtasks":  [
+
+                                                                  ]
                                                  }
                                              ],
                     "career_mobility":  [
-                                            {
-                                                "id":  "career-visiting-position-2026",
-                                                "title":  "Visiting faculty opportunity application",
-                                                "category":  "career_mobility",
-                                                "sub_type":  "visiting_position",
-                                                "academic_year_start":  "2025-2026",
-                                                "academic_year_current":  "2025-2026",
-                                                "status":  "planned",
-                                                "priority":  "medium",
-                                                "carry_forward":  true,
-                                                "institution_name":  "National Institute of Advanced Computing",
-                                                "role_title":  "Visiting Faculty",
-                                                "opportunity_type":  "visiting_position",
-                                                "employment_basis":  "short_term_contract",
-                                                "place_city":  "Bengaluru",
-                                                "place_country":  "India",
-                                                "application_deadline":  "2026-05-20",
-                                                "application_date":  "",
-                                                "notes":  [
-                                                              {
-                                                                  "id":  "career-note-1",
-                                                                  "text":  "Collect eligibility details, NOC requirements, and application documents before the deadline.",
-                                                                  "created_by":  "u-admin",
-                                                                  "created_at":  "2026-04-17T11:00:00.000Z",
-                                                                  "visibility":  "internal"
-                                                              }
-                                                          ],
-                                                "history":  [
-                                                                {
-                                                                    "version":  1,
-                                                                    "summary":  "Career mobility opportunity created",
-                                                                    "updated_by":  "u-admin",
-                                                                    "updated_at":  "2026-04-17T11:00:00.000Z"
-                                                                }
-                                                            ],
-                                                "created_by":  "u-admin",
-                                                "timestamps":  {
-                                                                   "created_at":  "2026-04-17T11:00:00.000Z",
-                                                                   "updated_at":  "2026-04-17T11:00:00.000Z"
-                                                               },
-                                                "visibility":  "internal",
-                                                "final_deadline":  "2026-05-20",
-                                                "subtasks":  [
-                                                                 {
-                                                                     "id":  "sub-career-cv",
-                                                                     "parent_record_id":  "career-visiting-position-2026",
-                                                                     "title":  "Update academic CV",
-                                                                     "subtask_type":  "cv",
-                                                                     "due_date":  "2026-04-25",
-                                                                     "completed_date":  "",
-                                                                     "status":  "ongoing",
-                                                                     "responsible_person":  "Dr. Jitendra Kumar Verma",
-                                                                     "notes":  [
-                                                                                   {
-                                                                                       "id":  "sub-career-cv-note-1",
-                                                                                       "text":  "Add latest publications, projects, and supervision details.",
-                                                                                       "created_by":  "u-admin",
-                                                                                       "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                       "visibility":  "internal"
-                                                                                   }
-                                                                               ],
-                                                                     "history":  [
-                                                                                     {
-                                                                                         "version":  1,
-                                                                                         "summary":  "Subtask created",
-                                                                                         "updated_by":  "u-admin",
-                                                                                         "updated_at":  "2026-04-17T12:00:00.000Z"
-                                                                                     }
-                                                                                 ],
-                                                                     "sequence_order":  1
-                                                                 },
-                                                                 {
-                                                                     "id":  "sub-career-application",
-                                                                     "parent_record_id":  "career-visiting-position-2026",
-                                                                     "title":  "Submit application package",
-                                                                     "subtask_type":  "application",
-                                                                     "due_date":  "2026-05-20",
-                                                                     "completed_date":  "",
-                                                                     "status":  "pending",
-                                                                     "responsible_person":  "Dr. Jitendra Kumar Verma",
-                                                                     "notes":  [
-                                                                                   {
-                                                                                       "id":  "sub-career-application-note-1",
-                                                                                       "text":  "Attach CV, cover letter, and evidence documents.",
-                                                                                       "created_by":  "u-admin",
-                                                                                       "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                       "visibility":  "internal"
-                                                                                   }
-                                                                               ],
-                                                                     "history":  [
-                                                                                     {
-                                                                                         "version":  1,
-                                                                                         "summary":  "Subtask created",
-                                                                                         "updated_by":  "u-admin",
-                                                                                         "updated_at":  "2026-04-17T12:00:00.000Z"
-                                                                                     }
-                                                                                 ],
-                                                                     "sequence_order":  2
-                                                                 },
-                                                                 {
-                                                                     "id":  "sub-career-noc",
-                                                                     "parent_record_id":  "career-visiting-position-2026",
-                                                                     "title":  "NOC decision tracking",
-                                                                     "subtask_type":  "noc",
-                                                                     "due_date":  "2026-05-25",
-                                                                     "completed_date":  "",
-                                                                     "status":  "pending",
-                                                                     "responsible_person":  "Faculty Assistant",
-                                                                     "notes":  [
-                                                                                   {
-                                                                                       "id":  "sub-career-noc-note-1",
-                                                                                       "text":  "Start only if institution asks for NOC.",
-                                                                                       "created_by":  "u-admin",
-                                                                                       "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                       "visibility":  "internal"
-                                                                                   }
-                                                                               ],
-                                                                     "history":  [
-                                                                                     {
-                                                                                         "version":  1,
-                                                                                         "summary":  "Subtask created",
-                                                                                         "updated_by":  "u-admin",
-                                                                                         "updated_at":  "2026-04-17T12:00:00.000Z"
-                                                                                     }
-                                                                                 ],
-                                                                     "sequence_order":  3
-                                                                 },
-                                                                 {
-                                                                     "id":  "sub-career-interview",
-                                                                     "parent_record_id":  "career-visiting-position-2026",
-                                                                     "title":  "Interview and selection follow-up",
-                                                                     "subtask_type":  "interview",
-                                                                     "due_date":  "2026-06-05",
-                                                                     "completed_date":  "",
-                                                                     "status":  "pending",
-                                                                     "responsible_person":  "Dr. Jitendra Kumar Verma",
-                                                                     "notes":  [
-                                                                                   {
-                                                                                       "id":  "sub-career-interview-note-1",
-                                                                                       "text":  "Track interview date and result.",
-                                                                                       "created_by":  "u-admin",
-                                                                                       "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                       "visibility":  "internal"
-                                                                                   }
-                                                                               ],
-                                                                     "history":  [
-                                                                                     {
-                                                                                         "version":  1,
-                                                                                         "summary":  "Subtask created",
-                                                                                         "updated_by":  "u-admin",
-                                                                                         "updated_at":  "2026-04-17T12:00:00.000Z"
-                                                                                     }
-                                                                                 ],
-                                                                     "sequence_order":  4
-                                                                 }
-                                                             ]
-                                            }
+
                                         ]
                 }
 }

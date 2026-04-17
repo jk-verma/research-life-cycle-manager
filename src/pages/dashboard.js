@@ -20,7 +20,7 @@ export function dashboardPage(ctx) {
   const upcomingMeetings = meetings.filter((item) => item.next_meeting_date && item.status !== 'archived');
   const overdueActions = meetings.flatMap((meeting) => (meeting.action_items || []).map((action) => ({ ...action, meeting }))).filter((item) => isOverdue(item.due_date, item.status));
   const overdueCalendar = calendar.filter((item) => isOverdue(item.due_date, item.status));
-  const activeProjects = workbench.filter((item) => item.module === 'projects' && !['completed', 'archived'].includes(item.status));
+  const activeProjects = workbench.filter((item) => ['projects', 'consultancy'].includes(item.module) && !['completed', 'archived'].includes(item.status));
   const manuscripts = workbench.filter((item) => ['journal_articles', 'authored_books', 'book_chapters', 'conference_papers'].includes(item.module) && ['drafting', 'submitted', 'under_review', 'revision'].includes(item.status));
   const followups = workbench.filter((item) => JSON.stringify(item).toLowerCase().includes('follow'));
   const carryForward = ctx.allRecords().filter(shouldCarryForward);

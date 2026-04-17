@@ -9,8 +9,7 @@ export const moduleLabels = {
   book_chapters: 'Book Chapters',
   conference_papers: 'Conference Papers',
   projects: 'Projects and Sponsored Activities',
-  consultancy: 'Consultancy / Visiting Faculty',
-  moocs: 'MOOC / Course Development',
+  consultancy: 'Consultancy / Visiting Faculty / MOOC Course Development',
   custom_activities: 'Custom Academic Activities'
 };
 
