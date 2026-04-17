@@ -1,4 +1,4 @@
-import { detailSection, emptyState, notesPanel, pageHeader, printActionBar, recordCard, statusBadge, subtaskTimeline, taskCardBody, taskSummary, timelinePanel, visibilityBadge } from '../components/ui.js';
+import { detailSection, emptyState, formatDateTime, notesPanel, pageHeader, printActionBar, recordCard, statusBadge, subtaskTimeline, taskCardBody, taskSummary, timelinePanel, visibilityBadge } from '../components/ui.js';
 import { isOverdue } from '../utils/date.js';
 import { escapeHtml, slugLabel } from '../utils/html.js';
 import { structuredFilter } from '../utils/search.js';
@@ -29,7 +29,7 @@ export function workbenchModulePage(ctx, module) {
     ${ctx.canWrite() ? workbenchRecordForm(module, moduleLabels[module] || slugLabel(module), ctx) : '<p class="notice">This role is read-only for adding records.</p>'}
     <div class="grid">${items.map((item) => recordCard({
       title: item.title,
-      meta: `${slugLabel(item.module)} | ${item.status} | final deadline: ${item.final_deadline || 'not set'}`,
+      meta: `${slugLabel(item.module)} | ${item.status} | final deadline: ${formatDateTime(item.final_deadline_datetime || item.final_deadline) || 'not set'}`,
       body: taskCardBody(item, item.description_or_abstract || ''),
       badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)}`,
       href: `#/workbench/${item.module}/${item.id}`

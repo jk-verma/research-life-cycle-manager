@@ -67,7 +67,7 @@ export function taskSummary(record = {}) {
   const deadline = record.final_deadline_datetime || record.final_deadline || record.application_deadline || record.due_datetime || record.due_date || '';
   const overdue = isOverdue(deadline, record.status);
   return `<div class="task-summary">
-    <span class="${overdue ? 'overdue' : ''}"><strong>Final deadline:</strong> ${escapeHtml(deadline || 'not set')}</span>
+    <span class="${overdue ? 'overdue' : ''}"><strong>Final deadline:</strong> ${escapeHtml(formatDateTime(deadline) || 'not set')}</span>
     <span><strong>Progress:</strong> ${escapeHtml(progress.label)}</span>
   </div>`;
 }
@@ -77,8 +77,8 @@ export function taskCardBody(record = {}, fallback = '') {
   const next = nextPendingSubtask(record);
   const deadline = record.final_deadline_datetime || record.final_deadline || record.application_deadline || record.due_datetime || record.due_date || 'not set';
   const overdue = isOverdue(deadline, record.status);
-  const nextText = next ? `${next.title} (${next.due_datetime || next.due_date || 'no due date'})` : 'No pending subtask';
-  return `Deadline: ${deadline} | ${progress.label} | Next: ${nextText}${overdue ? ' | Overdue' : ''}${fallback ? ` | ${fallback}` : ''}`;
+  const nextText = next ? `${next.title} (${formatDateTime(next.due_datetime || next.due_date) || 'no due date'})` : 'No pending subtask';
+  return `Deadline: ${formatDateTime(deadline)} | ${progress.label} | Next: ${nextText}${overdue ? ' | Overdue' : ''}${fallback ? ` | ${fallback}` : ''}`;
 }
 
 export function subtaskTimeline(record = {}, options = {}) {
@@ -90,15 +90,18 @@ export function subtaskTimeline(record = {}, options = {}) {
     const overdue = isOverdue(due, subtask.status);
     const contact = subtask.responsible_contact || subtask.contact_number || subtask.mobile_extension;
     const notes = (subtask.notes || []).filter((note) => note?.text);
+    const hierarchyLevel = Math.max(0, Math.min(2, Number(subtask.hierarchy_level || 0)));
+    const hierarchyLabel = hierarchyLevel === 2 ? 'Sub-sub-activity' : hierarchyLevel === 1 ? 'Sub-activity' : 'Activity';
     const dragAttrs = options.kind ? `draggable="true" data-reorder-subtask="true" data-kind="${escapeHtml(options.kind)}" data-id="${escapeHtml(options.id || record.id || '')}" data-module="${escapeHtml(options.module || record.module || '')}" data-subtask-id="${escapeHtml(subtask.id)}"` : '';
-    return `<article class="${overdue ? 'overdue-card' : ''} ${options.kind ? 'draggable-subtask' : ''}" ${dragAttrs}>
+    return `<article class="${overdue ? 'overdue-card' : ''} ${options.kind ? 'draggable-subtask' : ''} hierarchy-level-${hierarchyLevel}" ${dragAttrs}>
       <div class="subtask-marker">${escapeHtml(subtask.sequence_order || '')}</div>
       <div class="subtask-body">
         <div class="card-head"><strong>${escapeHtml(subtask.title)}</strong><span>${statusBadge(subtask.status)}${overdue ? statusBadge('overdue') : ''}</span></div>
         <div class="subtask-meta">
+          <span>${escapeHtml(hierarchyLabel)}</span>
           <span>${escapeHtml(slugLabel(subtask.subtask_type || 'subtask'))}</span>
-          <span>Due: ${escapeHtml(due || 'not set')}</span>
-          ${completed ? `<span>Completed: ${escapeHtml(completed)}</span>` : ''}
+          <span>Due: ${escapeHtml(formatDateTime(due) || 'not set')}</span>
+          ${completed ? `<span>Completed: ${escapeHtml(formatDateTime(completed))}</span>` : ''}
           <span>Responsible: ${escapeHtml(subtask.responsible_person || 'not assigned')}</span>
           ${contact ? `<span>Mobile / extension: ${escapeHtml(contact)}</span>` : ''}
         </div>
@@ -124,6 +127,11 @@ export function subtaskForm(kind, id, module = '') {
       <button>Add local subtask</button>
     </form>
   </section>`;
+}
+
+export function formatDateTime(value = '') {
+  if (!value) return '';
+  return String(value).replace('T', ' T ');
 }
 
 export function notesPanel(notes = []) {

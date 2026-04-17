@@ -1,4 +1,4 @@
-import { detailSection, emptyState, pageHeader, recordCard, statusBadge, visibilityBadge } from '../components/ui.js';
+import { detailSection, emptyState, formatDateTime, pageHeader, recordCard, statusBadge, visibilityBadge } from '../components/ui.js';
 import { isOverdue, todayIso } from '../utils/date.js';
 import { escapeHtml } from '../utils/html.js';
 import { structuredFilter } from '../utils/search.js';
@@ -42,7 +42,7 @@ export function calendarDetailPage(ctx, id) {
 function calendarSection(title, items) {
   return `<section class="panel"><h3>${escapeHtml(title)}</h3>${items.map((item) => recordCard({
     title: item.title,
-    meta: `${item.due_date} | ${item.category} | ${item.priority}`,
+    meta: `${formatDateTime(item.due_date)} | ${item.category} | ${item.priority}`,
     body: item.notes,
     badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${isOverdue(item.due_date, item.status) ? statusBadge('overdue') : ''}`,
     href: item.route || `#/calendar/${item.id}`

@@ -1,4 +1,4 @@
-import { pageHeader, recordCard, statusBadge, taskCardBody, visibilityBadge } from '../components/ui.js';
+import { formatDateTime, pageHeader, recordCard, statusBadge, taskCardBody, visibilityBadge } from '../components/ui.js';
 import { isOverdue, todayIso } from '../utils/date.js';
 import { shouldCarryForward } from '../utils/academic-year.js';
 
@@ -60,7 +60,7 @@ export function dashboardPage(ctx) {
       })).join('') || '<p class="muted">No tasks due today.</p>'}</section>
       <section class="panel"><h3>Upcoming deadlines</h3>${upcomingDeadlines.map((item) => recordCard({
         title: item.name || item.title,
-        meta: item.due_date || item.final_deadline || item.application_deadline,
+        meta: formatDateTime(item.due_date || item.final_deadline || item.application_deadline),
         body: taskCardBody(item, item.topic || item.description_or_abstract || item.notes || ''),
         badges: `${statusBadge(item.status || 'active')} ${visibilityBadge(item.visibility || 'internal')}`,
         href: item.route || recordRoute(item)

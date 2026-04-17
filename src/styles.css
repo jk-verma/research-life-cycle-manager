@@ -472,6 +472,14 @@ nav a:hover {
   background: #fff;
 }
 
+.subtask-timeline article.hierarchy-level-1 {
+  margin-left: 44px;
+}
+
+.subtask-timeline article.hierarchy-level-2 {
+  margin-left: 88px;
+}
+
 .subtask-body {
   display: grid;
   gap: 8px;
@@ -516,6 +524,15 @@ nav a:hover {
 .draggable-subtask.drag-over {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(23, 109, 114, 0.14);
+}
+
+.draggable-subtask.drag-over::after {
+  content: "Drop left: activity | middle: sub-activity | right: sub-sub-activity";
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  color: var(--muted);
+  font-size: 11px;
 }
 
 .subtask-marker {
@@ -659,6 +676,14 @@ nav a:hover {
 
   .content {
     padding: 20px;
+  }
+
+  .subtask-timeline article.hierarchy-level-1 {
+    margin-left: 20px;
+  }
+
+  .subtask-timeline article.hierarchy-level-2 {
+    margin-left: 40px;
   }
 }
 

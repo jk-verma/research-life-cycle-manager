@@ -256,7 +256,12 @@ function bindEvents() {
     item.addEventListener('drop', (event) => {
       event.preventDefault();
       item.classList.remove('drag-over');
-      if (draggedSubtask) reorderSubtask(draggedSubtask, item.dataset.subtaskId);
+      if (draggedSubtask) {
+        const rect = item.getBoundingClientRect();
+        const dragOffset = Math.max(0, event.clientX - rect.left);
+        const hierarchyLevel = dragOffset >= 160 ? 2 : dragOffset >= 80 ? 1 : 0;
+        reorderSubtask(draggedSubtask, item.dataset.subtaskId, hierarchyLevel);
+      }
       draggedSubtask = null;
     });
   });
@@ -366,6 +371,8 @@ function addSubtask(kind, id, formData, module = '') {
     status: formData.get('status'),
     responsible_person: formData.get('responsible_person'),
     responsible_contact: formData.get('responsible_contact'),
+    hierarchy_level: 0,
+    parent_subtask_id: '',
     notes: formData.get('notes') ? [{
       id: uid('note'),
       text: formData.get('notes'),
@@ -407,7 +414,7 @@ function addSubtask(kind, id, formData, module = '') {
   render();
 }
 
-function reorderSubtask(source, targetSubtaskId) {
+function reorderSubtask(source, targetSubtaskId, hierarchyLevel = 0) {
   if (!canWrite(store, role)) return;
   const record = findTaskRecord(source.kind, source.id, source.module);
   if (!record || source.subtaskId === targetSubtaskId) return;
@@ -416,10 +423,24 @@ function reorderSubtask(source, targetSubtaskId) {
   const targetIndex = subtasks.findIndex((item) => item.id === targetSubtaskId);
   if (movingIndex < 0 || targetIndex < 0) return;
   const [moving] = subtasks.splice(movingIndex, 1);
-  subtasks.splice(targetIndex, 0, moving);
-  record.subtasks = subtasks.map((item, index) => ({ ...item, sequence_order: index + 1 }));
+  const adjustedTargetIndex = subtasks.findIndex((item) => item.id === targetSubtaskId);
+  const insertIndex = hierarchyLevel > 0 ? adjustedTargetIndex + 1 : adjustedTargetIndex;
+  subtasks.splice(insertIndex, 0, moving);
+  const clampedLevel = Math.max(0, Math.min(2, Number(hierarchyLevel || 0)));
+  const movingPosition = subtasks.findIndex((item) => item.id === moving.id);
+  const parent = findHierarchyParent(subtasks, movingPosition, clampedLevel);
+  record.subtasks = subtasks.map((item, index) => {
+    if (item.id !== moving.id) return { ...item, sequence_order: index + 1 };
+    return {
+      ...item,
+      sequence_order: index + 1,
+      hierarchy_level: clampedLevel,
+      parent_subtask_id: parent?.id || ''
+    };
+  });
   const actor = `local-${role.toLowerCase()}`;
-  const summary = `Subtask reordered: ${moving.title}`;
+  const hierarchyLabel = clampedLevel === 2 ? 'sub-sub-activity' : clampedLevel === 1 ? 'sub-activity' : 'activity';
+  const summary = `Subtask reordered as ${hierarchyLabel}: ${moving.title}`;
   record.history = record.history || record.revision_history || [];
   record.history.push({ version: record.history.length + 1, summary, updated_by: actor, updated_at: nowIso() });
   if (record.revision_history && record.revision_history !== record.history) {
@@ -430,6 +451,16 @@ function reorderSubtask(source, targetSubtaskId) {
   record.updated_by = actor;
   error = 'Subtask order changed locally. Export JSON to commit it.';
   render();
+}
+
+function findHierarchyParent(subtasks, movingPosition, hierarchyLevel) {
+  if (hierarchyLevel <= 0) return null;
+  for (let index = movingPosition - 1; index >= 0; index -= 1) {
+    const candidateLevel = Number(subtasks[index].hierarchy_level || 0);
+    if (hierarchyLevel === 1 && candidateLevel === 0) return subtasks[index];
+    if (hierarchyLevel === 2 && candidateLevel === 1) return subtasks[index];
+  }
+  return hierarchyLevel === 1 ? subtasks[movingPosition - 1] : findHierarchyParent(subtasks, movingPosition, 1);
 }
 
 function archiveRecord(kind, id, module = '') {
