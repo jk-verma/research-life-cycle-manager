@@ -102,18 +102,25 @@ nav {
   gap: 8px;
 }
 
-nav button {
+nav button,
+nav a {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
+  border-radius: 8px;
+  padding: 11px 14px;
   background: transparent;
   color: #eef7f7;
+  font-weight: 800;
+  text-decoration: none;
   text-align: left;
 }
 
 nav button.active,
-nav button:hover {
+nav button:hover,
+nav a.active,
+nav a:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
@@ -264,6 +271,40 @@ nav button:hover {
   overflow-wrap: anywhere;
 }
 
+.programme-badge {
+  display: inline-flex;
+  border-radius: 8px;
+  padding: 4px 10px;
+  background: #f6eef0;
+  color: var(--accent-2);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.data-updated {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: #fff;
+  color: var(--accent);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
 .split {
   display: grid;
   grid-template-columns: minmax(260px, 360px) 1fr;
@@ -289,6 +330,16 @@ nav button:hover {
   padding: 20px;
 }
 
+.detail-section {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.detail-section h4 {
+  margin: 0 0 10px;
+}
+
 .detail-head,
 .card-head {
   display: flex;
@@ -308,6 +359,17 @@ nav button:hover {
   display: grid;
   gap: 6px;
   padding: 12px;
+}
+
+.phase-tile {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
 }
 
 .timeline {
@@ -336,6 +398,21 @@ nav button:hover {
   border-left-color: var(--accent-2);
   color: var(--accent-2);
   font-weight: 900;
+}
+
+.notes span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.masked-block {
+  border: 1px dashed var(--accent-2);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fff7f8;
+  color: var(--accent-2);
 }
 
 .filters,
@@ -369,6 +446,51 @@ nav button:hover {
 
 .upload input {
   display: none;
+}
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  background: #fbfcfc;
+  color: var(--muted);
+}
+
+.action-item {
+  display: grid;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+.overdue,
+.overdue-card,
+.metric.danger {
+  color: #9f1d35;
+}
+
+.overdue-card {
+  border-color: #e4a8b3;
+  background: #fff7f8;
+}
+
+.project-progress {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.project-progress article {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fbfb;
 }
 
 @media (max-width: 840px) {

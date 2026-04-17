@@ -16,6 +16,8 @@ The app supports two working areas:
 - Deployment: GitHub Actions workflow in `.github/workflows/pages.yml`
 - Runtime backend: none required for core functionality
 
+The deployed site also includes a no-build static entrypoint so it still works when GitHub Pages is configured to serve `main` from the repository root. GitHub Actions deployment remains supported for normal Vite builds.
+
 This version intentionally does not implement custom password login. GitHub Pages cannot securely enforce app-level password authentication by itself. Access is expected to be handled by repository/page visibility and trusted-user sharing.
 
 ## Static Role Model
@@ -48,6 +50,38 @@ Records are Git-friendly and human-readable. Normal editing uses append-only arr
 - `revision_history`
 
 Normal UI flows never delete historical entries. Admin archive changes update status and append a revision entry.
+
+## Folder Structure
+
+```text
+src/
+  components/     reusable HTML UI fragments
+  data/           static JSON loader and validation
+  hooks/          reserved for future React/Vite hooks
+  pages/          dashboard, candidate, meeting, workbench, search, data, settings pages
+  utils/          visibility, search, export, date, and HTML helpers
+public/
+  config/         role and permission JSON
+  data/           candidate, meeting, and workbench JSON
+.github/workflows/pages.yml
+```
+
+## Routes
+
+Hash routes are GitHub Pages safe:
+
+- `#/dashboard`
+- `#/candidates`
+- `#/candidates/<candidate_id>`
+- `#/candidates/<candidate_id>/phase/<phase>`
+- `#/meetings`
+- `#/meetings/<meeting_id>`
+- `#/workbench`
+- `#/workbench/<module>`
+- `#/workbench/<module>/<record_id>`
+- `#/search`
+- `#/data`
+- `#/settings`
 
 ## Confidentiality
 
@@ -105,10 +139,11 @@ For UI-assisted edits:
 
 1. Open the app.
 2. Choose `ADMIN` or `WRITER` logical role.
-3. Append notes or archive records in local browser state.
-4. Use the Data page to export a JSON bundle.
-5. Copy the changed sections into the repository JSON files.
-6. Commit and push.
+3. Append notes from meeting or workbench detail pages, or prepare a structured draft on the Data page.
+4. Preview the local draft and JSON diff-style summary.
+5. Export a record-specific JSON draft or full JSON bundle.
+6. Copy the changed sections into the repository JSON files.
+7. Commit and push.
 
 The browser cannot directly commit to GitHub Pages. This is intentional for low-maintenance static hosting.
 
@@ -149,6 +184,8 @@ The Data page supports:
 
 - JSON bundle export
 - JSON bundle import into local browser state
+- record-specific draft export
+- local preview before export
 
 Exports are useful for preparing Git commits. Imports are useful for review, testing, or restoring a local browser state.
 
