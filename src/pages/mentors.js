@@ -4,7 +4,7 @@ import { escapeHtml, slugLabel } from '../utils/html.js';
 export function mentorsPage(ctx) {
   const mentors = ctx.visibleMentors();
   return `${pageHeader('Mentors', 'Senior students, junior faculty members, and external collaborators who guide selected students.')}
-    ${ctx.canWrite() ? mentorForm(ctx) : '<p class="notice">This role is read-only for adding mentors.</p>'}
+    ${ctx.canWrite() ? mentorForm(ctx) : '<p class="notice">Adding mentors is currently unavailable in this view.</p>'}
     <div class="grid">${mentors.map((mentor) => recordCard({
       title: mentor.name,
       meta: `${slugLabel(mentor.mentor_type)} | ${mentor.status} | ${mentor.academic_year_current}`,
@@ -12,7 +12,7 @@ export function mentorsPage(ctx) {
       badges: `${statusBadge(mentor.status)} ${visibilityBadge(mentor.visibility)}`,
       href: `#/mentors/${mentor.id}`,
       actions: ctx.cardActions('mentor', mentor.id)
-    })).join('') || emptyState('No mentors', 'No mentor records are visible for this role.')}</div>`;
+    })).join('') || emptyState('No mentors', 'No mentor records are visible.')}</div>`;
 }
 
 export function mentorDetailPage(ctx, id) {

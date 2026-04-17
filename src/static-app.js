@@ -11,7 +11,6 @@ import { mentorDetailPage, mentorsPage } from './pages/mentors.js';
 import { myWorkPage, setupHomePage, startHerePage, templateDetailPage, templatesPage } from './pages/product.js';
 import { reportsPage } from './pages/reports.js';
 import { searchPage } from './pages/search.js';
-import { settingsPage } from './pages/settings.js';
 import { moduleLabels, workbenchDetailPage, workbenchHomePage, workbenchModulePage } from './pages/workbench.js';
 import { yearDetailPage, yearsPage } from './pages/years.js';
 import { academicYearForDate } from './utils/academic-year.js';
@@ -141,11 +140,12 @@ function shell(content) {
   const current = routeKey();
   const nav = [
     ['dashboard', 'Home'],
-    ['my-work', 'My Work'],
+    ['my-work', 'Work'],
     ['students', 'Students'],
     ['mentors', 'Mentors'],
     ['teaching', 'Teaching'],
     ['research', 'Research'],
+    ['admin-work', 'Administration'],
     ['projects', 'Projects'],
     ['career', 'Career'],
     ['calendar', 'Calendar'],
@@ -153,16 +153,11 @@ function shell(content) {
     ['setup', 'Setup']
   ].map(([id, label]) => `<a class="${current.startsWith(id) || (current === '' && id === 'dashboard') ? 'active' : ''}" href="#/${id}">${label}</a>`).join('');
 
-  const roles = Object.keys(store.permissions.roles).map((item) => `<option ${item === role ? 'selected' : ''}>${item}</option>`).join('');
   root.innerHTML = `<div class="app-shell">
     <aside class="sidebar">
       <div><p class="brand">Academic Lifecycle Manager</p><nav>${nav}</nav></div>
     </aside>
     <main class="content">
-      <header class="topbar">
-        <div><h1>${escapeHtml(topbarTitle(current))}</h1></div>
-        <label class="role-picker">Logical role<select id="role-picker">${roles}</select></label>
-      </header>
       ${error ? `<p class="notice">${escapeHtml(error)}</p>` : ''}
       ${content}
     </main>
@@ -214,7 +209,6 @@ function render() {
   else if (parts[0] === 'reports') content = reportsPage(c);
   else if (parts[0] === 'search') content = searchPage(c);
   else if (parts[0] === 'data') content = dataPage(c);
-  else if (parts[0] === 'settings') content = settingsPage(c);
   else if (parts[0] === 'setup') content = setupHomePage(c);
   else if (parts[0] === 'start-here') content = startHerePage(c);
   else if (parts[0] === 'templates' && parts[1]) content = templateDetailPage(c, parts[1]);
@@ -225,14 +219,6 @@ function render() {
 }
 
 function bindEvents() {
-  const rolePicker = document.getElementById('role-picker');
-  if (rolePicker) {
-    rolePicker.addEventListener('change', (event) => {
-      role = event.target.value;
-      render();
-    });
-  }
-
   ['q', 'programme', 'candidate', 'phase', 'module', 'status', 'priority', 'overdue', 'institution', 'visibility', 'academicYear', 'from', 'to'].forEach((key) => {
     const el = document.getElementById(`filter-${key}`);
     if (el) {
@@ -348,36 +334,6 @@ function bindEvents() {
       addWorkbenchRecord(form.dataset.workbenchModule, new FormData(form));
     });
   });
-}
-
-function topbarTitle(current) {
-  const key = current.split('/')[0] || 'dashboard';
-  const labels = {
-    dashboard: 'Home',
-    home: 'Home',
-    'my-work': 'My Work',
-    students: 'Students',
-    mentors: 'Mentors',
-    planner: 'Daily Planner',
-    candidates: 'Candidates',
-    meetings: 'Meetings',
-    workbench: 'Workbench',
-    research: 'Research',
-    teaching: 'Teaching',
-    supervision: 'Supervision',
-    projects: 'Projects',
-    career: 'Career',
-    'career-mobility': 'Career Mobility',
-    calendar: 'Calendar',
-    reports: 'Reports',
-    search: 'Search',
-    data: 'Data',
-    settings: 'Settings',
-    setup: 'Setup',
-    templates: 'Templates',
-    years: 'Academic Years'
-  };
-  return labels[key] || 'Academic Work';
 }
 
 function appendNote(kind, id, formData, module) {
@@ -534,14 +490,14 @@ function archiveRecord(kind, id, module = '') {
   record.revision_history = record.revision_history || [];
   record.revision_history.push({
     version: record.revision_history.length + 1,
-    summary: 'Admin delete action archived this record locally instead of hard deletion',
+    summary: 'Delete action archived this record locally instead of hard deletion',
     updated_by: record.updated_by,
     updated_at: nowIso()
   });
   record.history = record.history || [];
   record.history.push({
     version: record.history.length + 1,
-    summary: 'Admin delete action archived this record locally instead of hard deletion',
+    summary: 'Delete action archived this record locally instead of hard deletion',
     updated_by: record.updated_by,
     updated_at: nowIso()
   });

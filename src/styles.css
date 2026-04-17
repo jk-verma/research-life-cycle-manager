@@ -143,28 +143,6 @@ nav a:hover {
   padding: 28px;
 }
 
-.topbar {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 24px;
-}
-
-.topbar h1 {
-  margin: 4px 0 0;
-  font-size: 34px;
-  line-height: 1.08;
-}
-
-.role-picker {
-  display: grid;
-  min-width: 230px;
-  gap: 8px;
-  color: var(--muted);
-  font-weight: 800;
-}
-
 .eyebrow {
   margin: 0;
   color: var(--accent-2);
@@ -688,10 +666,6 @@ nav a:hover {
     height: auto;
   }
 
-  .topbar {
-    display: grid;
-  }
-
   .content {
     padding: 20px;
   }
@@ -711,7 +685,6 @@ nav a:hover {
   }
 
   .sidebar,
-  .topbar,
   .page-title,
   .filters,
   .editor-row,

@@ -26,7 +26,7 @@ export function supervisionPage(ctx) {
       badges: `${statusBadge(candidate.status)} ${visibilityBadge(candidate.visibility)}`,
       href: `#/candidates/${candidate.id}`,
       actions: ctx.cardActions('candidate', candidate.id)
-    })).join('') || emptyState('No supervision records', 'No supervision records are visible for this role.')}</div>`;
+    })).join('') || emptyState('No supervision records', 'No supervision records are visible.')}</div>`;
 }
 
 export function projectsPage(ctx) {
@@ -37,7 +37,7 @@ export function projectsPage(ctx) {
 }
 
 export function adminWorkPage(ctx) {
-  return academicModulePage(ctx, 'admin_work', 'Admin Work', 'Committees, reports, responsibilities, and compliance work.');
+  return academicModulePage(ctx, 'admin_work', 'Academic Administration', 'Committees, reports, responsibilities, governance, extension, and compliance work.');
 }
 
 export function externalEngagementsPage(ctx) {
@@ -50,7 +50,7 @@ export function careerMobilityPage(ctx) {
 
 export function academicModulePage(ctx, module, title, subtitle) {
   const items = ctx.visibleAcademicLife().filter((item) => item.module === module);
-  const form = ctx.canWrite() ? academicRecordForm(module, title, ctx) : '<p class="notice">This role is read-only for local data entry.</p>';
+  const form = ctx.canWrite() ? academicRecordForm(module, title, ctx) : '<p class="notice">Local data entry is currently unavailable in this view.</p>';
   return `${pageHeader(title, subtitle)}
     ${form}
     <div class="grid">${items.map((item) => recordCard({
@@ -93,7 +93,7 @@ function moduleListContent(items, hrefFor, actionsFor = () => '') {
       badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}`,
       href: hrefFor(item),
       actions: actionsFor(item)
-    })).join('') || emptyState('No records', 'No records are visible for this role.')}</div>`;
+    })).join('') || emptyState('No records', 'No records are visible.')}</div>`;
 }
 
 function actionLink(label, href) {

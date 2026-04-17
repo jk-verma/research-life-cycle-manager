@@ -26,7 +26,7 @@ export function workbenchModulePage(ctx, module) {
   const items = structuredFilter(ctx.visibleWorkbench().filter((item) => item.module === module), ctx.filters);
   return `${pageHeader(moduleLabels[module] || slugLabel(module), 'Filtered module list with status, visibility, and detail drill-down.')}
     ${ctx.renderFilters({ moduleLocked: module })}
-    ${ctx.canWrite() ? workbenchRecordForm(module, moduleLabels[module] || slugLabel(module), ctx) : '<p class="notice">This role is read-only for adding records.</p>'}
+    ${ctx.canWrite() ? workbenchRecordForm(module, moduleLabels[module] || slugLabel(module), ctx) : '<p class="notice">Adding records is currently unavailable in this view.</p>'}
     <div class="grid">${items.map((item) => recordCard({
       title: item.title,
       meta: `${slugLabel(item.module)} | ${item.status} | final deadline: ${formatDateTime(item.final_deadline_datetime || item.final_deadline) || 'not set'}`,

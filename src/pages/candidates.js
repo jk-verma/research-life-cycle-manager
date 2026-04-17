@@ -11,7 +11,7 @@ const templates = {
 export function candidatesListPage(ctx) {
   const candidates = ctx.visibleCandidates();
   return `${pageHeader('Candidates', 'Research supervision workspaces by programme and phase.')}
-    ${ctx.canWrite() ? candidateForm(ctx) : '<p class="notice">This role is read-only for adding candidates.</p>'}
+    ${ctx.canWrite() ? candidateForm(ctx) : '<p class="notice">Adding candidates is currently unavailable in this view.</p>'}
     <div class="grid">${candidates.map((candidate) => recordCard({
       title: candidate.name,
       meta: `${candidate.programme_type} | ${candidate.status} | final deadline: ${candidate.final_deadline || 'not set'}`,
@@ -19,7 +19,7 @@ export function candidatesListPage(ctx) {
       badges: `${statusBadge(candidate.status)} ${visibilityBadge(candidate.visibility)}`,
       href: `#/candidates/${candidate.id}`,
       actions: ctx.cardActions('candidate', candidate.id)
-    })).join('') || emptyState('No candidates', 'No candidates are visible for this role.')}</div>`;
+    })).join('') || emptyState('No candidates', 'No candidates are visible.')}</div>`;
 }
 
 function candidateForm(ctx) {

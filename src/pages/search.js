@@ -12,7 +12,7 @@ export function searchPage(ctx) {
     ...ctx.visibleAcademicLife().map((item) => ({ ...item, kind: item.module, href: `#/${routeName(item.module)}/${item.id}`, body: (item.notes || [])[0]?.text || item.feedback || item.responsibility || item.organization }))
   ];
   const results = structuredFilter(records, ctx.filters);
-  return `${pageHeader('Search', 'Find students, mentors, teaching, research, projects, career items, admin work, and external engagements.')}
+  return `${pageHeader('Search', 'Find students, mentors, teaching, research, projects, career items, academic administration, and external engagements.')}
     ${ctx.renderFilters()}
     <div class="grid">${results.map((item) => recordCard({
       title: item.title,

@@ -19,7 +19,7 @@ export function calendarPage(ctx) {
   const upcoming30 = items.filter((item) => item.due_date >= today && item.due_date <= plus30);
   return `${pageHeader('Deadline Calendar', 'Monthly, weekly, overdue, and upcoming deadline management.')}
     ${ctx.renderFilters()}
-    ${ctx.canWrite() ? calendarForm(ctx) : '<p class="notice">Calendar writing is available only to ADMIN and ASSISTANT roles.</p>'}
+    ${ctx.canWrite() ? calendarForm(ctx) : '<p class="notice">Calendar writing is currently unavailable in this view.</p>'}
     <div class="grid">
       ${calendarSection('Overdue', overdue)}
       ${calendarSection('Upcoming 7 days', upcoming7)}
@@ -62,7 +62,7 @@ function calendarForm(ctx) {
       <input name="title" required placeholder="Deadline title" />
       <input name="due_date" type="date" required />
       <input name="reminder_date" type="date" />
-      <select name="category"><option>submission</option><option>revision</option><option>follow_up</option><option>project_reporting</option><option>meeting</option><option>supervision_milestone</option><option>teaching</option><option>administration</option><option>consultancy</option><option>mooc</option></select>
+      <select name="category"><option>teaching</option><option>research</option><option>academic_administration</option></select>
       <input name="sub_type" placeholder="Subtype" />
       <input name="linked_record_id" placeholder="Linked record ID" />
       <select name="priority"><option>low</option><option>medium</option><option>high</option></select>
