@@ -7,7 +7,8 @@ export function searchPage(ctx) {
     ...ctx.visibleMeetings().map((item) => ({ ...item, kind: 'meeting', href: `#/meetings/${item.id}`, body: item.discussion })),
     ...ctx.visibleWorkbench().map((item) => ({ ...item, kind: item.module, href: `#/workbench/${item.module}/${item.id}`, body: item.description_or_abstract })),
     ...ctx.visibleActivities().map((item) => ({ ...item, kind: 'daily_activity', href: `#/activities/${item.id}`, body: item.short_notes })),
-    ...ctx.visibleCalendar().map((item) => ({ ...item, kind: 'calendar', href: `#/calendar/${item.id}`, body: item.notes }))
+    ...ctx.visibleCalendar().map((item) => ({ ...item, kind: 'calendar', href: `#/calendar/${item.id}`, body: item.notes })),
+    ...ctx.visibleAcademicLife().map((item) => ({ ...item, kind: item.module, href: `#/${routeName(item.module)}/${item.id}`, body: (item.notes || [])[0]?.text || item.feedback || item.responsibility || item.organization }))
   ];
   const results = structuredFilter(records, ctx.filters);
   return `${pageHeader('Search', 'Structured search across candidates, meetings, modules, projects, and publications.')}
@@ -19,4 +20,10 @@ export function searchPage(ctx) {
       badges: `${statusBadge(item.status || 'active')} ${visibilityBadge(item.visibility)}`,
       href: item.href
     })).join('') || emptyState('No matches', 'Adjust the filters and try again.')}</div>`;
+}
+
+function routeName(module) {
+  if (module === 'admin_work') return 'admin-work';
+  if (module === 'external_engagements') return 'external';
+  return module;
 }

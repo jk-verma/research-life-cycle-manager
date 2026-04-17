@@ -1,5 +1,5 @@
 import { pageHeader, recordCard, statusBadge, visibilityBadge } from '../components/ui.js';
-import { isOverdue } from '../utils/date.js';
+import { isOverdue, todayIso } from '../utils/date.js';
 import { shouldCarryForward } from '../utils/academic-year.js';
 
 export function dashboardPage(ctx) {
@@ -9,6 +9,11 @@ export function dashboardPage(ctx) {
   const workbench = visibleWorkbench();
   const activities = ctx.visibleActivities();
   const calendar = ctx.visibleCalendar();
+  const today = todayIso();
+  const todaysTasks = [
+    ...activities.filter((item) => item.date === today || item.next_action_date === today),
+    ...calendar.filter((item) => item.due_date === today || item.reminder_date === today)
+  ];
   const masters = candidates.filter((item) => item.programme_type === 'Masters').length;
   const phd = candidates.filter((item) => item.programme_type === 'PhD').length;
   const interns = candidates.filter((item) => item.programme_type === 'Intern').length;
@@ -28,6 +33,7 @@ export function dashboardPage(ctx) {
       ${metric('Total candidates', candidates.length)}
       ${metric('Masters / PhD / Intern', `${masters} / ${phd} / ${interns}`)}
       ${metric('Upcoming meetings', upcomingMeetings.length)}
+      ${metric('Today tasks', todaysTasks.length)}
       ${metric('Overdue actions', overdueActions.length + overdueCalendar.length, overdueActions.length + overdueCalendar.length ? 'danger' : '')}
       ${metric('Active projects', activeProjects.length)}
       ${metric('Manuscripts in progress', manuscripts.length)}
@@ -35,6 +41,13 @@ export function dashboardPage(ctx) {
       ${metric('Carry-forward', carryForward.length)}
     </div>
     <div class="grid two">
+      <section class="panel"><h3>Today's tasks</h3>${todaysTasks.map((item) => recordCard({
+        title: item.title,
+        meta: item.date || item.due_date,
+        body: item.short_notes || item.notes,
+        badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)}`,
+        href: item.due_date ? `#/calendar/${item.id}` : `#/planner/${item.id}`
+      })).join('') || '<p class="muted">No tasks due today.</p>'}</section>
       <section class="panel"><h3>Upcoming meetings</h3>${upcomingMeetings.map((item) => recordCard({
         title: item.title,
         meta: `${item.next_meeting_date} | ${item.phase}`,

@@ -6,8 +6,9 @@ The app supports two working areas:
 
 - Research Supervision for Masters, PhD, and interns
 - Faculty Academic Workbench for publications, books, chapters, conference papers, projects, consultancy, MOOCs, and custom academic activities
-- Daily Activity Tracker for teaching, research, supervision, projects, administration, external engagements, and custom work
+- Daily Planner for teaching, research, supervision, projects, administration, external engagements, and custom work
 - Deadline Calendar for submissions, revisions, follow-ups, project reports, meetings, milestones, teaching deliverables, consultancy, and MOOC milestones
+- Teaching, Admin Work, External Engagements, Projects & Sponsored Work, Research, and Reports pages
 - Academic Year views for past-year tracking and carry-forward work
 
 ## GitHub Pages Architecture
@@ -50,6 +51,7 @@ Main files:
 - `public/data/workbench/workbench.json`
 - `public/data/daily-activities/daily-activities.json`
 - `public/data/calendar/calendar.json`
+- `public/data/academic-life/academic-life.json`
 
 Records are Git-friendly and human-readable. Normal editing uses append-only arrays:
 
@@ -98,6 +100,18 @@ Hash routes are GitHub Pages safe:
 - `#/workbench`
 - `#/workbench/<module>`
 - `#/workbench/<module>/<record_id>`
+- `#/planner`
+- `#/planner/<activity_id>`
+- `#/research`
+- `#/teaching`
+- `#/teaching/<record_id>`
+- `#/supervision`
+- `#/projects`
+- `#/admin-work`
+- `#/admin-work/<record_id>`
+- `#/external`
+- `#/external/<record_id>`
+- `#/reports`
 - `#/activities`
 - `#/activities/<activity_id>`
 - `#/calendar`

@@ -1,0 +1,111 @@
+import { detailSection, emptyState, notesPanel, pageHeader, printActionBar, recordCard, statusBadge, timelinePanel, visibilityBadge } from '../components/ui.js';
+import { isOverdue } from '../utils/date.js';
+import { escapeHtml } from '../utils/html.js';
+
+const researchModules = ['journal_articles', 'conference_papers', 'authored_books', 'book_chapters'];
+const projectModules = ['projects', 'consultancy'];
+
+export function researchPage(ctx) {
+  const items = ctx.visibleWorkbench().filter((item) => researchModules.includes(item.module));
+  return moduleList('Research', 'Journal articles, conference papers, books, and book chapters.', items, (item) => `#/workbench/${item.module}/${item.id}`);
+}
+
+export function teachingPage(ctx) {
+  return academicModulePage(ctx, 'teaching', 'Teaching', 'Courses, programme, hours, notes, and feedback.');
+}
+
+export function supervisionPage(ctx) {
+  const candidates = ctx.visibleCandidates();
+  return `${pageHeader('Supervision', 'PhD, Masters, UG, and intern supervision records.')}
+    <div class="grid">${candidates.map((candidate) => recordCard({
+      title: candidate.name,
+      meta: `${candidate.programme_type} | ${candidate.status}`,
+      body: `${candidate.topic} | current phase: ${candidate.phase_progress?.find((phase) => ['active', 'scheduled'].includes(phase.status))?.phase || 'not set'}`,
+      badges: `${statusBadge(candidate.status)} ${visibilityBadge(candidate.visibility)}`,
+      href: `#/candidates/${candidate.id}`
+    })).join('') || emptyState('No supervision records', 'No supervision records are visible for this role.')}</div>`;
+}
+
+export function projectsPage(ctx) {
+  const items = ctx.visibleWorkbench().filter((item) => projectModules.includes(item.module));
+  return moduleList('Projects & Sponsored Work', 'Sponsored projects, consultancy, and research projects.', items, (item) => `#/workbench/${item.module}/${item.id}`);
+}
+
+export function adminWorkPage(ctx) {
+  return academicModulePage(ctx, 'admin_work', 'Admin Work', 'Committees, reports, responsibilities, and compliance work.');
+}
+
+export function externalEngagementsPage(ctx) {
+  return academicModulePage(ctx, 'external_engagements', 'External Engagements', 'Visiting faculty, talks, workshops, and consultancy engagements.');
+}
+
+export function academicModulePage(ctx, module, title, subtitle) {
+  const items = ctx.visibleAcademicLife().filter((item) => item.module === module);
+  const form = ctx.canWrite() ? academicRecordForm(module, title, ctx) : '<p class="notice">This role is read-only for local data entry.</p>';
+  return `${pageHeader(title, subtitle)}
+    ${form}
+    <div class="grid">${items.map((item) => recordCard({
+      title: item.title,
+      meta: `${item.academic_year_current} | ${item.category} | ${item.priority}`,
+      body: firstVisibleNote(item),
+      badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}`,
+      href: `#/${routeName(module)}/${item.id}`
+    })).join('') || emptyState('No records', 'No records are available in this module yet.')}</div>`;
+}
+
+export function academicModuleDetailPage(ctx, module, id) {
+  const item = ctx.visibleAcademicLife().find((record) => record.module === module && record.id === id);
+  if (!item) return emptyState('Record not found', 'This academic life record is unavailable for the selected role.');
+  return `${pageHeader(item.title, `${item.category} | ${item.sub_type}`)}
+    ${printActionBar(`<a class="card-link" href="#/${routeName(module)}">Back</a>`)}
+    <section class="detail printable">
+      <div class="metadata">${statusBadge(item.status)} ${statusBadge(item.priority)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}</div>
+      ${detailSection('Record summary', `<p><strong>Academic year:</strong> ${escapeHtml(item.academic_year_current)}</p><p><strong>Carry forward:</strong> ${escapeHtml(item.carry_forward)}</p><p><strong>Created by:</strong> ${escapeHtml(item.created_by)}</p>`)}
+      ${detailSection('Details', `<pre>${escapeHtml(JSON.stringify(stripLargeArrays(item), null, 2))}</pre>`)}
+      ${detailSection('Append-only notes', notesPanel(ctx.maskNotes(item.notes || [])))}
+      ${detailSection('History', timelinePanel(item.history || []))}
+    </section>`;
+}
+
+function moduleList(title, subtitle, items, hrefFor) {
+  return `${pageHeader(title, subtitle)}
+    <div class="grid">${items.map((item) => recordCard({
+      title: item.title,
+      meta: `${item.module} | ${item.status}`,
+      body: item.description_or_abstract || firstVisibleNote(item),
+      badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}`,
+      href: hrefFor(item)
+    })).join('') || emptyState('No records', 'No records are visible for this role.')}</div>`;
+}
+
+function academicRecordForm(module, title, ctx) {
+  return `<section class="panel">
+    <h3>Add ${escapeHtml(title)} record</h3>
+    <form class="record-form" data-academic-module="${escapeHtml(module)}">
+      <input name="title" required placeholder="Title" />
+      <input name="sub_type" placeholder="Subtype" />
+      <input name="notes" placeholder="Initial append-only note" />
+      <input name="academic_year_current" placeholder="Academic year" value="2025-2026" />
+      <select name="status"><option>active</option><option>in_progress</option><option>planned</option><option>completed</option></select>
+      <select name="priority"><option>low</option><option>medium</option><option>high</option></select>
+      <select name="visibility">${ctx.store.permissions.visibility_levels.map((item) => `<option>${escapeHtml(item)}</option>`).join('')}</select>
+      <button>Add local record</button>
+    </form>
+  </section>`;
+}
+
+function firstVisibleNote(item) {
+  const note = (item.notes || item.notes_append_only || [])[0];
+  return note?.text || item.feedback || item.responsibility || item.organization || '';
+}
+
+function stripLargeArrays(item) {
+  const { notes, history, ...rest } = item;
+  return rest;
+}
+
+function routeName(module) {
+  if (module === 'admin_work') return 'admin-work';
+  if (module === 'external_engagements') return 'external';
+  return module;
+}

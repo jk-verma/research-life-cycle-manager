@@ -1,0 +1,120 @@
+{
+  "schema": "research-lifecycle-manager.academic-life.v1",
+  "updated_at": "2026-04-17T00:00:00.000Z",
+  "modules": {
+    "teaching": [
+      {
+        "id": "teach-ai-ml-2025",
+        "title": "Artificial Intelligence and Machine Learning",
+        "category": "teaching",
+        "sub_type": "course",
+        "academic_year_start": "2025-2026",
+        "academic_year_current": "2025-2026",
+        "programme": "B.Tech CSE",
+        "hours": 42,
+        "status": "active",
+        "priority": "medium",
+        "carry_forward": true,
+        "notes": [
+          {
+            "id": "teach-note-1",
+            "text": "Mid-semester syllabus coverage reviewed.",
+            "created_by": "u-admin",
+            "created_at": "2026-04-12T10:00:00.000Z",
+            "visibility": "internal"
+          }
+        ],
+        "feedback": "Collect end-semester feedback after final lab review.",
+        "history": [
+          {
+            "version": 1,
+            "summary": "Teaching record created",
+            "updated_by": "u-admin",
+            "updated_at": "2026-04-12T10:00:00.000Z"
+          }
+        ],
+        "created_by": "u-admin",
+        "timestamps": {
+          "created_at": "2026-04-12T10:00:00.000Z",
+          "updated_at": "2026-04-12T10:00:00.000Z"
+        },
+        "visibility": "internal"
+      }
+    ],
+    "admin_work": [
+      {
+        "id": "admin-naac-report-2025",
+        "title": "NAAC departmental evidence report",
+        "category": "academic_administration",
+        "sub_type": "compliance_work",
+        "academic_year_start": "2025-2026",
+        "academic_year_current": "2025-2026",
+        "status": "in_progress",
+        "priority": "high",
+        "carry_forward": true,
+        "notes": [
+          {
+            "id": "admin-note-1",
+            "text": "Assistant compiled first draft of research supervision evidence.",
+            "created_by": "u-assistant",
+            "created_at": "2026-04-16T15:00:00.000Z",
+            "visibility": "internal"
+          }
+        ],
+        "responsibility": "Department research documentation",
+        "history": [
+          {
+            "version": 1,
+            "summary": "Admin work record created",
+            "updated_by": "u-assistant",
+            "updated_at": "2026-04-16T15:00:00.000Z"
+          }
+        ],
+        "created_by": "u-assistant",
+        "timestamps": {
+          "created_at": "2026-04-16T15:00:00.000Z",
+          "updated_at": "2026-04-16T15:00:00.000Z"
+        },
+        "visibility": "internal"
+      }
+    ],
+    "external_engagements": [
+      {
+        "id": "external-talk-ai-ethics-2025",
+        "title": "Invited talk on AI ethics",
+        "category": "external_engagements",
+        "sub_type": "invited_talk",
+        "academic_year_start": "2025-2026",
+        "academic_year_current": "2025-2026",
+        "status": "planned",
+        "priority": "medium",
+        "carry_forward": true,
+        "organization": "City College",
+        "engagement_date": "2026-05-08",
+        "notes": [
+          {
+            "id": "external-note-1",
+            "text": "Topic and abstract shared with host coordinator.",
+            "created_by": "u-admin",
+            "created_at": "2026-04-17T09:30:00.000Z",
+            "visibility": "internal"
+          }
+        ],
+        "history": [
+          {
+            "version": 1,
+            "summary": "External engagement created",
+            "updated_by": "u-admin",
+            "updated_at": "2026-04-17T09:30:00.000Z"
+          }
+        ],
+        "created_by": "u-admin",
+        "timestamps": {
+          "created_at": "2026-04-17T09:30:00.000Z",
+          "updated_at": "2026-04-17T09:30:00.000Z"
+        },
+        "visibility": "internal"
+      }
+    ]
+  }
+}

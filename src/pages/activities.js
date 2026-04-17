@@ -4,7 +4,7 @@ import { structuredFilter } from '../utils/search.js';
 
 export function activitiesPage(ctx) {
   const activities = structuredFilter(ctx.visibleActivities(), ctx.filters);
-  return `${pageHeader('Daily Activity Tracker', 'Daily academic, research, supervision, administration, and engagement logs.')}
+  return `${pageHeader('Daily Planner', 'Daily academic, research, supervision, administration, and engagement logs.')}
     ${ctx.renderFilters()}
     ${ctx.canWrite() ? activityForm(ctx) : '<p class="notice">Daily activity writing is available only to ADMIN, ASSISTANT, and WRITER roles.</p>'}
     <div class="grid">${activities.map((activity) => recordCard({
