@@ -1,4 +1,4 @@
-import { emptyState, pageHeader, recordCard, statusBadge, visibilityBadge } from '../components/ui.js';
+import { emptyState, pageHeader, recordCard, statusBadge, taskCardBody, visibilityBadge } from '../components/ui.js';
 import { structuredFilter } from '../utils/search.js';
 
 export function searchPage(ctx) {
@@ -11,12 +11,12 @@ export function searchPage(ctx) {
     ...ctx.visibleAcademicLife().map((item) => ({ ...item, kind: item.module, href: `#/${routeName(item.module)}/${item.id}`, body: (item.notes || [])[0]?.text || item.feedback || item.responsibility || item.organization }))
   ];
   const results = structuredFilter(records, ctx.filters);
-  return `${pageHeader('Search', 'Structured search across candidates, meetings, modules, projects, and publications.')}
+  return `${pageHeader('Search', 'Find students, teaching, research, projects, career items, admin work, and external engagements.')}
     ${ctx.renderFilters()}
     <div class="grid">${results.map((item) => recordCard({
       title: item.title,
-      meta: item.kind,
-      body: item.body,
+      meta: `${item.kind} | ${item.priority || 'medium'} | ${item.academic_year_current || 'no year'}`,
+      body: taskCardBody(item, item.body),
       badges: `${statusBadge(item.status || 'active')} ${visibilityBadge(item.visibility)}`,
       href: item.href
     })).join('') || emptyState('No matches', 'Adjust the filters and try again.')}</div>`;

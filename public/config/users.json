@@ -21,6 +21,13 @@
       "role": "VIEWER",
       "email": "viewer@example.edu",
       "note": "Read-only portal role."
+    },
+    {
+      "id": "u-restricted-external",
+      "name": "Restricted External Reviewer",
+      "role": "RESTRICTED_EXTERNAL",
+      "email": "external@example.edu",
+      "note": "Sanitized preview role. Confidential content is masked."
     }
   ]
 }

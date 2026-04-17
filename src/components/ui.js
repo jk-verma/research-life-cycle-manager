@@ -56,6 +56,12 @@ export function taskProgress(record = {}) {
   };
 }
 
+export function nextPendingSubtask(record = {}) {
+  return [...(record.subtasks || [])]
+    .filter((item) => !['completed', 'cancelled'].includes(String(item.status).toLowerCase()))
+    .sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0))[0];
+}
+
 export function taskSummary(record = {}) {
   const progress = taskProgress(record);
   const deadline = record.final_deadline || record.application_deadline || record.due_date || '';
@@ -64,6 +70,15 @@ export function taskSummary(record = {}) {
     <span class="${overdue ? 'overdue' : ''}"><strong>Final deadline:</strong> ${escapeHtml(deadline || 'not set')}</span>
     <span><strong>Progress:</strong> ${escapeHtml(progress.label)}</span>
   </div>`;
+}
+
+export function taskCardBody(record = {}, fallback = '') {
+  const progress = taskProgress(record);
+  const next = nextPendingSubtask(record);
+  const deadline = record.final_deadline || record.application_deadline || record.due_date || 'not set';
+  const overdue = isOverdue(record.final_deadline || record.application_deadline || record.due_date, record.status);
+  const nextText = next ? `${next.title} (${next.due_date || 'no due date'})` : 'No pending subtask';
+  return `Deadline: ${deadline} | ${progress.label} | Next: ${nextText}${overdue ? ' | Overdue' : ''}${fallback ? ` | ${fallback}` : ''}`;
 }
 
 export function subtaskTimeline(record = {}) {
@@ -125,6 +140,9 @@ export function filterBar(filters, options = {}) {
     <select id="filter-phase"><option value="">Any phase</option>${(options.phases || []).map((item) => `<option value="${escapeHtml(item)}" ${filters.phase === item ? 'selected' : ''}>${escapeHtml(item)}</option>`).join('')}</select>
     <select id="filter-module" ${options.moduleLocked ? 'disabled' : ''}><option value="">Any module</option>${(options.modules || []).map((item) => `<option value="${escapeHtml(item)}" ${(filters.module || options.moduleLocked) === item ? 'selected' : ''}>${escapeHtml(slugLabel(item))}</option>`).join('')}</select>
     <input id="filter-status" value="${escapeHtml(filters.status || '')}" placeholder="Status" />
+    <select id="filter-priority"><option value="">Any priority</option>${(options.priorities || []).map((item) => `<option value="${escapeHtml(item)}" ${filters.priority === item ? 'selected' : ''}>${escapeHtml(slugLabel(item))}</option>`).join('')}</select>
+    <select id="filter-overdue"><option value="">Any deadline state</option><option value="yes" ${filters.overdue === 'yes' ? 'selected' : ''}>Overdue only</option><option value="no" ${filters.overdue === 'no' ? 'selected' : ''}>Not overdue</option></select>
+    <input id="filter-institution" value="${escapeHtml(filters.institution || '')}" placeholder="Institution or agency" />
     <select id="filter-visibility"><option value="">Any visibility</option>${(options.visibilities || []).map((item) => `<option value="${escapeHtml(item)}" ${filters.visibility === item ? 'selected' : ''}>${escapeHtml(slugLabel(item))}</option>`).join('')}</select>
     <select id="filter-academicYear"><option value="">Any academic year</option>${(options.academicYears || []).map((item) => `<option value="${escapeHtml(item)}" ${filters.academicYear === item ? 'selected' : ''}>${escapeHtml(item)}</option>`).join('')}</select>
     <input id="filter-from" type="date" value="${escapeHtml(filters.from || '')}" />

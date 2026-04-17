@@ -6,7 +6,8 @@ export const DATA_PATHS = {
   workbench: './public/data/workbench/workbench.json',
   activities: './public/data/daily-activities/daily-activities.json',
   calendar: './public/data/calendar/calendar.json',
-  academicLife: './public/data/academic-life/academic-life.json'
+  academicLife: './public/data/academic-life/academic-life.json',
+  workflowTemplates: './public/config/workflow-templates.json'
 };
 
 async function loadJson(path) {
@@ -24,6 +25,7 @@ function validateStore(store) {
   if (!Array.isArray(store.calendar?.records)) errors.push('Calendar records are missing.');
   if (!store.academicLife?.modules) errors.push('Academic life modules are missing.');
   if (!store.permissions?.roles) errors.push('Permission roles are missing.');
+  if (!Array.isArray(store.workflowTemplates?.templates)) errors.push('Workflow templates are missing.');
   return errors;
 }
 

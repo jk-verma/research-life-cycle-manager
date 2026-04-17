@@ -7,6 +7,7 @@ import { dashboardPage } from './pages/dashboard.js';
 import { dataPage } from './pages/data.js';
 import { academicModuleDetailPage, academicModulePage, adminWorkPage, careerMobilityPage, externalEngagementsPage, researchPage, projectsPage, supervisionPage, teachingPage } from './pages/academic-modules.js';
 import { meetingDetailPage, meetingsListPage } from './pages/meetings.js';
+import { myWorkPage, setupHomePage, startHerePage, templateDetailPage, templatesPage } from './pages/product.js';
 import { reportsPage } from './pages/reports.js';
 import { searchPage } from './pages/search.js';
 import { settingsPage } from './pages/settings.js';
@@ -80,6 +81,7 @@ function renderFilters(options = {}) {
     phases: [...new Set(store.meetings.records.map((item) => item.phase))],
     modules: [...new Set([...Object.keys(moduleLabels), ...Object.keys(store.academicLife.modules)])],
     visibilities: store.permissions.visibility_levels,
+    priorities: [...new Set(allRecords().map((item) => item.priority).filter(Boolean))],
     academicYears: [...new Set(allRecords().flatMap((item) => [item.academic_year_start, item.academic_year_current]).filter(Boolean))].sort().reverse(),
     ...options
   });
@@ -123,21 +125,16 @@ function ctx() {
 function shell(content) {
   const current = routeKey();
   const nav = [
-    ['dashboard', 'Dashboard'],
-    ['planner', 'Daily Planner'],
-    ['calendar', 'Calendar & Deadlines'],
-    ['research', 'Research'],
+    ['dashboard', 'Home'],
+    ['my-work', 'My Work'],
+    ['students', 'Students'],
     ['teaching', 'Teaching'],
-    ['supervision', 'Supervision'],
-    ['projects', 'Projects & Sponsored Work'],
-    ['admin-work', 'Admin Work'],
-    ['external', 'External Engagements'],
-    ['career-mobility', 'Career Mobility'],
+    ['research', 'Research'],
+    ['projects', 'Projects'],
+    ['career', 'Career'],
+    ['calendar', 'Calendar'],
     ['reports', 'Reports'],
-    ['years', 'Academic Years'],
-    ['search', 'Search'],
-    ['data', 'Data / Import-Export'],
-    ['settings', 'Settings']
+    ['setup', 'Setup']
   ].map(([id, label]) => `<a class="${current.startsWith(id) || (current === '' && id === 'dashboard') ? 'active' : ''}" href="#/${id}">${label}</a>`).join('');
 
   const roles = Object.keys(store.permissions.roles).map((item) => `<option ${item === role ? 'selected' : ''}>${item}</option>`).join('');
@@ -148,7 +145,7 @@ function shell(content) {
     </aside>
     <main class="content">
       <header class="topbar">
-        <div><p class="eyebrow">Faculty controlled static portal</p><h1>Academic operations portal</h1></div>
+        <div><p class="eyebrow">Academic Lifecycle Manager</p><h1>Academic command center</h1></div>
         <label class="role-picker">Logical role<select id="role-picker">${roles}</select></label>
       </header>
       ${error ? `<p class="notice">${escapeHtml(error)}</p>` : ''}
@@ -163,6 +160,11 @@ function render() {
   const c = ctx();
   let content = '';
   if (!parts.length || parts[0] === 'dashboard') content = dashboardPage(c);
+  else if (parts[0] === 'home') content = dashboardPage(c);
+  else if (parts[0] === 'my-work') content = myWorkPage(c);
+  else if (parts[0] === 'students' && parts[1] && parts[2] === 'phase') content = candidatePhasePage(c, parts[1], parts[3]);
+  else if (parts[0] === 'students' && parts[1]) content = candidateDetailPage(c, parts[1]);
+  else if (parts[0] === 'students') content = candidatesListPage(c);
   else if (parts[0] === 'planner' && parts[1]) content = activityDetailPage(c, parts[1]);
   else if (parts[0] === 'planner') content = activitiesPage(c);
   else if (parts[0] === 'candidates' && parts[1] && parts[2] === 'phase') content = candidatePhasePage(c, parts[1], parts[3]);
@@ -184,6 +186,8 @@ function render() {
   else if (parts[0] === 'external') content = externalEngagementsPage(c);
   else if (parts[0] === 'career-mobility' && parts[1]) content = academicModuleDetailPage(c, 'career_mobility', parts[1]);
   else if (parts[0] === 'career-mobility') content = careerMobilityPage(c);
+  else if (parts[0] === 'career' && parts[1]) content = academicModuleDetailPage(c, 'career_mobility', parts[1]);
+  else if (parts[0] === 'career') content = careerMobilityPage(c);
   else if (parts[0] === 'activities' && parts[1]) content = activityDetailPage(c, parts[1]);
   else if (parts[0] === 'activities') content = activitiesPage(c);
   else if (parts[0] === 'calendar' && parts[1]) content = calendarDetailPage(c, parts[1]);
@@ -194,6 +198,10 @@ function render() {
   else if (parts[0] === 'search') content = searchPage(c);
   else if (parts[0] === 'data') content = dataPage(c);
   else if (parts[0] === 'settings') content = settingsPage(c);
+  else if (parts[0] === 'setup') content = setupHomePage(c);
+  else if (parts[0] === 'start-here') content = startHerePage(c);
+  else if (parts[0] === 'templates' && parts[1]) content = templateDetailPage(c, parts[1]);
+  else if (parts[0] === 'templates') content = templatesPage(c);
   else content = dashboardPage(c);
   shell(content);
   bindEvents();
@@ -208,7 +216,7 @@ function bindEvents() {
     });
   }
 
-  ['q', 'programme', 'candidate', 'phase', 'module', 'status', 'visibility', 'academicYear', 'from', 'to'].forEach((key) => {
+  ['q', 'programme', 'candidate', 'phase', 'module', 'status', 'priority', 'overdue', 'institution', 'visibility', 'academicYear', 'from', 'to'].forEach((key) => {
     const el = document.getElementById(`filter-${key}`);
     if (el) {
       el.addEventListener('input', (event) => {
@@ -507,7 +515,7 @@ function importBundle(event) {
   reader.onload = () => {
     try {
       const parsed = JSON.parse(reader.result);
-      if (!parsed.candidates || !parsed.meetings || !parsed.workbench || !parsed.activities || !parsed.calendar || !parsed.academicLife) throw new Error('Bundle must include candidates, meetings, workbench, activities, calendar, and academicLife.');
+      if (!parsed.candidates || !parsed.meetings || !parsed.workbench || !parsed.activities || !parsed.calendar || !parsed.academicLife || !parsed.workflowTemplates) throw new Error('Bundle must include candidates, meetings, workbench, activities, calendar, academicLife, and workflowTemplates.');
       store = { ...store, ...parsed };
       error = 'JSON bundle imported into local browser state.';
       render();

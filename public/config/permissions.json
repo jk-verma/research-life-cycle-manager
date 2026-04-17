@@ -34,6 +34,12 @@
       "can_archive": false,
       "can_manage_visibility_labels": false,
       "visible_levels": ["internal", "candidate_visible", "sanitized_external"]
+    },
+    "RESTRICTED_EXTERNAL": {
+      "can_edit_local": false,
+      "can_archive": false,
+      "can_manage_visibility_labels": false,
+      "visible_levels": ["sanitized_external"]
     }
   },
   "protected_settings_roles": ["ADMIN"],

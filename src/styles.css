@@ -192,6 +192,29 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+}
+
+.quick-action {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #bfd7d3;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  color: var(--accent);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.quick-action:hover {
+  background: var(--soft);
+}
+
 .metric,
 .panel,
 .card,

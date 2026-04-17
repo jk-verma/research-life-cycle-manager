@@ -31,8 +31,9 @@ Roles are logical UI modes loaded from `public/config/users.json` and `public/co
 - `ADMIN`: full UI access, can archive records in local browser state, can manage visibility labels by editing config files
 - `ASSISTANT`: can create entries, update permitted records, add daily logs, deadlines, follow-up notes, meeting details, attendees, and action items
 - `VIEWER`: read-only mode
+- `RESTRICTED_EXTERNAL`: sanitized preview mode with confidential content masked
 
-Writing rights in the static UI are available to `ADMIN` and `ASSISTANT` only. `VIEWER` does not receive local editor/export controls for prepared writing changes. Archive/correction/close controls remain admin-oriented.
+Writing rights in the static UI are available to `ADMIN` and `ASSISTANT` only. `VIEWER` and `RESTRICTED_EXTERNAL` do not receive local editor/export controls for prepared writing changes. Archive/correction/close controls remain admin-oriented.
 
 These roles are not secure authentication. They are data and UI policies for a static trusted-user portal. The code is structured so these roles can later map to real backend auth.
 
@@ -44,6 +45,7 @@ Main files:
 
 - `public/config/users.json`
 - `public/config/permissions.json`
+- `public/config/workflow-templates.json`
 - `public/data/candidates/candidates.json`
 - `public/data/meetings/meetings.json`
 - `public/data/workbench/workbench.json`
@@ -85,6 +87,21 @@ Each subtask belongs to its parent record through `parent_record_id` and include
 
 Cards show the final deadline and completed-subtasks summary. Detail pages show subtasks as a vertical timeline with overdue highlighting and an ADMIN/ASSISTANT-only local form for adding new subtasks. Existing subtasks are not deleted by the UI; updates should append history entries and be exported as JSON for commit.
 
+## Workflow Templates
+
+Ready-made workflow templates live in `public/config/workflow-templates.json` and are visible at `#/templates`.
+
+Included templates:
+
+- PhD DAC workflow
+- Master's synopsis workflow
+- Journal submission workflow
+- Sponsored project workflow
+- Course delivery workflow
+- Job application workflow
+
+Templates provide starter subtask structures that can be copied into parent records or used while preparing exported JSON updates.
+
 ## Folder Structure
 
 ```text
@@ -102,7 +119,20 @@ public/
 
 ## Routes
 
-Hash routes are GitHub Pages safe:
+Hash routes are GitHub Pages safe. Product navigation uses:
+
+- `#/dashboard` or `#/home`
+- `#/my-work`
+- `#/students`
+- `#/teaching`
+- `#/research`
+- `#/projects`
+- `#/career`
+- `#/calendar`
+- `#/reports`
+- `#/setup`
+
+Compatibility and detail routes include:
 
 - `#/dashboard`
 - `#/candidates`
@@ -126,6 +156,8 @@ Hash routes are GitHub Pages safe:
 - `#/external/<record_id>`
 - `#/career-mobility`
 - `#/career-mobility/<record_id>`
+- `#/career`
+- `#/career/<record_id>`
 - `#/reports`
 - `#/activities`
 - `#/activities/<activity_id>`
@@ -136,6 +168,9 @@ Hash routes are GitHub Pages safe:
 - `#/search`
 - `#/data`
 - `#/settings`
+- `#/start-here`
+- `#/templates`
+- `#/templates/<template_id>`
 
 ## Confidentiality
 

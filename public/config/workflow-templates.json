@@ -1,0 +1,85 @@
+{
+  "schema": "academic-lifecycle-manager.workflow-templates.v1",
+  "updated_at": "2026-04-17T00:00:00.000Z",
+  "templates": [
+    {
+      "id": "template-phd-dac",
+      "title": "PhD DAC Workflow",
+      "category": "supervision",
+      "description": "Internal preparation, committee presentation, and post-DAC compliance tracking.",
+      "subtasks": [
+        { "title": "Internal pre-DAC review meeting", "subtask_type": "internal_meeting", "sequence_order": 1 },
+        { "title": "Prepare DAC presentation deck", "subtask_type": "presentation", "sequence_order": 2 },
+        { "title": "Conduct DAC committee presentation", "subtask_type": "committee_presentation", "sequence_order": 3 },
+        { "title": "Record DAC suggestions", "subtask_type": "minutes", "sequence_order": 4 },
+        { "title": "Post-DAC compliance presentation", "subtask_type": "compliance", "sequence_order": 5 }
+      ]
+    },
+    {
+      "id": "template-masters-synopsis",
+      "title": "Master's Synopsis Workflow",
+      "category": "supervision",
+      "description": "Topic finalization, literature matrix, methodology, review, and synopsis submission.",
+      "subtasks": [
+        { "title": "Finalize topic and objectives", "subtask_type": "topic_finalization", "sequence_order": 1 },
+        { "title": "Prepare literature matrix", "subtask_type": "literature_review", "sequence_order": 2 },
+        { "title": "Draft methodology", "subtask_type": "methodology", "sequence_order": 3 },
+        { "title": "Internal synopsis review", "subtask_type": "review", "sequence_order": 4 },
+        { "title": "Submit synopsis", "subtask_type": "submission", "sequence_order": 5 }
+      ]
+    },
+    {
+      "id": "template-journal-submission",
+      "title": "Journal Submission Workflow",
+      "category": "research",
+      "description": "Drafting, internal review, submission, reviewer response, and revision package.",
+      "subtasks": [
+        { "title": "Complete manuscript draft", "subtask_type": "drafting", "sequence_order": 1 },
+        { "title": "Co-author review", "subtask_type": "review", "sequence_order": 2 },
+        { "title": "Journal formatting and checks", "subtask_type": "formatting", "sequence_order": 3 },
+        { "title": "Submit manuscript", "subtask_type": "submission", "sequence_order": 4 },
+        { "title": "Prepare revision response", "subtask_type": "revision", "sequence_order": 5 }
+      ]
+    },
+    {
+      "id": "template-sponsored-project",
+      "title": "Sponsored Project Workflow",
+      "category": "projects",
+      "description": "Concept note, budget, office NOC, submission, follow-up, and reporting.",
+      "subtasks": [
+        { "title": "Concept note finalization", "subtask_type": "concept_note", "sequence_order": 1 },
+        { "title": "Budget and team worksheet", "subtask_type": "budget", "sequence_order": 2 },
+        { "title": "Office NOC processing", "subtask_type": "noc", "sequence_order": 3 },
+        { "title": "Submit proposal", "subtask_type": "submission", "sequence_order": 4 },
+        { "title": "Funding agency follow-up", "subtask_type": "follow_up", "sequence_order": 5 },
+        { "title": "Reporting and deliverables", "subtask_type": "reporting", "sequence_order": 6 }
+      ]
+    },
+    {
+      "id": "template-course-delivery",
+      "title": "Course Delivery Workflow",
+      "category": "teaching",
+      "description": "Planning, delivery, evaluation, feedback, and closure for a course.",
+      "subtasks": [
+        { "title": "Course plan and outcomes", "subtask_type": "planning", "sequence_order": 1 },
+        { "title": "Lecture and lab delivery", "subtask_type": "delivery", "sequence_order": 2 },
+        { "title": "Assessment and evaluation", "subtask_type": "evaluation", "sequence_order": 3 },
+        { "title": "Collect student feedback", "subtask_type": "feedback", "sequence_order": 4 },
+        { "title": "Course closure notes", "subtask_type": "closure", "sequence_order": 5 }
+      ]
+    },
+    {
+      "id": "template-job-application",
+      "title": "Job Application Workflow",
+      "category": "career_mobility",
+      "description": "CV, application, NOC, interview, result, and joining/closure tracking.",
+      "subtasks": [
+        { "title": "Update academic CV", "subtask_type": "cv", "sequence_order": 1 },
+        { "title": "Prepare application package", "subtask_type": "application", "sequence_order": 2 },
+        { "title": "Track NOC requirement", "subtask_type": "noc", "sequence_order": 3 },
+        { "title": "Interview preparation and follow-up", "subtask_type": "interview", "sequence_order": 4 },
+        { "title": "Record selection result", "subtask_type": "result", "sequence_order": 5 }
+      ]
+    }
+  ]
+}
