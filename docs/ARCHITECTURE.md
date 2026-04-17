@@ -1,6 +1,6 @@
 # Static Architecture
 
-research-lifecycle-manager is currently a static GitHub Pages application.
+Research Lifecycle Manager is currently a static GitHub Pages application.
 
 ## Runtime
 

@@ -1,6 +1,6 @@
-# research-lifecycle-manager
+# Research Lifecycle Manager
 
-research-lifecycle-manager is a GitHub Pages-friendly academic research lifecycle portal for a faculty supervisor. It is designed as a static React + Vite application using repository JSON files as the data source.
+Research Lifecycle Manager is a GitHub Pages-friendly academic research lifecycle portal for a faculty supervisor. It is designed as a static React + Vite application using repository JSON files as the data source.
 
 The app supports two working areas:
 

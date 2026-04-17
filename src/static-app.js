@@ -127,7 +127,7 @@ function shell(content) {
   const roles = Object.keys(store.permissions.roles).map((item) => `<option ${item === role ? 'selected' : ''}>${item}</option>`).join('');
   root.innerHTML = `<div class="app-shell">
     <aside class="sidebar">
-      <div><p class="brand">research-lifecycle-manager</p><nav>${nav}</nav></div>
+      <div><p class="brand">Research Lifecycle Manager</p><nav>${nav}</nav></div>
       <p class="sidebar-note">Static GitHub Pages portal. Roles are logical views, not login sessions.</p>
     </aside>
     <main class="content">
@@ -382,5 +382,5 @@ loadStore()
     render();
   })
   .catch((err) => {
-    root.innerHTML = `<main class="boot"><h1>research-lifecycle-manager</h1><p>${escapeHtml(err.message)}</p></main>`;
+    root.innerHTML = `<main class="boot"><h1>Research Lifecycle Manager</h1><p>${escapeHtml(err.message)}</p></main>`;
   });
