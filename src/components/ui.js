@@ -88,16 +88,21 @@ export function subtaskTimeline(record = {}, options = {}) {
     const due = subtask.due_datetime || subtask.due_date;
     const completed = subtask.completed_datetime || subtask.completed_date;
     const overdue = isOverdue(due, subtask.status);
+    const contact = subtask.responsible_contact || subtask.contact_number || subtask.mobile_extension;
+    const notes = (subtask.notes || []).filter((note) => note?.text);
     const dragAttrs = options.kind ? `draggable="true" data-reorder-subtask="true" data-kind="${escapeHtml(options.kind)}" data-id="${escapeHtml(options.id || record.id || '')}" data-module="${escapeHtml(options.module || record.module || '')}" data-subtask-id="${escapeHtml(subtask.id)}"` : '';
     return `<article class="${overdue ? 'overdue-card' : ''} ${options.kind ? 'draggable-subtask' : ''}" ${dragAttrs}>
       <div class="subtask-marker">${escapeHtml(subtask.sequence_order || '')}</div>
-      <div>
-        <div class="card-head"><strong>${escapeHtml(subtask.title)}</strong>${statusBadge(subtask.status)}</div>
-        <p class="muted">${escapeHtml(slugLabel(subtask.subtask_type || 'subtask'))} | due ${escapeHtml(due || 'not set')} ${completed ? `| completed ${escapeHtml(completed)}` : ''}</p>
-        <p><strong>Responsible:</strong> ${escapeHtml(subtask.responsible_person || 'not assigned')}</p>
-        <p><strong>Mobile / extension:</strong> ${escapeHtml(subtask.responsible_contact || subtask.contact_number || subtask.mobile_extension || 'not provided')}</p>
-        ${notesPanel(subtask.notes || [])}
-        ${timelinePanel(subtask.history || [])}
+      <div class="subtask-body">
+        <div class="card-head"><strong>${escapeHtml(subtask.title)}</strong><span>${statusBadge(subtask.status)}${overdue ? statusBadge('overdue') : ''}</span></div>
+        <div class="subtask-meta">
+          <span>${escapeHtml(slugLabel(subtask.subtask_type || 'subtask'))}</span>
+          <span>Due: ${escapeHtml(due || 'not set')}</span>
+          ${completed ? `<span>Completed: ${escapeHtml(completed)}</span>` : ''}
+          <span>Responsible: ${escapeHtml(subtask.responsible_person || 'not assigned')}</span>
+          ${contact ? `<span>Mobile / extension: ${escapeHtml(contact)}</span>` : ''}
+        </div>
+        ${notes.length ? `<div class="subtask-notes">${notes.map((note) => `<p>${escapeHtml(note.text)}</p>`).join('')}</div>` : ''}
       </div>
     </article>`;
   }).join('')}</div>`;

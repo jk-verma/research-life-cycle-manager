@@ -40,6 +40,7 @@ export function workbenchDetailPage(ctx, module, id) {
   const item = ctx.visibleWorkbench().find((record) => record.module === module && record.id === id);
   if (!item) return emptyState('Workbench item not found', 'This item is unavailable or hidden for the selected role.');
   const projectBody = module === 'projects' ? projectDetails(item) : genericDetails(item);
+  const attachments = item.attachments || [];
   return `${pageHeader(item.title, moduleLabels[module] || slugLabel(module))}
     ${printActionBar(`<a class="card-link" href="#/workbench/${module}">Back to module</a>`)}
     <section class="detail printable">
@@ -47,9 +48,9 @@ export function workbenchDetailPage(ctx, module, id) {
       ${detailSection('Overall task', taskSummary(item))}
       ${detailSection('Activity / sub-activity timeline', subtaskTimeline(item, { kind: 'workbench', id: item.id, module }))}
       ${projectBody}
-      ${detailSection('Append-only notes', notesPanel(ctx.maskNotes(item.notes_append_only)))}
+      ${(item.notes_append_only || []).length ? detailSection('Append-only notes', notesPanel(ctx.maskNotes(item.notes_append_only))) : ''}
       ${detailSection('Timeline / history', timelinePanel(item.revision_history))}
-      ${detailSection('Attachments / references', (item.attachments || []).map((attachment) => `<p>${escapeHtml(attachment.label)} | ${escapeHtml(attachment.url)}</p>`).join('') || '<p class="muted">No attachments.</p>')}
+      ${attachments.length ? detailSection('Attachments / references', attachments.map((attachment) => `<p>${escapeHtml(attachment.label)} | ${escapeHtml(attachment.url)}</p>`).join('')) : ''}
       ${ctx.canWrite() ? ctx.subtaskForm('workbench', item.id, module) : ''}
       ${ctx.canWrite() ? ctx.appendNoteForm('workbench', item.id, module) : ''}
       ${ctx.canArchive() && item.status !== 'archived' ? `<button class="secondary" data-archive-kind="workbench" data-archive-module="${escapeHtml(module)}" data-archive-id="${escapeHtml(item.id)}">Archive record</button>` : ''}
@@ -96,7 +97,29 @@ function workbenchSpecificFields(module) {
 }
 
 function genericDetails(item) {
-  return detailSection('Record details', `<pre>${escapeHtml(JSON.stringify(item, null, 2))}</pre>`);
+  const fields = [
+    ['Category', item.category || item.module],
+    ['Subtype', item.sub_type || item.assignment_type],
+    ['Type', item.type || item.assignment_type],
+    ['Organization', item.organization || item.organization_or_publisher || item.platform],
+    ['Academic year', item.academic_year_current],
+    ['Final deadline', item.final_deadline_datetime || item.final_deadline],
+    ['Priority', item.priority],
+    ['Platform', item.platform],
+    ['Launch term', item.launch_term],
+    ['Proposal status', item.proposal_status],
+    ['NOC status', item.noc_status || item.office_noc],
+    ['Content status', item.content_status],
+    ['Recording status', item.recording_status],
+    ['Upload status', item.upload_status],
+    ['Billing status', item.billing_status],
+    ['Honorarium', item.honorarium],
+    ['Engagement dates', (item.engagement_dates || []).join(', ')],
+    ['Collaborators', (item.collaborators || []).join(', ')],
+    ['Deliverables', (item.deliverables || []).join(', ')]
+  ].filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '');
+  const description = item.description_or_abstract ? `<p>${escapeHtml(item.description_or_abstract)}</p>` : '';
+  return detailSection('Record summary', `${description}<div class="summary-grid">${fields.map(([label, value]) => `<article><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></article>`).join('')}</div>`);
 }
 
 function projectDetails(item) {
