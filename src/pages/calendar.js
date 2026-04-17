@@ -62,7 +62,7 @@ function calendarForm(ctx) {
       <input name="title" required placeholder="Deadline title" />
       <input name="due_date" type="date" required />
       <input name="reminder_date" type="date" />
-      <select name="category"><option>teaching</option><option>research</option><option>academic_administration</option></select>
+      <select name="category"><option>teaching</option><option>research</option><option>projects</option><option>supervision</option><option>academic_administration</option><option>career_mobility</option><option>subscription</option></select>
       <input name="sub_type" placeholder="Subtype" />
       <input name="linked_record_id" placeholder="Linked record ID" />
       <select name="priority"><option>low</option><option>medium</option><option>high</option></select>
@@ -104,10 +104,11 @@ function subtaskDeadlineItems(records) {
 
 function routeForParent(record) {
   if (record.programme_type && !record.candidate_id) return `#/candidates/${record.id}`;
-  if (record.module && ['journal_articles', 'authored_books', 'book_chapters', 'conference_papers', 'projects', 'consultancy', 'custom_activities'].includes(record.module)) return `#/workbench/${record.module}/${record.id}`;
+  if (record.module && ['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers', 'projects', 'consultancy', 'custom_activities'].includes(record.module)) return `#/workbench/${record.module}/${record.id}`;
   if (record.module === 'teaching') return `#/teaching/${record.id}`;
   if (record.module === 'admin_work') return `#/admin-work/${record.id}`;
   if (record.module === 'external_engagements') return `#/external/${record.id}`;
   if (record.module === 'career_mobility') return `#/career-mobility/${record.id}`;
+  if (record.module === 'subscriptions') return `#/subscriptions/${record.id}`;
   return '#/calendar';
 }

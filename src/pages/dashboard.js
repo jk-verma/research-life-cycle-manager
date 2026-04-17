@@ -22,17 +22,20 @@ export function dashboardPage(ctx) {
   const overdueActions = meetings.flatMap((meeting) => (meeting.action_items || []).map((action) => ({ ...action, meeting }))).filter((item) => isOverdue(item.due_date, item.status));
   const overdueCalendar = calendar.filter((item) => isOverdue(item.due_date, item.status));
   const activeProjects = workbench.filter((item) => ['projects', 'consultancy'].includes(item.module) && !['completed', 'archived'].includes(item.status));
-  const manuscripts = workbench.filter((item) => ['journal_articles', 'authored_books', 'book_chapters', 'conference_papers'].includes(item.module) && ['drafting', 'submitted', 'under_review', 'revision'].includes(item.status));
+  const manuscripts = workbench.filter((item) => ['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers'].includes(item.module) && ['drafting', 'submitted', 'under_review', 'revision'].includes(item.status));
   const followups = workbench.filter((item) => JSON.stringify(item).toLowerCase().includes('follow'));
   const carryForward = ctx.allRecords().filter(shouldCarryForward);
   const academic = ctx.visibleAcademicLife();
   const teaching = academic.filter((item) => item.module === 'teaching');
   const career = academic.filter((item) => item.module === 'career_mobility');
   const subtaskDeadlines = flattenSubtaskDeadlines([...workbench, ...academic, ...candidates]);
-  const upcomingDeadlines = [...calendar, ...workbench, ...academic, ...candidates, ...subtaskDeadlines]
-    .filter((item) => item.due_date || item.final_deadline || item.application_deadline)
-    .sort((a, b) => String(a.due_date || a.final_deadline || a.application_deadline).localeCompare(String(b.due_date || b.final_deadline || b.application_deadline)))
-    .slice(0, 10);
+  const deadlineRecords = [...calendar, ...workbench, ...academic, ...candidates, ...subtaskDeadlines]
+    .filter((item) => item.due_date || item.final_deadline || item.application_deadline || item.ending_date)
+    .sort((a, b) => deadlineValue(a).localeCompare(deadlineValue(b)));
+  const overdueDeadlines = deadlineRecords.filter((item) => isOverdue(deadlineValue(item), item.status));
+  const weeklyTasks = deadlineRecords.filter((item) => withinDays(deadlineValue(item), 7));
+  const bimonthlyTasks = deadlineRecords.filter((item) => withinDays(deadlineValue(item), 15));
+  const monthlyTasks = deadlineRecords.filter((item) => withinDays(deadlineValue(item), 30));
   const recent = [...candidates, ...meetings, ...workbench, ...activities, ...calendar]
     .sort((a, b) => String(b.timestamps?.updated_at || '').localeCompare(String(a.timestamps?.updated_at || '')))
     .slice(0, 6);
@@ -43,7 +46,7 @@ export function dashboardPage(ctx) {
       ${metric('Masters / PhD / UG / Intern', `${masters} / ${phd} / ${ug} / ${interns}`)}
       ${metric('Upcoming meetings', upcomingMeetings.length)}
       ${metric('Today tasks', todaysTasks.length)}
-      ${metric('Overdue actions', overdueActions.length + overdueCalendar.length, overdueActions.length + overdueCalendar.length ? 'danger' : '')}
+      ${metric('Overdue deadlines', overdueDeadlines.length + overdueActions.length, overdueDeadlines.length + overdueActions.length ? 'danger' : '')}
       ${metric('Active projects', activeProjects.length)}
       ${metric('Manuscripts in progress', manuscripts.length)}
       ${metric('Teaching records', teaching.length)}
@@ -58,13 +61,10 @@ export function dashboardPage(ctx) {
         badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)}`,
         href: item.due_date ? `#/calendar/${item.id}` : `#/planner/${item.id}`
       })).join('') || '<p class="muted">No tasks due today.</p>'}</section>
-      <section class="panel"><h3>Upcoming deadlines</h3>${upcomingDeadlines.map((item) => recordCard({
-        title: item.name || item.title,
-        meta: formatDateTime(item.due_date || item.final_deadline || item.application_deadline),
-        body: taskCardBody(item, item.topic || item.description_or_abstract || item.notes || ''),
-        badges: `${statusBadge(item.status || 'active')} ${visibilityBadge(item.visibility || 'open')}`,
-        href: item.route || recordRoute(item)
-      })).join('') || '<p class="muted">No upcoming deadlines.</p>'}</section>
+      ${deadlinePanel('Weekly Tasks', weeklyTasks)}
+      ${deadlinePanel('Bimonthly Tasks', bimonthlyTasks)}
+      ${deadlinePanel('Monthly Tasks', monthlyTasks)}
+      <section class="panel"><h3>Overdue items</h3>${overdueDeadlines.map(deadlineCard).join('') || '<p class="muted">No overdue deadlines.</p>'}</section>
       <section class="panel"><h3>Upcoming meetings</h3>${upcomingMeetings.map((item) => recordCard({
         title: item.title,
         meta: `${item.next_meeting_date} | ${item.phase}`,
@@ -90,6 +90,21 @@ function metric(label, value, tone = '') {
   return `<article class="metric ${tone}"><strong>${value}</strong><span>${label}</span></article>`;
 }
 
+function deadlinePanel(title, items) {
+  return `<section class="panel"><h3>${title}</h3>${items.slice(0, 8).map(deadlineCard).join('') || '<p class="muted">No tasks in this period.</p>'}</section>`;
+}
+
+function deadlineCard(item) {
+  const deadline = deadlineValue(item);
+  return recordCard({
+    title: item.name || item.title,
+    meta: formatDateTime(deadline),
+    body: taskCardBody(item, item.topic || item.description_or_abstract || item.notes || ''),
+    badges: `${statusBadge(item.status || 'active')} ${isOverdue(deadline, item.status) ? statusBadge('overdue') : ''}`,
+    href: item.route || recordRoute(item)
+  });
+}
+
 function summaryCards(items, route) {
   return items.slice(0, 4).map((item) => recordCard({
     title: item.name || item.title,
@@ -104,12 +119,26 @@ function recordRoute(item, route = '') {
   if (item.route) return item.route;
   if (item.programme_type && !item.candidate_id) return `#/students/${item.id}`;
   if (item.candidate_id) return `#/meetings/${item.id}`;
-  if (item.module && ['journal_articles', 'authored_books', 'book_chapters', 'conference_papers', 'projects', 'consultancy', 'moocs', 'custom_activities'].includes(item.module)) return `#/workbench/${item.module}/${item.id}`;
+  if (item.module && ['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers', 'projects', 'consultancy', 'moocs', 'custom_activities'].includes(item.module)) return `#/workbench/${item.module}/${item.id}`;
   if (item.module === 'career_mobility') return `#/career/${item.id}`;
+  if (item.module === 'subscriptions') return `#/subscriptions/${item.id}`;
   if (item.module === 'teaching') return `#/teaching/${item.id}`;
   if (item.due_date) return `#/calendar/${item.id}`;
   if (item.date) return `#/planner/${item.id}`;
   return route ? `#/${route}` : '#/search';
+}
+
+function deadlineValue(item) {
+  return String(item.due_date || item.final_deadline_datetime || item.final_deadline || item.application_deadline || item.ending_date || '');
+}
+
+function withinDays(value, days) {
+  if (!value) return false;
+  const target = new Date(value);
+  const today = new Date(todayIso());
+  if (Number.isNaN(target.getTime())) return false;
+  const diff = (target - today) / 86400000;
+  return diff >= 0 && diff <= days;
 }
 
 function flattenSubtaskDeadlines(records) {

@@ -1,4 +1,5 @@
 import { detailSection, emptyState, notesPanel, pageHeader, recordCard, statusBadge, timelinePanel, visibilityBadge } from '../components/ui.js';
+import { administrationGroups, optionList, teachingGroups } from '../data/structure.js';
 import { escapeHtml } from '../utils/html.js';
 import { structuredFilter } from '../utils/search.js';
 
@@ -35,7 +36,7 @@ function activityForm(ctx) {
     <form class="record-form" id="activity-form">
       <input name="title" required placeholder="Activity title" />
       <input name="date" type="date" required />
-      <select name="category"><option>teaching</option><option>research</option><option>academic_administration</option></select>
+      <select name="category"><option>teaching</option><option>research</option><option>projects</option><option>supervision</option><option>academic_administration</option><option>miscellaneous</option></select>
       <select name="sub_type">${academicActivityOptions()}</select>
       <input name="linked_record_id" placeholder="Linked record ID" />
       <input name="short_notes" placeholder="Short notes" />
@@ -47,11 +48,8 @@ function activityForm(ctx) {
 
 function academicActivityOptions() {
   return [
-    ['teaching_direct', 'Teaching: direct teaching hours'],
-    ['teaching_innovative', 'Teaching: innovative teaching'],
-    ['teaching_exam_invigilation', 'Teaching: examination invigilation / viva'],
-    ['teaching_question_paper_setting', 'Teaching: question paper setting'],
-    ['teaching_answer_script_evaluation', 'Teaching: answer script evaluation'],
+    ...optionList(teachingGroups).map(([value, label]) => [`teaching_${value}`, `Teaching: ${label}`]),
+    ...optionList(administrationGroups).map(([value, label]) => [`administration_${value}`, `Administration: ${label}`]),
     ['administration_nss_ncc', 'Academic administration: NSS / NCC'],
     ['administration_workshop', 'Academic administration: workshop organization'],
     ['administration_counselling', 'Academic administration: counselling'],

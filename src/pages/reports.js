@@ -6,15 +6,16 @@ export function reportsPage(ctx) {
   const records = ctx.allRecords();
   const completed = records.filter((item) => ['completed', 'published', 'accepted', 'closed'].includes(String(item.status).toLowerCase()));
   const pending = records.filter((item) => !['completed', 'published', 'accepted', 'closed', 'archived'].includes(String(item.status).toLowerCase()));
-  const overdue = records.filter((item) => isOverdue(item.due_date || item.final_deadline || item.application_deadline || item.next_action_date || item.next_meeting_date, item.status));
+  const overdue = records.filter((item) => isOverdue(item.due_date || item.final_deadline || item.application_deadline || item.ending_date || item.next_action_date || item.next_meeting_date, item.status));
   const carryForward = records.filter(shouldCarryForward);
   const years = [...new Set(records.flatMap((item) => [item.academic_year_current, item.academic_year_start]).filter(Boolean))].sort().reverse();
-  const research = records.filter((item) => ['journal_articles', 'authored_books', 'book_chapters', 'conference_papers'].includes(item.module));
+  const research = records.filter((item) => ['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers'].includes(item.module));
   const teaching = records.filter((item) => item.module === 'teaching');
   const supervision = records.filter((item) => item.programme_type && !item.candidate_id);
   const mentors = records.filter((item) => item.mentor_type);
   const projects = records.filter((item) => item.module === 'projects' || item.module === 'consultancy');
   const career = records.filter((item) => item.module === 'career_mobility');
+  const subscriptions = records.filter((item) => item.module === 'subscriptions');
   return `${pageHeader('Reports', 'Completed vs pending, overdue items, and academic-year summaries.')}
     <div class="metrics">
       ${metric('Completed', completed.length)}
@@ -27,6 +28,7 @@ export function reportsPage(ctx) {
       ${metric('Mentors', mentors.length)}
       ${metric('Projects', projects.length)}
       ${metric('Career', career.length)}
+      ${metric('Subscriptions', subscriptions.length)}
     </div>
     <div class="grid two">
       <section class="panel"><h3>Overdue items</h3>${overdue.map((item) => reportCard(item)).join('') || emptyState('No overdue items', 'No overdue records are visible.')}</section>
@@ -37,6 +39,7 @@ export function reportsPage(ctx) {
       <section class="panel"><h3>Mentor summary</h3>${mentors.map((item) => reportCard(item)).join('') || emptyState('No mentor records', 'No mentor records are visible.')}</section>
       <section class="panel"><h3>Project summary</h3>${projects.map((item) => reportCard(item)).join('') || emptyState('No project records', 'No project records are visible.')}</section>
       <section class="panel"><h3>Career mobility summary</h3>${career.map((item) => reportCard(item)).join('') || emptyState('No career records', 'No career mobility records are visible.')}</section>
+      <section class="panel"><h3>Subscription summary</h3>${subscriptions.map((item) => reportCard(item)).join('') || emptyState('No subscriptions', 'No subscription records are visible.')}</section>
       <section class="panel"><h3>Yearly summary</h3>${years.map((year) => {
         const inYear = records.filter((item) => item.academic_year_current === year || item.academic_year_start === year);
         return recordCard({

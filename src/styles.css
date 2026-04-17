@@ -202,6 +202,48 @@ nav a:hover {
   background: var(--soft);
 }
 
+.structure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.structure-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  padding: 14px;
+}
+
+.structure-panel h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #bfd7d3;
+  border-radius: 8px;
+  padding: 7px 9px;
+  background: var(--soft);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.chip:hover {
+  background: #fff;
+}
+
 .metric,
 .panel,
 .card,

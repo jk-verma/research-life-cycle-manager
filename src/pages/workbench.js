@@ -6,6 +6,7 @@ import { structuredFilter } from '../utils/search.js';
 export const moduleLabels = {
   journal_articles: 'Journal Articles',
   authored_books: 'Authored Books',
+  edited_books: 'Edited Books',
   book_chapters: 'Book Chapters',
   conference_papers: 'Conference Papers',
   projects: 'Projects and Sponsored Activities',
@@ -61,7 +62,7 @@ export function workbenchDetailPage(ctx, module, id) {
 function workbenchRecordForm(module, title, ctx) {
   const actionLabel = module === 'projects'
     ? 'Add Project'
-    : ['journal_articles', 'conference_papers', 'authored_books', 'book_chapters'].includes(module)
+    : ['journal_articles', 'conference_papers', 'authored_books', 'edited_books', 'book_chapters'].includes(module)
       ? 'Add Publication'
       : `Add ${title} activity`;
   return `<section class="panel">
@@ -90,6 +91,7 @@ function workbenchSpecificFields(module) {
   if (module === 'journal_articles') return '<input name="journal" placeholder="Journal" />';
   if (module === 'conference_papers') return '<input name="conference_name" placeholder="Conference name" />';
   if (module === 'authored_books') return '<input name="publisher" placeholder="Publisher" />';
+  if (module === 'edited_books') return '<input name="publisher" placeholder="Publisher" />';
   if (module === 'book_chapters') return '<input name="book_title" placeholder="Book title" />';
   if (module === 'consultancy') return '<input name="organization" placeholder="Organization" />';
   if (module === 'moocs') return '<input name="platform" placeholder="Platform" />';

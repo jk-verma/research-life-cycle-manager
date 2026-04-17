@@ -5,7 +5,7 @@ import { calendarDetailPage, calendarPage } from './pages/calendar.js';
 import { candidateDetailPage, candidatePhasePage, candidatesListPage } from './pages/candidates.js';
 import { dashboardPage } from './pages/dashboard.js';
 import { dataPage } from './pages/data.js';
-import { academicModuleDetailPage, academicModulePage, adminWorkPage, careerMobilityPage, externalEngagementsPage, researchPage, projectsPage, supervisionPage, teachingPage } from './pages/academic-modules.js';
+import { academicModuleDetailPage, academicModulePage, adminWorkPage, careerMobilityPage, externalEngagementsPage, miscellaneousPage, projectsPage, researchPage, subscriptionPage, supervisionPage, teachingPage } from './pages/academic-modules.js';
 import { meetingDetailPage, meetingsListPage } from './pages/meetings.js';
 import { mentorDetailPage, mentorsPage } from './pages/mentors.js';
 import { myWorkPage, setupHomePage, startHerePage, templateDetailPage, templatesPage } from './pages/product.js';
@@ -138,14 +138,13 @@ function shell(content) {
   const current = routeKey();
   const nav = [
     ['dashboard', 'Home'],
-    ['my-work', 'Work'],
-    ['students', 'Students'],
-    ['mentors', 'Mentors'],
     ['teaching', 'Teaching'],
     ['research', 'Research'],
-    ['admin-work', 'Administration'],
     ['projects', 'Projects'],
-    ['career', 'Career'],
+    ['supervision', 'Supervision'],
+    ['mentors', 'Mentors'],
+    ['admin-work', 'Administration'],
+    ['miscellaneous', 'Miscellaneous'],
     ['calendar', 'Calendar'],
     ['reports', 'Reports'],
     ['setup', 'Setup']
@@ -188,10 +187,15 @@ function render() {
   else if (parts[0] === 'research') content = researchPage(c);
   else if (parts[0] === 'teaching' && parts[1]) content = academicModuleDetailPage(c, 'teaching', parts[1]);
   else if (parts[0] === 'teaching') content = teachingPage(c);
+  else if (parts[0] === 'supervision' && parts[1] && parts[2] === 'phase') content = candidatePhasePage(c, parts[1], parts[3]);
+  else if (parts[0] === 'supervision' && parts[1]) content = candidateDetailPage(c, parts[1]);
   else if (parts[0] === 'supervision') content = supervisionPage(c);
   else if (parts[0] === 'projects') content = projectsPage(c);
   else if (parts[0] === 'admin-work' && parts[1]) content = academicModuleDetailPage(c, 'admin_work', parts[1]);
   else if (parts[0] === 'admin-work') content = adminWorkPage(c);
+  else if (parts[0] === 'miscellaneous') content = miscellaneousPage(c);
+  else if (parts[0] === 'subscriptions' && parts[1]) content = academicModuleDetailPage(c, 'subscriptions', parts[1]);
+  else if (parts[0] === 'subscriptions') content = subscriptionPage(c);
   else if (parts[0] === 'external' && parts[1]) content = academicModuleDetailPage(c, 'external_engagements', parts[1]);
   else if (parts[0] === 'external') content = externalEngagementsPage(c);
   else if (parts[0] === 'career-mobility' && parts[1]) content = academicModuleDetailPage(c, 'career_mobility', parts[1]);
@@ -630,7 +634,7 @@ function addAcademicLifeRecord(module, formData) {
     timestamps: { created_at: nowIso(), updated_at: nowIso() },
     visibility: 'open'
   };
-  ['institution_name', 'role_title', 'opportunity_type', 'employment_basis', 'place_city', 'place_country', 'application_deadline', 'application_date'].forEach((field) => {
+  ['institution_name', 'role_title', 'opportunity_type', 'employment_basis', 'place_city', 'place_country', 'application_deadline', 'application_date', 'starting_date', 'ending_date', 'payment', 'payment_status'].forEach((field) => {
     if (formData.has(field) && formData.get(field)) record[field] = formData.get(field);
   });
   store.academicLife.modules[module].unshift(record);
@@ -774,6 +778,7 @@ function academicRoute(module) {
   if (module === 'admin_work') return 'admin-work';
   if (module === 'external_engagements') return 'external';
   if (module === 'career_mobility') return 'career-mobility';
+  if (module === 'subscriptions') return 'subscriptions';
   return module;
 }
 

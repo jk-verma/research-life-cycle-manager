@@ -1,24 +1,27 @@
 import { detailSection, emptyState, notesPanel, pageHeader, printActionBar, recordCard, statusBadge, subtaskTimeline, taskProgress, taskSummary, timelinePanel, visibilityBadge } from '../components/ui.js';
+import { administrationGroups, careerGroups, mentorGroups, optionList, projectGroups, researchGroups, subscriptionGroups, supervisionGroups, teachingGroups } from '../data/structure.js';
 import { isOverdue } from '../utils/date.js';
-import { escapeHtml } from '../utils/html.js';
+import { escapeHtml, slugLabel } from '../utils/html.js';
 
-const researchModules = ['journal_articles', 'conference_papers', 'authored_books', 'book_chapters'];
+const researchModules = ['journal_articles', 'conference_papers', 'authored_books', 'edited_books', 'book_chapters'];
 const projectModules = ['projects', 'consultancy'];
 
 export function researchPage(ctx) {
   const items = ctx.visibleWorkbench().filter((item) => researchModules.includes(item.module));
-  return `${pageHeader('Research', 'Journal articles, conference papers, books, and book chapters.')}
+  return `${pageHeader('Research', 'Publications: journal articles, conference papers, books, edited books, and book chapters.')}
+    ${structureOverview(researchGroups, (value) => `#/workbench/${value}`)}
     <div class="quick-actions">${actionLink('Add Publication', '#/workbench/journal_articles')}</div>
     ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`, (item) => ctx.cardActions('workbench', item.id, item.module))}`;
 }
 
 export function teachingPage(ctx) {
-  return academicModulePage(ctx, 'teaching', 'Teaching', 'Courses, programme, hours, notes, and feedback.');
+  return academicModulePage(ctx, 'teaching', 'Teaching', 'Direct teaching: course outlines, lectures, quizzes, examinations, invigilation, and evaluation.', teachingGroups);
 }
 
 export function supervisionPage(ctx) {
   const candidates = ctx.visibleCandidates();
   return `${pageHeader('Supervision', 'PhD, Masters, UG, and intern supervision records.')}
+    ${structureOverview(supervisionGroups, () => '#/students')}
     <div class="grid">${candidates.map((candidate) => recordCard({
       title: candidate.name,
       meta: `${candidate.programme_type} | ${candidate.status}`,
@@ -31,13 +34,14 @@ export function supervisionPage(ctx) {
 
 export function projectsPage(ctx) {
   const items = ctx.visibleWorkbench().filter((item) => projectModules.includes(item.module));
-  return `${pageHeader('Projects & Sponsored Work', 'Sponsored projects, consultancy, visiting faculty assignments, MOOC course-development consultancy, and research projects.')}
+  return `${pageHeader('Projects', 'Consultancy projects, sponsored projects, and research projects.')}
+    ${structureOverview(projectGroups, () => '#/workbench/projects')}
     <div class="quick-actions">${actionLink('Add Project', '#/workbench/projects')}</div>
     ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`, (item) => ctx.cardActions('workbench', item.id, item.module))}`;
 }
 
 export function adminWorkPage(ctx) {
-  return academicModulePage(ctx, 'admin_work', 'Academic Administration', 'Committees, reports, responsibilities, governance, extension, and compliance work.');
+  return academicModulePage(ctx, 'admin_work', 'Administration', 'Co-curricular, corporate academic administration, and professional development responsibilities.', administrationGroups);
 }
 
 export function externalEngagementsPage(ctx) {
@@ -45,13 +49,50 @@ export function externalEngagementsPage(ctx) {
 }
 
 export function careerMobilityPage(ctx) {
-  return academicModulePage(ctx, 'career_mobility', 'Career Mobility', 'Job applications, deputation, lien, extraordinary leave movement, and contractual opportunities.');
+  return academicModulePage(ctx, 'career_mobility', 'Career Mobility', 'Visiting faculty, adjunct faculty, teaching applications, and miscellaneous opportunities.', careerGroups);
 }
 
-export function academicModulePage(ctx, module, title, subtitle) {
+export function subscriptionPage(ctx) {
+  return academicModulePage(ctx, 'subscriptions', 'Subscription', 'Track starting date, ending date, payment, renewal, and access status.', subscriptionGroups);
+}
+
+export function miscellaneousPage(ctx) {
+  const career = ctx.visibleAcademicLife().filter((item) => item.module === 'career_mobility');
+  const subscriptions = ctx.visibleAcademicLife().filter((item) => item.module === 'subscriptions');
+  return `${pageHeader('Miscellaneous', 'Career mobility and subscriptions in one place.')}
+    <div class="grid two">
+      <section class="panel">
+        <h3>Career Mobility</h3>
+        ${structureOverview(careerGroups, () => '#/career')}
+        ${career.map((item) => recordCard({
+          title: item.title,
+          meta: `${item.sub_type} | ${item.status} | deadline: ${item.application_deadline || item.final_deadline || 'not set'}`,
+          body: `${taskProgress(item).label} | ${firstVisibleNote(item)}`,
+          badges: `${statusBadge(item.status)} ${statusBadge(item.priority || 'medium')}`,
+          href: `#/career/${item.id}`,
+          actions: ctx.cardActions('academic', item.id, 'career_mobility')
+        })).join('') || emptyState('No career records', 'No career mobility records are present yet.')}
+      </section>
+      <section class="panel">
+        <h3>Subscription</h3>
+        ${structureOverview(subscriptionGroups, () => '#/subscriptions')}
+        ${subscriptions.map((item) => recordCard({
+          title: item.title,
+          meta: `${item.starting_date || 'no start'} to ${item.ending_date || 'no end'} | ${item.payment_status || item.status}`,
+          body: `${taskProgress(item).label} | ${firstVisibleNote(item)}`,
+          badges: `${statusBadge(item.status)} ${statusBadge(item.priority || 'medium')}`,
+          href: `#/subscriptions/${item.id}`,
+          actions: ctx.cardActions('academic', item.id, 'subscriptions')
+        })).join('') || emptyState('No subscriptions', 'No subscriptions are present yet.')}
+      </section>
+    </div>`;
+}
+
+export function academicModulePage(ctx, module, title, subtitle, groups = []) {
   const items = ctx.visibleAcademicLife().filter((item) => item.module === module);
   const form = ctx.canWrite() ? academicRecordForm(module, title, ctx) : '<p class="notice">Local data entry is currently unavailable in this view.</p>';
   return `${pageHeader(title, subtitle)}
+    ${groups.length ? structureOverview(groups) : ''}
     ${form}
     <div class="grid">${items.map((item) => recordCard({
       title: item.title,
@@ -105,7 +146,7 @@ function academicRecordForm(module, title, ctx) {
     <h3>Add ${escapeHtml(title)} record</h3>
     <form class="record-form" data-academic-module="${escapeHtml(module)}">
       <input name="title" required placeholder="Title" />
-      <input name="sub_type" placeholder="Subtype" />
+      ${hasStructuredSubtype(module) ? '' : '<input name="sub_type" placeholder="Subtype" />'}
       ${moduleSpecificFields(module)}
       <input name="final_deadline" type="date" />
       <input name="notes" placeholder="Initial append-only note" />
@@ -118,8 +159,10 @@ function academicRecordForm(module, title, ctx) {
 }
 
 function moduleSpecificFields(module) {
-  if (module !== 'career_mobility') return '';
-  return `<input name="institution_name" placeholder="Institution name" />
+  if (module === 'teaching') return subtypeSelect(teachingGroups);
+  if (module === 'admin_work') return subtypeSelect(administrationGroups);
+  if (module === 'career_mobility') return `${subtypeSelect(careerGroups)}
+      <input name="institution_name" placeholder="Institution name" />
       <input name="role_title" placeholder="Role title" />
       <select name="opportunity_type">
         <option>job_application</option>
@@ -135,6 +178,16 @@ function moduleSpecificFields(module) {
       <input name="place_country" placeholder="Country" />
       <input name="application_deadline" type="date" />
       <input name="application_date" type="date" />`;
+  if (module === 'subscriptions') return `${subtypeSelect(subscriptionGroups)}
+      <input name="starting_date" type="date" />
+      <input name="ending_date" type="date" />
+      <input name="payment" placeholder="Payment / amount" />
+      <select name="payment_status"><option>planned</option><option>paid</option><option>due</option><option>reimbursed</option><option>cancelled</option></select>`;
+  return '';
+}
+
+function hasStructuredSubtype(module) {
+  return ['teaching', 'admin_work', 'career_mobility', 'subscriptions'].includes(module);
 }
 
 function firstVisibleNote(item) {
@@ -151,6 +204,7 @@ function routeName(module) {
   if (module === 'admin_work') return 'admin-work';
   if (module === 'external_engagements') return 'external';
   if (module === 'career_mobility') return 'career-mobility';
+  if (module === 'subscriptions') return 'subscriptions';
   return module;
 }
 
@@ -159,4 +213,18 @@ function statusOptions(module) {
     ? ['planned', 'applied', 'no_shortlisting', 'shortlisted', 'noc_required', 'noc_from_employer', 'interview', 'no_selection', 'selected', 'technical_resignation', 'joined', 'closed']
     : ['active', 'in_progress', 'planned', 'completed'];
   return statuses.map((status) => `<option>${escapeHtml(status)}</option>`).join('');
+}
+
+function structureOverview(groups, hrefFor = () => '') {
+  return `<div class="structure-grid">${groups.map((group) => `<section class="structure-panel">
+    <h3>${escapeHtml(group.title)}</h3>
+    <div class="chip-list">${group.items.map(([value, label]) => {
+      const href = hrefFor(value);
+      return href ? `<a class="chip" href="${escapeHtml(href)}">${escapeHtml(label)}</a>` : `<span class="chip">${escapeHtml(label)}</span>`;
+    }).join('')}</div>
+  </section>`).join('')}</div>`;
+}
+
+function subtypeSelect(groups) {
+  return `<select name="sub_type">${optionList(groups).map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('')}</select>`;
 }

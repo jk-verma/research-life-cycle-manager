@@ -1,9 +1,11 @@
 import { detailSection, emptyState, notesPanel, pageHeader, printActionBar, recordCard, statusBadge, timelinePanel, visibilityBadge } from '../components/ui.js';
+import { mentorGroups, optionList } from '../data/structure.js';
 import { escapeHtml, slugLabel } from '../utils/html.js';
 
 export function mentorsPage(ctx) {
   const mentors = ctx.visibleMentors();
   return `${pageHeader('Mentors', 'Senior students, junior faculty members, and external collaborators who guide selected students.')}
+    <div class="structure-grid">${mentorGroups.map((group) => `<section class="structure-panel"><h3>${escapeHtml(group.title)}</h3><div class="chip-list">${group.items.map(([, label]) => `<span class="chip">${escapeHtml(label)}</span>`).join('')}</div></section>`).join('')}</div>
     ${ctx.canWrite() ? mentorForm(ctx) : '<p class="notice">Adding mentors is currently unavailable in this view.</p>'}
     <div class="grid">${mentors.map((mentor) => recordCard({
       title: mentor.name,
@@ -49,7 +51,7 @@ function mentorForm(ctx) {
     <h3>Add Mentor</h3>
     <form class="record-form" id="mentor-form">
       <input name="name" required placeholder="Mentor name" />
-      <select name="mentor_type"><option>senior_student</option><option>junior_faculty</option><option>outsider_collaborator</option></select>
+      <select name="mentor_type">${optionList(mentorGroups).map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('')}</select>
       <input name="designation" placeholder="Designation" />
       <input name="organization" placeholder="Organization" />
       <input name="email" type="email" placeholder="Email" />

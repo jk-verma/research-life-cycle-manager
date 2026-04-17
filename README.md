@@ -2,13 +2,14 @@
 
 Academic Lifecycle Manager is a GitHub Pages-friendly academic life management portal for Dr. Jitendra Kumar Verma and trusted assistants. It is designed as a static React + Vite application using repository JSON files as the data source.
 
-The app supports two working areas:
-
-- Research Supervision for Masters, PhD, and interns
-- Faculty Academic Workbench for publications, books, chapters, conference papers, projects, consultancy, MOOCs, and custom academic activities
-- Daily Planner for teaching, research, supervision, projects, administration, external engagements, and custom work
-- Deadline Calendar for submissions, revisions, follow-ups, project reports, meetings, milestones, teaching deliverables, consultancy, and MOOC milestones
-- Teaching, Admin Work, External Engagements, Career Mobility, Projects & Sponsored Work, Research, and Reports pages
+- Home command center for today, weekly, bimonthly, monthly, and overdue deadlines across all recorded work
+- Teaching for direct teaching, course outlines, lectures, quizzes, examinations, invigilation, and evaluation
+- Research for publications: journal articles, conference papers, books, edited books, and book chapters
+- Projects for consultancy projects, sponsored projects, and research projects
+- Supervision for Ph.D., Masters, UG, external, and intern work
+- Mentors for internal collaborators, external collaborators, and student group leaders
+- Administration for co-curricular work, corporate/academic administration, and professional development
+- Miscellaneous for career mobility and subscriptions
 - Academic Year views for past-year tracking and carry-forward work
 
 ## GitHub Pages Architecture
@@ -24,20 +25,11 @@ The deployed site also includes a no-build static entrypoint so it still works w
 
 This version intentionally does not implement custom password login. GitHub Pages cannot securely enforce app-level password authentication by itself. Access is expected to be handled by repository/page visibility and trusted-user sharing.
 
-## Static Role Model
+## Access Model
 
-Roles are logical UI modes loaded from `public/config/users.json` and `public/config/permissions.json`.
+The current GitHub Pages version keeps access control out of the visible product surface. Records are maintained as static JSON and can later be connected to a backend role model when the application view is finalized.
 
-- `ADMIN`: full UI access, can archive records in local browser state, can manage visibility labels by editing config files
-- `ASSISTANT`: can create entries, update permitted records, add daily logs, deadlines, follow-up notes, meeting details, attendees, and action items
-- `VIEWER`: read-only mode
-- `RESTRICTED_EXTERNAL`: sanitized preview mode with confidential content masked
-
-Writing rights in the static UI are available to `ADMIN` and `ASSISTANT` only. `VIEWER` and `RESTRICTED_EXTERNAL` do not receive local editor/export controls for prepared writing changes. Archive/correction/close controls remain admin-oriented.
-
-These roles are not secure authentication. They are data and UI policies for a static trusted-user portal. The code is structured so these roles can later map to real backend auth.
-
-The primary admin profile is Dr. Jitendra Kumar Verma. Assistant entries are tracked through `created_by`, `updated_by`, timestamps, and append-only history arrays.
+Prepared entries are tracked through `created_by`, `updated_by`, timestamps, and append-only history arrays.
 
 ## Data Files
 
@@ -47,6 +39,7 @@ Main files:
 - `public/config/permissions.json`
 - `public/config/workflow-templates.json`
 - `public/data/candidates/candidates.json`
+- `public/data/mentors/mentors.json`
 - `public/data/meetings/meetings.json`
 - `public/data/workbench/workbench.json`
 - `public/data/daily-activities/daily-activities.json`
@@ -85,7 +78,7 @@ Main records can carry one overall task deadline plus an append-only subtask tim
 
 Each subtask belongs to its parent record through `parent_record_id` and includes `title`, `subtask_type`, `due_datetime`, `due_date`, `completed_datetime`, `completed_date`, `status`, `responsible_person`, append-only `notes`, append-only `history`, and `sequence_order`.
 
-Cards show the final deadline and completed-subtasks summary. Detail pages show subtasks as a vertical timeline with overdue highlighting and an ADMIN/ASSISTANT-only local form for adding new subtasks. The form supports exact due date/time, optional completed date/time, pending/ongoing/completed/deferred/cancelled status, responsible person, and insertion after an existing sequence number. Timeline items can also be drag-dropped to reorder them locally; the reordered sequence is saved as an append-only history update when exported. Existing subtasks are not deleted by the UI; updates should append history entries and be exported as JSON for commit.
+Cards show the final deadline and completed-subtasks summary. Detail pages show subtasks as a vertical timeline with overdue highlighting and a local form for adding new subtasks. The form supports exact due date/time, optional completed date/time, pending/ongoing/completed/deferred/cancelled status, responsible person, and insertion after an existing sequence number. Timeline items can also be drag-dropped to reorder them locally; the reordered sequence is saved as an append-only history update when exported. Existing subtasks are not deleted by the UI; updates should append history entries and be exported as JSON for commit.
 
 ## Workflow Templates
 
@@ -111,6 +104,7 @@ Project proposal templates include date-time aware milestones such as call deadl
 src/
   components/     reusable HTML UI fragments
   data/           static JSON loader and validation
+  data/structure  academic activity taxonomy used by forms and pages
   hooks/          reserved for future React/Vite hooks
   pages/          dashboard, candidate, meeting, workbench, search, data, settings pages
   utils/          visibility, search, export, date, and HTML helpers
@@ -125,12 +119,13 @@ public/
 Hash routes are GitHub Pages safe. Product navigation uses:
 
 - `#/dashboard` or `#/home`
-- `#/my-work`
-- `#/students`
 - `#/teaching`
 - `#/research`
 - `#/projects`
-- `#/career`
+- `#/supervision`
+- `#/mentors`
+- `#/admin-work`
+- `#/miscellaneous`
 - `#/calendar`
 - `#/reports`
 - `#/setup`
@@ -152,9 +147,13 @@ Compatibility and detail routes include:
 - `#/teaching`
 - `#/teaching/<record_id>`
 - `#/supervision`
+- `#/supervision/<candidate_id>`
 - `#/projects`
 - `#/admin-work`
 - `#/admin-work/<record_id>`
+- `#/miscellaneous`
+- `#/subscriptions`
+- `#/subscriptions/<record_id>`
 - `#/external`
 - `#/external/<record_id>`
 - `#/career-mobility`
@@ -174,10 +173,6 @@ Compatibility and detail routes include:
 - `#/start-here`
 - `#/templates`
 - `#/templates/<template_id>`
-
-## Access Model
-
-The current GitHub Pages version keeps access control out of the visible product surface. Records are maintained as static JSON and can later be connected to a backend role model when the application view is finalized.
 
 ## Local Development
 
@@ -216,12 +211,11 @@ For simple edits:
 For UI-assisted edits:
 
 1. Open the app.
-2. Choose `ADMIN` or `ASSISTANT` logical role.
-3. Append notes from meeting or workbench detail pages, or prepare a structured draft on the Data page.
-4. Preview the local draft and JSON diff-style summary.
-5. Export a record-specific JSON draft or full JSON bundle.
-6. Copy the changed sections into the repository JSON files.
-7. Commit and push.
+2. Append notes from meeting or workbench detail pages, or prepare a structured draft on the Data page.
+3. Preview the local draft and JSON diff-style summary.
+4. Export a record-specific JSON draft or full JSON bundle.
+5. Copy the changed sections into the repository JSON files.
+6. Commit and push.
 
 The browser cannot directly commit to GitHub Pages. This is intentional for low-maintenance static hosting.
 
@@ -265,7 +259,7 @@ The Data page supports:
 - record-specific draft export
 - local preview before export
 
-The Daily Activity and Calendar pages include assistant/admin local entry forms. Export the JSON bundle after local entry, then commit the updated JSON files.
+The Daily Activity and Calendar pages include local entry forms. Export the JSON bundle after local entry, then commit the updated JSON files.
 
 Exports are useful for preparing Git commits. Imports are useful for review, testing, or restoring a local browser state.
 
@@ -275,14 +269,7 @@ Candidate summaries, meetings, and project/workbench detail panels are print-fri
 
 ## Future Backend Upgrade Path
 
-The static data model already includes:
-
-- role names
-- visibility metadata
-- timestamps
-- created_by and updated_by
-- append-only notes
-- revision_history arrays
+The static data model already includes timestamps, `created_by` / `updated_by`, append-only notes, and `revision_history` arrays.
 
 A later backend can map these fields to:
 
@@ -293,4 +280,4 @@ A later backend can map these fields to:
 - server-side authorization
 - user management
 
-Do not treat the static role picker as security. True authentication and authorization require a backend or a protected hosting layer.
+True authentication and authorization should be added through a backend or protected hosting layer when the product view is complete.

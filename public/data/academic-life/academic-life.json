@@ -1,6 +1,6 @@
 {
     "schema":  "academic-lifecycle-manager.academic-life.v1",
-    "updated_at":  "2026-04-17T00:00:00.000Z",
+    "updated_at":  "2026-04-18T09:15:00.000Z",
     "modules":  {
                     "teaching":  [
                                      {
@@ -212,7 +212,181 @@
                                                  }
                                              ],
                     "career_mobility":  [
+                                            {
+                                                "id":  "career-visiting-faculty-2026",
+                                                "title":  "Visiting faculty opportunity tracking",
+                                                "category":  "career_mobility",
+                                                "sub_type":  "visiting_faculty",
+                                                "opportunity_type":  "visiting_position",
+                                                "institution_name":  "Partner Management Institute",
+                                                "role_title":  "Visiting Faculty",
+                                                "place_city":  "Ahmedabad",
+                                                "place_country":  "India",
+                                                "academic_year_start":  "2025-2026",
+                                                "academic_year_current":  "2025-2026",
+                                                "application_deadline":  "2026-06-15",
+                                                "application_date":  "",
+                                                "status":  "planned",
+                                                "priority":  "medium",
+                                                "carry_forward":  true,
+                                                "notes":  [
+                                                              {
+                                                                  "created_at":  "2026-04-18T09:15:00.000Z",
+                                                                  "visibility":  "open",
+                                                                  "id":  "career-vf-note-1",
+                                                                  "text":  "Prepare profile, teaching areas, and availability before approaching the institute.",
+                                                                  "created_by":  "u-admin"
+                                                              }
+                                                          ],
+                                                "history":  [
+                                                                {
+                                                                    "summary":  "Career mobility record created",
+                                                                    "updated_by":  "u-admin",
+                                                                    "version":  1,
+                                                                    "updated_at":  "2026-04-18T09:15:00.000Z"
+                                                                }
+                                                            ],
+                                                "created_by":  "u-admin",
+                                                "timestamps":  {
+                                                                   "created_at":  "2026-04-18T09:15:00.000Z",
+                                                                   "updated_at":  "2026-04-18T09:15:00.000Z"
+                                                               },
+                                                "visibility":  "open",
+                                                "final_deadline":  "2026-06-15",
+                                                "subtasks":  [
+                                                                 {
+                                                                     "sequence_order":  1,
+                                                                     "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                                     "id":  "career-vf-profile",
+                                                                     "completed_date":  "",
+                                                                     "history":  [
+                                                                                     {
+                                                                                         "summary":  "Subtask created",
+                                                                                         "updated_by":  "u-admin",
+                                                                                         "version":  1,
+                                                                                         "updated_at":  "2026-04-18T09:15:00.000Z"
+                                                                                     }
+                                                                                 ],
+                                                                     "parent_record_id":  "career-visiting-faculty-2026",
+                                                                     "notes":  [
 
-                                        ]
+                                                                               ],
+                                                                     "subtask_type":  "profile",
+                                                                     "status":  "pending",
+                                                                     "title":  "Update academic profile and course list",
+                                                                     "due_date":  "2026-05-20"
+                                                                 },
+                                                                 {
+                                                                     "sequence_order":  2,
+                                                                     "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                                     "id":  "career-vf-application",
+                                                                     "completed_date":  "",
+                                                                     "history":  [
+                                                                                     {
+                                                                                         "summary":  "Subtask created",
+                                                                                         "updated_by":  "u-admin",
+                                                                                         "version":  1,
+                                                                                         "updated_at":  "2026-04-18T09:15:00.000Z"
+                                                                                     }
+                                                                                 ],
+                                                                     "parent_record_id":  "career-visiting-faculty-2026",
+                                                                     "notes":  [
+
+                                                                               ],
+                                                                     "subtask_type":  "application",
+                                                                     "status":  "pending",
+                                                                     "title":  "Submit visiting faculty expression of interest",
+                                                                     "due_date":  "2026-06-15"
+                                                                 }
+                                                             ]
+                                            }
+                                        ],
+                    "subscriptions":  [
+                                          {
+                                              "id":  "sub-ieee-2026",
+                                              "title":  "IEEE professional membership renewal",
+                                              "category":  "subscription",
+                                              "sub_type":  "professional_membership",
+                                              "academic_year_start":  "2025-2026",
+                                              "academic_year_current":  "2025-2026",
+                                              "starting_date":  "2026-01-01",
+                                              "ending_date":  "2026-12-31",
+                                              "payment":  "Annual membership fee",
+                                              "payment_status":  "due",
+                                              "status":  "active",
+                                              "priority":  "medium",
+                                              "carry_forward":  true,
+                                              "notes":  [
+                                                            {
+                                                                "created_at":  "2026-04-18T09:00:00.000Z",
+                                                                "visibility":  "open",
+                                                                "id":  "sub-ieee-note-1",
+                                                                "text":  "Track renewal window, payment proof, and receipt upload.",
+                                                                "created_by":  "u-admin"
+                                                            }
+                                                        ],
+                                              "history":  [
+                                                              {
+                                                                  "summary":  "Subscription record created",
+                                                                  "updated_by":  "u-admin",
+                                                                  "version":  1,
+                                                                  "updated_at":  "2026-04-18T09:00:00.000Z"
+                                                              }
+                                                          ],
+                                              "created_by":  "u-admin",
+                                              "timestamps":  {
+                                                                 "created_at":  "2026-04-18T09:00:00.000Z",
+                                                                 "updated_at":  "2026-04-18T09:00:00.000Z"
+                                                             },
+                                              "visibility":  "open",
+                                              "final_deadline":  "2026-12-31",
+                                              "subtasks":  [
+                                                               {
+                                                                   "sequence_order":  1,
+                                                                   "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                                   "id":  "sub-ieee-payment",
+                                                                   "completed_date":  "",
+                                                                   "history":  [
+                                                                                   {
+                                                                                       "summary":  "Subtask created",
+                                                                                       "updated_by":  "u-admin",
+                                                                                       "version":  1,
+                                                                                       "updated_at":  "2026-04-18T09:00:00.000Z"
+                                                                                   }
+                                                                               ],
+                                                                   "parent_record_id":  "sub-ieee-2026",
+                                                                   "notes":  [
+
+                                                                             ],
+                                                                   "subtask_type":  "payment",
+                                                                   "status":  "pending",
+                                                                   "title":  "Complete subscription payment",
+                                                                   "due_date":  "2026-12-15"
+                                                               },
+                                                               {
+                                                                   "sequence_order":  2,
+                                                                   "responsible_person":  "Faculty Assistant",
+                                                                   "id":  "sub-ieee-receipt",
+                                                                   "completed_date":  "",
+                                                                   "history":  [
+                                                                                   {
+                                                                                       "summary":  "Subtask created",
+                                                                                       "updated_by":  "u-admin",
+                                                                                       "version":  1,
+                                                                                       "updated_at":  "2026-04-18T09:00:00.000Z"
+                                                                                   }
+                                                                               ],
+                                                                   "parent_record_id":  "sub-ieee-2026",
+                                                                   "notes":  [
+
+                                                                             ],
+                                                                   "subtask_type":  "documentation",
+                                                                   "status":  "pending",
+                                                                   "title":  "Archive receipt and membership proof",
+                                                                   "due_date":  "2026-12-31"
+                                                               }
+                                                           ]
+                                          }
+                                      ]
                 }
 }

@@ -30,8 +30,8 @@ function actionsForSearchResult(ctx, item) {
   if (item.kind === 'meeting') return ctx.cardActions('meeting', item.id);
   if (item.kind === 'daily_activity') return ctx.cardActions('activity', item.id);
   if (item.kind === 'calendar') return ctx.cardActions('calendar', item.id);
-  if (['journal_articles', 'authored_books', 'book_chapters', 'conference_papers', 'projects', 'consultancy', 'custom_activities'].includes(item.kind)) return ctx.cardActions('workbench', item.id, item.kind);
-  if (['teaching', 'admin_work', 'external_engagements', 'career_mobility'].includes(item.kind)) return ctx.cardActions('academic', item.id, item.kind);
+  if (['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers', 'projects', 'consultancy', 'custom_activities'].includes(item.kind)) return ctx.cardActions('workbench', item.id, item.kind);
+  if (['teaching', 'admin_work', 'external_engagements', 'career_mobility', 'subscriptions'].includes(item.kind)) return ctx.cardActions('academic', item.id, item.kind);
   return '';
 }
 
@@ -39,5 +39,6 @@ function routeName(module) {
   if (module === 'admin_work') return 'admin-work';
   if (module === 'external_engagements') return 'external';
   if (module === 'career_mobility') return 'career-mobility';
+  if (module === 'subscriptions') return 'subscriptions';
   return module;
 }
