@@ -142,7 +142,6 @@ function shell(content) {
   root.innerHTML = `<div class="app-shell">
     <aside class="sidebar">
       <div><p class="brand">Academic Lifecycle Manager</p><nav>${nav}</nav></div>
-      <p class="sidebar-note">Static GitHub Pages portal. Roles are logical views, not login sessions.</p>
     </aside>
     <main class="content">
       <header class="topbar">
