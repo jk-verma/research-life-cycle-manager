@@ -10,7 +10,8 @@ export function mentorsPage(ctx) {
       meta: `${slugLabel(mentor.mentor_type)} | ${mentor.status} | ${mentor.academic_year_current}`,
       body: `${assignedCandidateNames(ctx, mentor).join(', ') || 'No assigned students yet'} | ${mentor.specialization || ''}`,
       badges: `${statusBadge(mentor.status)} ${visibilityBadge(mentor.visibility)}`,
-      href: `#/mentors/${mentor.id}`
+      href: `#/mentors/${mentor.id}`,
+      actions: ctx.cardActions('mentor', mentor.id)
     })).join('') || emptyState('No mentors', 'No mentor records are visible for this role.')}</div>`;
 }
 

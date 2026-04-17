@@ -105,6 +105,12 @@ function appendNoteForm(kind, id, module = '') {
   </section>`;
 }
 
+function cardActions(kind, id, module = '') {
+  if (role !== 'ADMIN') return '';
+  return `<button class="secondary compact" data-edit-kind="${escapeHtml(kind)}" data-edit-id="${escapeHtml(id)}" data-edit-module="${escapeHtml(module)}">Edit</button>
+    <button class="secondary compact danger-action" data-archive-kind="${escapeHtml(kind)}" data-archive-id="${escapeHtml(id)}" data-archive-module="${escapeHtml(module)}">Delete</button>`;
+}
+
 function ctx() {
   return {
     store,
@@ -124,6 +130,7 @@ function ctx() {
     canWrite: () => canWrite(store, role),
     canArchive: () => canArchive(store, role),
     archiveRecord,
+    cardActions,
     renderFilters,
     appendNoteForm,
     subtaskForm
@@ -294,7 +301,14 @@ function bindEvents() {
   }
 
   document.querySelectorAll('[data-archive-kind]').forEach((button) => {
-    button.addEventListener('click', () => archiveRecord(button.dataset.archiveKind, button.dataset.archiveId, button.dataset.archiveModule || ''));
+    button.addEventListener('click', () => {
+      if (button.classList.contains('danger-action') && !confirm('Archive this record locally? This does not hard-delete history.')) return;
+      archiveRecord(button.dataset.archiveKind, button.dataset.archiveId, button.dataset.archiveModule || '');
+    });
+  });
+
+  document.querySelectorAll('[data-edit-kind]').forEach((button) => {
+    button.addEventListener('click', () => editRecord(button.dataset.editKind, button.dataset.editId, button.dataset.editModule || ''));
   });
 
   const activityForm = document.getElementById('activity-form');
@@ -511,10 +525,7 @@ function findHierarchyParent(subtasks, movingPosition, hierarchyLevel) {
 
 function archiveRecord(kind, id, module = '') {
   if (!canArchive(store, role)) return;
-  let record = null;
-  if (kind === 'candidate') record = store.candidates.records.find((item) => item.id === id);
-  if (kind === 'meeting') record = store.meetings.records.find((item) => item.id === id);
-  if (kind === 'workbench') record = store.workbench.modules[module]?.find((item) => item.id === id);
+  const record = findEditableRecord(kind, id, module);
   if (!record) return;
   record.status = 'archived';
   record.updated_by = `local-${role.toLowerCase()}`;
@@ -523,12 +534,43 @@ function archiveRecord(kind, id, module = '') {
   record.revision_history = record.revision_history || [];
   record.revision_history.push({
     version: record.revision_history.length + 1,
-    summary: 'Archived locally instead of deleted',
+    summary: 'Admin delete action archived this record locally instead of hard deletion',
+    updated_by: record.updated_by,
+    updated_at: nowIso()
+  });
+  record.history = record.history || [];
+  record.history.push({
+    version: record.history.length + 1,
+    summary: 'Admin delete action archived this record locally instead of hard deletion',
     updated_by: record.updated_by,
     updated_at: nowIso()
   });
   error = 'Record archived locally. Export JSON to commit it.';
   render();
+}
+
+function editRecord(kind, id, module = '') {
+  if (role !== 'ADMIN') return;
+  const record = findEditableRecord(kind, id, module);
+  if (!record) return;
+  draft = structuredClone(record);
+  draft.updated_by = `local-${role.toLowerCase()}`;
+  draft.timestamps = { ...(draft.timestamps || {}), updated_at: nowIso() };
+  diff = diffSummary(record, draft);
+  error = 'Editable local JSON draft prepared. Adjust/export from Data, then commit the JSON update.';
+  location.hash = '#/data';
+  render();
+}
+
+function findEditableRecord(kind, id, module = '') {
+  if (kind === 'candidate') return store.candidates.records.find((item) => item.id === id);
+  if (kind === 'mentor') return store.mentors.records.find((item) => item.id === id);
+  if (kind === 'meeting') return store.meetings.records.find((item) => item.id === id);
+  if (kind === 'activity') return store.activities.records.find((item) => item.id === id);
+  if (kind === 'calendar') return store.calendar.records.find((item) => item.id === id);
+  if (kind === 'workbench') return store.workbench.modules[module]?.find((item) => item.id === id);
+  if (kind === 'academic') return store.academicLife.modules[module]?.find((item) => item.id === id);
+  return null;
 }
 
 function previewDraft(formData) {

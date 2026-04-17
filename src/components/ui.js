@@ -34,13 +34,14 @@ export function detailSection(title, body) {
   return `<section class="detail-section"><h4>${escapeHtml(title)}</h4>${body}</section>`;
 }
 
-export function recordCard({ title, meta, body, badges = '', href = '' }) {
+export function recordCard({ title, meta, body, badges = '', href = '', actions = '' }) {
   const open = href ? `<a class="card-link" href="${escapeHtml(href)}">Open</a>` : '';
   return `<article class="card">
     <div class="card-head"><div>${badges}</div>${open}</div>
     <h3>${escapeHtml(title)}</h3>
     ${meta ? `<p class="muted">${escapeHtml(meta)}</p>` : ''}
     ${body ? `<p>${escapeHtml(body)}</p>` : ''}
+    ${actions ? `<div class="card-actions">${actions}</div>` : ''}
   </article>`;
 }
 

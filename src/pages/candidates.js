@@ -17,7 +17,8 @@ export function candidatesListPage(ctx) {
       meta: `${candidate.programme_type} | ${candidate.status} | final deadline: ${candidate.final_deadline || 'not set'}`,
       body: `${taskProgress(candidate).label} | ${candidate.topic}`,
       badges: `${statusBadge(candidate.status)} ${visibilityBadge(candidate.visibility)}`,
-      href: `#/candidates/${candidate.id}`
+      href: `#/candidates/${candidate.id}`,
+      actions: ctx.cardActions('candidate', candidate.id)
     })).join('') || emptyState('No candidates', 'No candidates are visible for this role.')}</div>`;
 }
 

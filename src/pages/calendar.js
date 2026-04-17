@@ -4,12 +4,13 @@ import { escapeHtml } from '../utils/html.js';
 import { structuredFilter } from '../utils/search.js';
 
 export function calendarPage(ctx) {
+  const calendarRecords = ctx.visibleCalendar().map((item) => ({ ...item, card_actions: ctx.cardActions('calendar', item.id) }));
   const derivedSubtasks = subtaskDeadlineItems([
     ...ctx.visibleWorkbench(),
     ...ctx.visibleAcademicLife(),
     ...ctx.visibleCandidates()
   ]);
-  const items = structuredFilter([...ctx.visibleCalendar(), ...derivedSubtasks], ctx.filters).sort((a, b) => a.due_date.localeCompare(b.due_date));
+  const items = structuredFilter([...calendarRecords, ...derivedSubtasks], ctx.filters).sort((a, b) => a.due_date.localeCompare(b.due_date));
   const today = todayIso();
   const plus7 = offsetDate(7);
   const plus30 = offsetDate(30);
@@ -45,8 +46,13 @@ function calendarSection(title, items) {
     meta: `${formatDateTime(item.due_date)} | ${item.category} | ${item.priority}`,
     body: item.notes,
     badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${isOverdue(item.due_date, item.status) ? statusBadge('overdue') : ''}`,
-    href: item.route || `#/calendar/${item.id}`
+    href: item.route || `#/calendar/${item.id}`,
+    actions: item.route ? '' : ctxCardActions(item)
   })).join('') || emptyState('Nothing here', 'No calendar items in this view.')}</section>`;
+}
+
+function ctxCardActions(item) {
+  return item.card_actions || '';
 }
 
 function calendarForm(ctx) {

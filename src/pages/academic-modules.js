@@ -9,7 +9,7 @@ export function researchPage(ctx) {
   const items = ctx.visibleWorkbench().filter((item) => researchModules.includes(item.module));
   return `${pageHeader('Research', 'Journal articles, conference papers, books, and book chapters.')}
     <div class="quick-actions">${actionLink('Add Publication', '#/workbench/journal_articles')}</div>
-    ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`)}`;
+    ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`, (item) => ctx.cardActions('workbench', item.id, item.module))}`;
 }
 
 export function teachingPage(ctx) {
@@ -24,7 +24,8 @@ export function supervisionPage(ctx) {
       meta: `${candidate.programme_type} | ${candidate.status}`,
       body: `${candidate.topic} | current phase: ${candidate.phase_progress?.find((phase) => ['active', 'scheduled'].includes(phase.status))?.phase || 'not set'}`,
       badges: `${statusBadge(candidate.status)} ${visibilityBadge(candidate.visibility)}`,
-      href: `#/candidates/${candidate.id}`
+      href: `#/candidates/${candidate.id}`,
+      actions: ctx.cardActions('candidate', candidate.id)
     })).join('') || emptyState('No supervision records', 'No supervision records are visible for this role.')}</div>`;
 }
 
@@ -32,7 +33,7 @@ export function projectsPage(ctx) {
   const items = ctx.visibleWorkbench().filter((item) => projectModules.includes(item.module));
   return `${pageHeader('Projects & Sponsored Work', 'Sponsored projects, consultancy, visiting faculty assignments, MOOC course-development consultancy, and research projects.')}
     <div class="quick-actions">${actionLink('Add Project', '#/workbench/projects')}</div>
-    ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`)}`;
+    ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`, (item) => ctx.cardActions('workbench', item.id, item.module))}`;
 }
 
 export function adminWorkPage(ctx) {
@@ -57,7 +58,8 @@ export function academicModulePage(ctx, module, title, subtitle) {
       meta: `${item.academic_year_current} | ${item.category} | ${item.priority} | final deadline: ${item.final_deadline || item.application_deadline || 'not set'}`,
       body: `${taskProgress(item).label} | ${firstVisibleNote(item)}`,
       badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}`,
-      href: `#/${routeName(module)}/${item.id}`
+      href: `#/${routeName(module)}/${item.id}`,
+      actions: ctx.cardActions('academic', item.id, module)
     })).join('') || emptyState('No records', 'No records are available in this module yet.')}</div>`;
 }
 
@@ -82,14 +84,15 @@ function moduleList(title, subtitle, items, hrefFor) {
     ${moduleListContent(items, hrefFor)}`;
 }
 
-function moduleListContent(items, hrefFor) {
+function moduleListContent(items, hrefFor, actionsFor = () => '') {
   return `
     <div class="grid">${items.map((item) => recordCard({
       title: item.title,
       meta: `${item.module} | ${item.status} | final deadline: ${item.final_deadline || 'not set'}`,
       body: `${taskProgress(item).label} | ${item.description_or_abstract || firstVisibleNote(item)}`,
       badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}`,
-      href: hrefFor(item)
+      href: hrefFor(item),
+      actions: actionsFor(item)
     })).join('') || emptyState('No records', 'No records are visible for this role.')}</div>`;
 }
 

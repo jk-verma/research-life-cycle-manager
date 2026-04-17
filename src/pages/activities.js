@@ -12,7 +12,8 @@ export function activitiesPage(ctx) {
       meta: `${activity.date} | ${activity.category} | ${activity.priority}`,
       body: activity.short_notes,
       badges: `${statusBadge(activity.status)} ${visibilityBadge(activity.visibility)}`,
-      href: `#/activities/${activity.id}`
+      href: `#/activities/${activity.id}`,
+      actions: ctx.cardActions('activity', activity.id)
     })).join('') || emptyState('No activities', 'No daily activity records match the current filters.')}</div>`;
 }
 

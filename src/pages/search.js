@@ -19,8 +19,20 @@ export function searchPage(ctx) {
       meta: `${item.kind} | ${item.priority || 'medium'} | ${item.academic_year_current || 'no year'}`,
       body: taskCardBody(item, item.body),
       badges: `${statusBadge(item.status || 'active')} ${visibilityBadge(item.visibility)}`,
-      href: item.href
+      href: item.href,
+      actions: actionsForSearchResult(ctx, item)
     })).join('') || emptyState('No matches', 'Adjust the filters and try again.')}</div>`;
+}
+
+function actionsForSearchResult(ctx, item) {
+  if (item.kind === 'candidate') return ctx.cardActions('candidate', item.id);
+  if (item.kind === 'mentor') return ctx.cardActions('mentor', item.id);
+  if (item.kind === 'meeting') return ctx.cardActions('meeting', item.id);
+  if (item.kind === 'daily_activity') return ctx.cardActions('activity', item.id);
+  if (item.kind === 'calendar') return ctx.cardActions('calendar', item.id);
+  if (['journal_articles', 'authored_books', 'book_chapters', 'conference_papers', 'projects', 'consultancy', 'custom_activities'].includes(item.kind)) return ctx.cardActions('workbench', item.id, item.kind);
+  if (['teaching', 'admin_work', 'external_engagements', 'career_mobility'].includes(item.kind)) return ctx.cardActions('academic', item.id, item.kind);
+  return '';
 }
 
 function routeName(module) {

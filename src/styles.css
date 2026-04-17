@@ -46,6 +46,15 @@ button.secondary,
   border: 1px solid var(--line);
 }
 
+button.compact {
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+.danger-action {
+  color: #9f1d35;
+}
+
 input,
 select {
   width: 100%;
@@ -263,6 +272,15 @@ nav a:hover {
 .card h3,
 .detail h3 {
   margin-top: 0;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
 }
 
 .record-line {

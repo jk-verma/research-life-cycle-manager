@@ -32,7 +32,8 @@ export function workbenchModulePage(ctx, module) {
       meta: `${slugLabel(item.module)} | ${item.status} | final deadline: ${formatDateTime(item.final_deadline_datetime || item.final_deadline) || 'not set'}`,
       body: taskCardBody(item, item.description_or_abstract || ''),
       badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)}`,
-      href: `#/workbench/${item.module}/${item.id}`
+      href: `#/workbench/${item.module}/${item.id}`,
+      actions: ctx.cardActions('workbench', item.id, item.module)
     })).join('') || emptyState('No records', 'No workbench records match this module and filter set.')}</div>`;
 }
 

@@ -12,7 +12,8 @@ export function meetingsListPage(ctx) {
       meta: `${meeting.date} | ${meeting.phase} | ${meeting.attendance_status}`,
       body: meeting.discussion,
       badges: `${statusBadge(meeting.status)} ${visibilityBadge(meeting.visibility)}`,
-      href: `#/meetings/${meeting.id}`
+      href: `#/meetings/${meeting.id}`,
+      actions: ctx.cardActions('meeting', meeting.id)
     })).join('') || emptyState('No meetings', 'No meetings match the current filters.')}</div>`;
 }
 
