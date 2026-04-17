@@ -1,20 +1,32 @@
 export const DATA_PATHS = {
-  users: './public/config/users.json',
-  permissions: './public/config/permissions.json',
-  candidates: './public/data/candidates/candidates.json',
-  mentors: './public/data/mentors/mentors.json',
-  meetings: './public/data/meetings/meetings.json',
-  workbench: './public/data/workbench/workbench.json',
-  activities: './public/data/daily-activities/daily-activities.json',
-  calendar: './public/data/calendar/calendar.json',
-  academicLife: './public/data/academic-life/academic-life.json',
-  workflowTemplates: './public/config/workflow-templates.json'
+  users: 'config/users.json',
+  permissions: 'config/permissions.json',
+  candidates: 'data/candidates/candidates.json',
+  mentors: 'data/mentors/mentors.json',
+  meetings: 'data/meetings/meetings.json',
+  workbench: 'data/workbench/workbench.json',
+  activities: 'data/daily-activities/daily-activities.json',
+  calendar: 'data/calendar/calendar.json',
+  academicLife: 'data/academic-life/academic-life.json',
+  workflowTemplates: 'config/workflow-templates.json'
 };
 
+function dataUrls(path) {
+  const base = import.meta.env?.BASE_URL || './';
+  return [
+    `${base}${path}`.replace(/\/{2,}/g, '/'),
+    `./${path}`,
+    `./public/${path}`
+  ];
+}
+
 async function loadJson(path) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error(`Could not load ${path}`);
-  return response.json();
+  const urls = dataUrls(path);
+  for (const url of urls) {
+    const response = await fetch(url);
+    if (response.ok) return response.json();
+  }
+  throw new Error(`Could not load ${urls.join(' or ')}`);
 }
 
 function validateStore(store) {
