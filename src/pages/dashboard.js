@@ -37,7 +37,7 @@ export function dashboardPage(ctx) {
     .sort((a, b) => String(b.timestamps?.updated_at || '').localeCompare(String(a.timestamps?.updated_at || '')))
     .slice(0, 6);
 
-  return `${pageHeader('Home', 'Your academic command center for today, this week, and the current academic year.', `Data updated ${store.candidates.updated_at?.slice(0, 10) || 'unknown'}`)}
+  return `${pageHeader('Home', "Today's priorities, deadlines, follow-ups, and academic work in one place.", `Data updated ${store.candidates.updated_at?.slice(0, 10) || 'unknown'}`)}
     <div class="metrics">
       ${metric('Total candidates', candidates.length)}
       ${metric('Masters / PhD / UG / Intern', `${masters} / ${phd} / ${ug} / ${interns}`)}

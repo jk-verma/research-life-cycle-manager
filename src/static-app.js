@@ -7,6 +7,7 @@ import { dashboardPage } from './pages/dashboard.js';
 import { dataPage } from './pages/data.js';
 import { academicModuleDetailPage, academicModulePage, adminWorkPage, careerMobilityPage, externalEngagementsPage, researchPage, projectsPage, supervisionPage, teachingPage } from './pages/academic-modules.js';
 import { meetingDetailPage, meetingsListPage } from './pages/meetings.js';
+import { mentorDetailPage, mentorsPage } from './pages/mentors.js';
 import { myWorkPage, setupHomePage, startHerePage, templateDetailPage, templatesPage } from './pages/product.js';
 import { reportsPage } from './pages/reports.js';
 import { searchPage } from './pages/search.js';
@@ -42,6 +43,10 @@ function visibleCandidates() {
   return visibleByRole(store, role, store.candidates.records, ['topic', 'supervisor']);
 }
 
+function visibleMentors() {
+  return visibleByRole(store, role, store.mentors.records, ['email', 'mobile_or_extension', 'role_description', 'specialization']);
+}
+
 function visibleMeetings() {
   return visibleByRole(store, role, store.meetings.records, ['agenda', 'discussion', 'decisions', 'venue_or_link', 'responsible_person']);
 }
@@ -67,6 +72,7 @@ function visibleAcademicLife() {
 function allRecords() {
   return [
     ...visibleCandidates().map((item) => ({ ...item, route: `#/candidates/${item.id}` })),
+    ...visibleMentors().map((item) => ({ ...item, title: item.name, route: `#/mentors/${item.id}` })),
     ...visibleMeetings().map((item) => ({ ...item, route: `#/meetings/${item.id}` })),
     ...visibleWorkbench().map((item) => ({ ...item, route: `#/workbench/${item.module}/${item.id}` })),
     ...visibleActivities().map((item) => ({ ...item, route: `#/activities/${item.id}` })),
@@ -107,6 +113,7 @@ function ctx() {
     draft,
     diff,
     visibleCandidates,
+    visibleMentors,
     visibleMeetings,
     visibleWorkbench,
     visibleActivities,
@@ -129,6 +136,7 @@ function shell(content) {
     ['dashboard', 'Home'],
     ['my-work', 'My Work'],
     ['students', 'Students'],
+    ['mentors', 'Mentors'],
     ['teaching', 'Teaching'],
     ['research', 'Research'],
     ['projects', 'Projects'],
@@ -145,7 +153,7 @@ function shell(content) {
     </aside>
     <main class="content">
       <header class="topbar">
-        <div><p class="eyebrow">Academic Lifecycle Manager</p><h1>Academic command center</h1></div>
+        <div><h1>${escapeHtml(topbarTitle(current))}</h1></div>
         <label class="role-picker">Logical role<select id="role-picker">${roles}</select></label>
       </header>
       ${error ? `<p class="notice">${escapeHtml(error)}</p>` : ''}
@@ -165,6 +173,8 @@ function render() {
   else if (parts[0] === 'students' && parts[1] && parts[2] === 'phase') content = candidatePhasePage(c, parts[1], parts[3]);
   else if (parts[0] === 'students' && parts[1]) content = candidateDetailPage(c, parts[1]);
   else if (parts[0] === 'students') content = candidatesListPage(c);
+  else if (parts[0] === 'mentors' && parts[1]) content = mentorDetailPage(c, parts[1]);
+  else if (parts[0] === 'mentors') content = mentorsPage(c);
   else if (parts[0] === 'planner' && parts[1]) content = activityDetailPage(c, parts[1]);
   else if (parts[0] === 'planner') content = activitiesPage(c);
   else if (parts[0] === 'candidates' && parts[1] && parts[2] === 'phase') content = candidatePhasePage(c, parts[1], parts[3]);
@@ -312,12 +322,48 @@ function bindEvents() {
     addCandidate(new FormData(candidateForm));
   });
 
+  const mentorForm = document.getElementById('mentor-form');
+  if (mentorForm) mentorForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addMentor(new FormData(mentorForm));
+  });
+
   document.querySelectorAll('[data-workbench-module]').forEach((form) => {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       addWorkbenchRecord(form.dataset.workbenchModule, new FormData(form));
     });
   });
+}
+
+function topbarTitle(current) {
+  const key = current.split('/')[0] || 'dashboard';
+  const labels = {
+    dashboard: 'Home',
+    home: 'Home',
+    'my-work': 'My Work',
+    students: 'Students',
+    mentors: 'Mentors',
+    planner: 'Daily Planner',
+    candidates: 'Candidates',
+    meetings: 'Meetings',
+    workbench: 'Workbench',
+    research: 'Research',
+    teaching: 'Teaching',
+    supervision: 'Supervision',
+    projects: 'Projects',
+    career: 'Career',
+    'career-mobility': 'Career Mobility',
+    calendar: 'Calendar',
+    reports: 'Reports',
+    search: 'Search',
+    data: 'Data',
+    settings: 'Settings',
+    setup: 'Setup',
+    templates: 'Templates',
+    years: 'Academic Years'
+  };
+  return labels[key] || 'Academic Work';
 }
 
 function appendNote(kind, id, formData, module) {
@@ -649,6 +695,41 @@ function addCandidate(formData) {
   render();
 }
 
+function addMentor(formData) {
+  if (!canWrite(store, role)) return;
+  const actor = `local-${role.toLowerCase()}`;
+  const year = formData.get('academic_year_current') || academicYearForDate();
+  const visibility = formData.get('visibility');
+  const noteText = formData.get('note');
+  const mentor = {
+    id: uid('mentor'),
+    name: formData.get('name'),
+    title: formData.get('name'),
+    mentor_type: formData.get('mentor_type'),
+    designation: formData.get('designation'),
+    organization: formData.get('organization'),
+    email: formData.get('email'),
+    mobile_or_extension: formData.get('mobile_or_extension'),
+    specialization: formData.get('specialization'),
+    assigned_candidate_ids: String(formData.get('assigned_candidate_ids') || '').split(',').map((item) => item.trim()).filter(Boolean),
+    role_description: formData.get('role_description'),
+    academic_year_start: year,
+    academic_year_current: year,
+    status: formData.get('status'),
+    priority: formData.get('priority'),
+    carry_forward: formData.get('status') !== 'inactive' && formData.get('status') !== 'archived',
+    visibility,
+    created_by: actor,
+    updated_by: actor,
+    timestamps: { created_at: nowIso(), updated_at: nowIso() },
+    notes_append_only: noteText ? [{ id: uid('note'), text: noteText, visibility, created_by: actor, created_at: nowIso() }] : [],
+    history: [{ version: 1, summary: 'Mentor record created locally', updated_by: actor, updated_at: nowIso() }]
+  };
+  store.mentors.records.unshift(mentor);
+  error = 'Mentor added locally. Export JSON to commit it.';
+  render();
+}
+
 function addWorkbenchRecord(module, formData) {
   if (!canWrite(store, role)) return;
   const deadline = formData.get('final_deadline_datetime');
@@ -708,6 +789,7 @@ function importBundle(event) {
     try {
       const parsed = JSON.parse(reader.result);
       if (!parsed.candidates || !parsed.meetings || !parsed.workbench || !parsed.activities || !parsed.calendar || !parsed.academicLife || !parsed.workflowTemplates) throw new Error('Bundle must include candidates, meetings, workbench, activities, calendar, academicLife, and workflowTemplates.');
+      parsed.mentors = parsed.mentors || { schema: 'academic-lifecycle-manager.mentors.v1', updated_at: nowIso(), records: [] };
       store = { ...store, ...parsed };
       error = 'JSON bundle imported into local browser state.';
       render();

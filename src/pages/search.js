@@ -4,6 +4,7 @@ import { structuredFilter } from '../utils/search.js';
 export function searchPage(ctx) {
   const records = [
     ...ctx.visibleCandidates().map((item) => ({ ...item, kind: 'candidate', title: item.name, href: `#/candidates/${item.id}`, body: item.topic })),
+    ...ctx.visibleMentors().map((item) => ({ ...item, kind: 'mentor', title: item.name, href: `#/mentors/${item.id}`, body: `${item.mentor_type} ${item.specialization || ''} ${(item.assigned_candidate_ids || []).join(' ')}` })),
     ...ctx.visibleMeetings().map((item) => ({ ...item, kind: 'meeting', href: `#/meetings/${item.id}`, body: item.discussion })),
     ...ctx.visibleWorkbench().map((item) => ({ ...item, kind: item.module, href: `#/workbench/${item.module}/${item.id}`, body: item.description_or_abstract })),
     ...ctx.visibleActivities().map((item) => ({ ...item, kind: 'daily_activity', href: `#/activities/${item.id}`, body: item.short_notes })),
@@ -11,7 +12,7 @@ export function searchPage(ctx) {
     ...ctx.visibleAcademicLife().map((item) => ({ ...item, kind: item.module, href: `#/${routeName(item.module)}/${item.id}`, body: (item.notes || [])[0]?.text || item.feedback || item.responsibility || item.organization }))
   ];
   const results = structuredFilter(records, ctx.filters);
-  return `${pageHeader('Search', 'Find students, teaching, research, projects, career items, admin work, and external engagements.')}
+  return `${pageHeader('Search', 'Find students, mentors, teaching, research, projects, career items, admin work, and external engagements.')}
     ${ctx.renderFilters()}
     <div class="grid">${results.map((item) => recordCard({
       title: item.title,

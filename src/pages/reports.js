@@ -12,6 +12,7 @@ export function reportsPage(ctx) {
   const research = records.filter((item) => ['journal_articles', 'authored_books', 'book_chapters', 'conference_papers'].includes(item.module));
   const teaching = records.filter((item) => item.module === 'teaching');
   const supervision = records.filter((item) => item.programme_type && !item.candidate_id);
+  const mentors = records.filter((item) => item.mentor_type);
   const projects = records.filter((item) => item.module === 'projects' || item.module === 'consultancy');
   const career = records.filter((item) => item.module === 'career_mobility');
   return `${pageHeader('Reports', 'Completed vs pending, overdue items, and academic-year summaries.')}
@@ -23,6 +24,7 @@ export function reportsPage(ctx) {
       ${metric('Research', research.length)}
       ${metric('Teaching', teaching.length)}
       ${metric('Supervision', supervision.length)}
+      ${metric('Mentors', mentors.length)}
       ${metric('Projects', projects.length)}
       ${metric('Career', career.length)}
     </div>
@@ -32,6 +34,7 @@ export function reportsPage(ctx) {
       <section class="panel"><h3>Research summary</h3>${research.map((item) => reportCard(item)).join('') || emptyState('No research records', 'No research records are visible.')}</section>
       <section class="panel"><h3>Teaching summary</h3>${teaching.map((item) => reportCard(item)).join('') || emptyState('No teaching records', 'No teaching records are visible.')}</section>
       <section class="panel"><h3>Supervision summary</h3>${supervision.map((item) => reportCard(item)).join('') || emptyState('No supervision records', 'No supervision records are visible.')}</section>
+      <section class="panel"><h3>Mentor summary</h3>${mentors.map((item) => reportCard(item)).join('') || emptyState('No mentor records', 'No mentor records are visible.')}</section>
       <section class="panel"><h3>Project summary</h3>${projects.map((item) => reportCard(item)).join('') || emptyState('No project records', 'No project records are visible.')}</section>
       <section class="panel"><h3>Career mobility summary</h3>${career.map((item) => reportCard(item)).join('') || emptyState('No career records', 'No career mobility records are visible.')}</section>
       <section class="panel"><h3>Yearly summary</h3>${years.map((year) => {

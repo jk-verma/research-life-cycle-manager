@@ -1,0 +1,137 @@
+{
+  "schema": "academic-lifecycle-manager.mentors.v1",
+  "updated_at": "2026-04-17T18:00:00.000Z",
+  "records": [
+    {
+      "id": "mentor-phd-meera",
+      "name": "Meera Iyer",
+      "mentor_type": "senior_student",
+      "designation": "Senior PhD candidate",
+      "organization": "Research group",
+      "email": "meera.iyer@example.edu",
+      "mobile_or_extension": "",
+      "specialization": "Federated learning, biomedical AI, research writing",
+      "assigned_candidate_ids": [
+        "cand-ms-asha",
+        "cand-int-nina"
+      ],
+      "role_description": "Supports literature review structure, weekly research hygiene, and early draft feedback for assigned students.",
+      "status": "active",
+      "priority": "medium",
+      "visibility": "internal",
+      "academic_year_start": "2025-2026",
+      "academic_year_current": "2025-2026",
+      "carry_forward": true,
+      "created_by": "u-admin",
+      "updated_by": "u-admin",
+      "timestamps": {
+        "created_at": "2026-04-17T18:00:00.000Z",
+        "updated_at": "2026-04-17T18:00:00.000Z"
+      },
+      "notes_append_only": [
+        {
+          "id": "mentor-note-meera-1",
+          "text": "Senior student mentor for Masters and intern research process support.",
+          "visibility": "internal",
+          "created_by": "u-admin",
+          "created_at": "2026-04-17T18:00:00.000Z"
+        }
+      ],
+      "history": [
+        {
+          "version": 1,
+          "summary": "Mentor record created",
+          "updated_by": "u-admin",
+          "updated_at": "2026-04-17T18:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "mentor-junior-faculty-anita",
+      "name": "Dr. Anita Rao",
+      "mentor_type": "junior_faculty",
+      "designation": "Assistant Professor",
+      "organization": "Department research cell",
+      "email": "anita.rao@example.edu",
+      "mobile_or_extension": "Ext. 214",
+      "specialization": "IoT systems, academic documentation, presentation preparation",
+      "assigned_candidate_ids": [
+        "cand-ms-rahul",
+        "cand-phd-kabir"
+      ],
+      "role_description": "Coordinates milestone readiness, internal review preparation, and documentation follow-up.",
+      "status": "active",
+      "priority": "high",
+      "visibility": "internal",
+      "academic_year_start": "2025-2026",
+      "academic_year_current": "2025-2026",
+      "carry_forward": true,
+      "created_by": "u-admin",
+      "updated_by": "u-admin",
+      "timestamps": {
+        "created_at": "2026-04-17T18:00:00.000Z",
+        "updated_at": "2026-04-17T18:00:00.000Z"
+      },
+      "notes_append_only": [
+        {
+          "id": "mentor-note-anita-1",
+          "text": "Junior faculty mentor for milestone coordination and follow-up support.",
+          "visibility": "internal",
+          "created_by": "u-admin",
+          "created_at": "2026-04-17T18:00:00.000Z"
+        }
+      ],
+      "history": [
+        {
+          "version": 1,
+          "summary": "Mentor record created",
+          "updated_by": "u-admin",
+          "updated_at": "2026-04-17T18:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "mentor-collab-sen",
+      "name": "Dr. R. Sen",
+      "mentor_type": "outsider_collaborator",
+      "designation": "External collaborator",
+      "organization": "Industry analytics lab",
+      "email": "r.sen@example.org",
+      "mobile_or_extension": "",
+      "specialization": "Responsible recommender systems, applied analytics, external validation",
+      "assigned_candidate_ids": [
+        "cand-phd-kabir"
+      ],
+      "role_description": "Provides external perspective on applied validation and responsible AI evaluation.",
+      "status": "active",
+      "priority": "medium",
+      "visibility": "internal",
+      "academic_year_start": "2025-2026",
+      "academic_year_current": "2025-2026",
+      "carry_forward": true,
+      "created_by": "u-admin",
+      "updated_by": "u-admin",
+      "timestamps": {
+        "created_at": "2026-04-17T18:00:00.000Z",
+        "updated_at": "2026-04-17T18:00:00.000Z"
+      },
+      "notes_append_only": [
+        {
+          "id": "mentor-note-sen-1",
+          "text": "External collaborator mentor for selected PhD work.",
+          "visibility": "internal",
+          "created_by": "u-admin",
+          "created_at": "2026-04-17T18:00:00.000Z"
+        }
+      ],
+      "history": [
+        {
+          "version": 1,
+          "summary": "Mentor record created",
+          "updated_by": "u-admin",
+          "updated_at": "2026-04-17T18:00:00.000Z"
+        }
+      ]
+    }
+  ]
+}

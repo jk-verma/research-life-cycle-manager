@@ -2,6 +2,7 @@ export const DATA_PATHS = {
   users: './public/config/users.json',
   permissions: './public/config/permissions.json',
   candidates: './public/data/candidates/candidates.json',
+  mentors: './public/data/mentors/mentors.json',
   meetings: './public/data/meetings/meetings.json',
   workbench: './public/data/workbench/workbench.json',
   activities: './public/data/daily-activities/daily-activities.json',
@@ -19,6 +20,7 @@ async function loadJson(path) {
 function validateStore(store) {
   const errors = [];
   if (!Array.isArray(store.candidates?.records)) errors.push('Candidate records are missing.');
+  if (!Array.isArray(store.mentors?.records)) errors.push('Mentor records are missing.');
   if (!Array.isArray(store.meetings?.records)) errors.push('Meeting records are missing.');
   if (!store.workbench?.modules) errors.push('Workbench modules are missing.');
   if (!Array.isArray(store.activities?.records)) errors.push('Daily activity records are missing.');
