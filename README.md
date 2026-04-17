@@ -83,9 +83,9 @@ Main records can carry one overall task deadline plus an append-only subtask tim
 - `history`
 - `subtasks`
 
-Each subtask belongs to its parent record through `parent_record_id` and includes `title`, `subtask_type`, `due_date`, `completed_date`, `status`, `responsible_person`, append-only `notes`, append-only `history`, and `sequence_order`.
+Each subtask belongs to its parent record through `parent_record_id` and includes `title`, `subtask_type`, `due_datetime`, `due_date`, `completed_datetime`, `completed_date`, `status`, `responsible_person`, append-only `notes`, append-only `history`, and `sequence_order`.
 
-Cards show the final deadline and completed-subtasks summary. Detail pages show subtasks as a vertical timeline with overdue highlighting and an ADMIN/ASSISTANT-only local form for adding new subtasks. Existing subtasks are not deleted by the UI; updates should append history entries and be exported as JSON for commit.
+Cards show the final deadline and completed-subtasks summary. Detail pages show subtasks as a vertical timeline with overdue highlighting and an ADMIN/ASSISTANT-only local form for adding new subtasks. The form supports exact due date/time, optional completed date/time, pending/ongoing/completed/deferred/cancelled status, responsible person, and insertion after an existing sequence number. Existing subtasks are not deleted by the UI; updates should append history entries and be exported as JSON for commit.
 
 ## Workflow Templates
 
@@ -97,10 +97,13 @@ Included templates:
 - Master's synopsis workflow
 - Journal submission workflow
 - Sponsored project workflow
+- Call for Project Proposals workflow
 - Course delivery workflow
 - Job application workflow
 
 Templates provide starter subtask structures that can be copied into parent records or used while preparing exported JSON updates.
+
+Project proposal templates include date-time aware milestones such as call deadline, proposal preparation, Co-PI amendment discussion, submission, presentation, updated proposal submission, result, employer document submission, grant sanction, commencement, progress reports, utilization certificates, and completion. Extra steps can be inserted between existing sequence numbers from the parent record detail page.
 
 ## Folder Structure
 

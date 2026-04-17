@@ -204,7 +204,9 @@
                                                                    "updated_at":  "2026-01-20T10:00:00.000Z"
                                                                }
                                                            ],
-                                               "subtasks":  []
+                                               "subtasks":  [
+
+                                                            ]
                                            }
                                        ],
                     "book_chapters":  [
@@ -266,7 +268,9 @@
                                                                   "updated_at":  "2026-02-01T10:00:00.000Z"
                                                               }
                                                           ],
-                                              "subtasks":  []
+                                              "subtasks":  [
+
+                                                           ]
                                           }
                                       ],
                     "conference_papers":  [
@@ -327,7 +331,9 @@
                                                                       "updated_at":  "2026-03-15T10:00:00.000Z"
                                                                   }
                                                               ],
-                                                  "subtasks":  []
+                                                  "subtasks":  [
+
+                                                               ]
                                               }
                                           ],
                     "projects":  [
@@ -418,118 +424,457 @@
                                                      ],
                                          "subtasks":  [
                                                           {
-                                                              "id":  "sub-project-concept",
+                                                              "id":  "sub-cfp-scheme",
                                                               "parent_record_id":  "proj-rural-health-ai-001",
-                                                              "title":  "Concept note finalization",
-                                                              "subtask_type":  "concept_note",
-                                                              "due_date":  "2026-04-20",
-                                                              "completed_date":  "2026-04-18",
+                                                              "title":  "Name scheme of Call for Project Proposals with final deadline",
+                                                              "subtask_type":  "call_identification",
+                                                              "due_datetime":  "2026-04-25T17:00",
+                                                              "due_date":  "2026-04-25",
+                                                              "completed_datetime":  "2026-04-24T16:00",
+                                                              "completed_date":  "2026-04-24",
                                                               "status":  "completed",
                                                               "responsible_person":  "Dr. Jitendra Kumar Verma",
                                                               "notes":  [
                                                                             {
-                                                                                "id":  "sub-project-concept-note-1",
-                                                                                "text":  "Concept note approved for budget preparation.",
+                                                                                "id":  "sub-cfp-scheme-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
                                                                                 "created_by":  "u-admin",
-                                                                                "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                "visibility":  "internal"
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
                                                                             }
                                                                         ],
                                                               "history":  [
                                                                               {
                                                                                   "version":  1,
-                                                                                  "summary":  "Subtask created",
+                                                                                  "summary":  "Project proposal timeline step created",
                                                                                   "updated_by":  "u-admin",
-                                                                                  "updated_at":  "2026-04-17T12:00:00.000Z"
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
                                                                               }
                                                                           ],
                                                               "sequence_order":  1
                                                           },
                                                           {
-                                                              "id":  "sub-project-budget",
+                                                              "id":  "sub-cfp-preparation",
                                                               "parent_record_id":  "proj-rural-health-ai-001",
-                                                              "title":  "Budget and team worksheet",
-                                                              "subtask_type":  "budget",
+                                                              "title":  "Proposal Preparation deadline",
+                                                              "subtask_type":  "proposal_preparation",
+                                                              "due_datetime":  "2026-05-05T17:00",
                                                               "due_date":  "2026-05-05",
+                                                              "completed_datetime":  "",
                                                               "completed_date":  "",
                                                               "status":  "ongoing",
-                                                              "responsible_person":  "Faculty Assistant",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
                                                               "notes":  [
                                                                             {
-                                                                                "id":  "sub-project-budget-note-1",
-                                                                                "text":  "Collect equipment and manpower estimates.",
+                                                                                "id":  "sub-cfp-preparation-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
                                                                                 "created_by":  "u-admin",
-                                                                                "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                "visibility":  "internal"
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
                                                                             }
                                                                         ],
                                                               "history":  [
                                                                               {
                                                                                   "version":  1,
-                                                                                  "summary":  "Subtask created",
+                                                                                  "summary":  "Project proposal timeline step created",
                                                                                   "updated_by":  "u-admin",
-                                                                                  "updated_at":  "2026-04-17T12:00:00.000Z"
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
                                                                               }
                                                                           ],
                                                               "sequence_order":  2
                                                           },
                                                           {
-                                                              "id":  "sub-project-noc",
+                                                              "id":  "sub-cfp-copi-discussion",
                                                               "parent_record_id":  "proj-rural-health-ai-001",
-                                                              "title":  "Office NOC processing",
-                                                              "subtask_type":  "noc",
-                                                              "due_date":  "2026-05-18",
-                                                              "completed_date":  "",
-                                                              "status":  "pending",
-                                                              "responsible_person":  "Faculty Assistant",
-                                                              "notes":  [
-                                                                            {
-                                                                                "id":  "sub-project-noc-note-1",
-                                                                                "text":  "Submit NOC file after budget freeze.",
-                                                                                "created_by":  "u-admin",
-                                                                                "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                "visibility":  "internal"
-                                                                            }
-                                                                        ],
-                                                              "history":  [
-                                                                              {
-                                                                                  "version":  1,
-                                                                                  "summary":  "Subtask created",
-                                                                                  "updated_by":  "u-admin",
-                                                                                  "updated_at":  "2026-04-17T12:00:00.000Z"
-                                                                              }
-                                                                          ],
-                                                              "sequence_order":  3
-                                                          },
-                                                          {
-                                                              "id":  "sub-project-followup",
-                                                              "parent_record_id":  "proj-rural-health-ai-001",
-                                                              "title":  "Funding agency follow-up",
-                                                              "subtask_type":  "follow_up",
-                                                              "due_date":  "2026-06-15",
+                                                              "title":  "Discussion with Co-PIs for amendments",
+                                                              "subtask_type":  "co_pi_discussion",
+                                                              "due_datetime":  "2026-05-08T15:00",
+                                                              "due_date":  "2026-05-08",
+                                                              "completed_datetime":  "",
                                                               "completed_date":  "",
                                                               "status":  "pending",
                                                               "responsible_person":  "Dr. Jitendra Kumar Verma",
                                                               "notes":  [
                                                                             {
-                                                                                "id":  "sub-project-followup-note-1",
-                                                                                "text":  "Track agency response after submission.",
+                                                                                "id":  "sub-cfp-copi-discussion-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
                                                                                 "created_by":  "u-admin",
-                                                                                "created_at":  "2026-04-17T12:00:00.000Z",
-                                                                                "visibility":  "internal"
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
                                                                             }
                                                                         ],
                                                               "history":  [
                                                                               {
                                                                                   "version":  1,
-                                                                                  "summary":  "Subtask created",
+                                                                                  "summary":  "Project proposal timeline step created",
                                                                                   "updated_by":  "u-admin",
-                                                                                  "updated_at":  "2026-04-17T12:00:00.000Z"
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  3
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-submission",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Proposal Submission",
+                                                              "subtask_type":  "proposal_submission",
+                                                              "due_datetime":  "2026-05-15T17:00",
+                                                              "due_date":  "2026-05-15",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-submission-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
                                                                               }
                                                                           ],
                                                               "sequence_order":  4
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-presentation",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Meeting or presentation called",
+                                                              "subtask_type":  "meeting_presentation",
+                                                              "due_datetime":  "2026-05-22T11:00",
+                                                              "due_date":  "2026-05-22",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-presentation-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  5
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-updated-deadline",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Updated Proposal deadline",
+                                                              "subtask_type":  "updated_proposal_deadline",
+                                                              "due_datetime":  "2026-05-30T17:00",
+                                                              "due_date":  "2026-05-30",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-updated-deadline-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  6
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-updated-submission",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Updated Proposal Submission",
+                                                              "subtask_type":  "updated_proposal_submission",
+                                                              "due_datetime":  "2026-06-03T17:00",
+                                                              "due_date":  "2026-06-03",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-updated-submission-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  7
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-result",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Result",
+                                                              "subtask_type":  "result",
+                                                              "due_datetime":  "2026-06-20T12:00",
+                                                              "due_date":  "2026-06-20",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-result-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  8
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-employer-doc-deadline",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Documents submission from employer deadline",
+                                                              "subtask_type":  "employer_documents_deadline",
+                                                              "due_datetime":  "2026-06-28T17:00",
+                                                              "due_date":  "2026-06-28",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-employer-doc-deadline-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  9
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-doc-submission",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Documents submission",
+                                                              "subtask_type":  "documents_submission",
+                                                              "due_datetime":  "2026-06-30T17:00",
+                                                              "due_date":  "2026-06-30",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-doc-submission-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  10
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-sanction",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Grant Allocation / Project Sanction",
+                                                              "subtask_type":  "sanction",
+                                                              "due_datetime":  "2026-07-10T12:00",
+                                                              "due_date":  "2026-07-10",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-sanction-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  11
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-commenced",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Project Commenced",
+                                                              "subtask_type":  "commencement",
+                                                              "due_datetime":  "2026-07-15T10:00",
+                                                              "due_date":  "2026-07-15",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-commenced-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  12
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-progress-report",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Progress report",
+                                                              "subtask_type":  "progress_report",
+                                                              "due_datetime":  "2026-07-22T17:00",
+                                                              "due_date":  "2026-07-22",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-progress-report-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  13
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-utilization-certificate",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Utilization certificate",
+                                                              "subtask_type":  "utilization_certificate",
+                                                              "due_datetime":  "2026-07-28T17:00",
+                                                              "due_date":  "2026-07-28",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-utilization-certificate-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  14
+                                                          },
+                                                          {
+                                                              "id":  "sub-cfp-completion",
+                                                              "parent_record_id":  "proj-rural-health-ai-001",
+                                                              "title":  "Project Completion Deadline",
+                                                              "subtask_type":  "completion_deadline",
+                                                              "due_datetime":  "2026-07-31T17:00",
+                                                              "due_date":  "2026-07-31",
+                                                              "completed_datetime":  "",
+                                                              "completed_date":  "",
+                                                              "status":  "pending",
+                                                              "responsible_person":  "Dr. Jitendra Kumar Verma",
+                                                              "notes":  [
+                                                                            {
+                                                                                "id":  "sub-cfp-completion-note-1",
+                                                                                "text":  "Date-time tracked project proposal milestone.",
+                                                                                "created_by":  "u-admin",
+                                                                                "created_at":  "2026-04-17T13:00:00.000Z",
+                                                                                "visibility":  "admin_only"
+                                                                            }
+                                                                        ],
+                                                              "history":  [
+                                                                              {
+                                                                                  "version":  1,
+                                                                                  "summary":  "Project proposal timeline step created",
+                                                                                  "updated_by":  "u-admin",
+                                                                                  "updated_at":  "2026-04-17T13:00:00.000Z"
+                                                                              }
+                                                                          ],
+                                                              "sequence_order":  15
                                                           }
-                                                      ]
+                                                      ],
+                                         "final_deadline_datetime":  "2026-07-31T17:00"
                                      }
                                  ],
                     "consultancy":  [
@@ -594,7 +939,9 @@
                                                                 "updated_at":  "2026-03-20T10:00:00.000Z"
                                                             }
                                                         ],
-                                            "subtasks":  []
+                                            "subtasks":  [
+
+                                                         ]
                                         }
                                     ],
                     "moocs":  [
@@ -665,7 +1012,9 @@
                                                           "updated_at":  "2026-02-10T10:00:00.000Z"
                                                       }
                                                   ],
-                                      "subtasks":  []
+                                      "subtasks":  [
+
+                                                   ]
                                   }
                               ],
                     "custom_activities":  [
@@ -718,7 +1067,9 @@
                                                                       "updated_at":  "2026-04-01T10:00:00.000Z"
                                                                   }
                                                               ],
-                                                  "subtasks":  []
+                                                  "subtasks":  [
+
+                                                               ]
                                               }
                                           ]
                 }

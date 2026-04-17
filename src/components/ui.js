@@ -64,7 +64,7 @@ export function nextPendingSubtask(record = {}) {
 
 export function taskSummary(record = {}) {
   const progress = taskProgress(record);
-  const deadline = record.final_deadline || record.application_deadline || record.due_date || '';
+  const deadline = record.final_deadline_datetime || record.final_deadline || record.application_deadline || record.due_datetime || record.due_date || '';
   const overdue = isOverdue(deadline, record.status);
   return `<div class="task-summary">
     <span class="${overdue ? 'overdue' : ''}"><strong>Final deadline:</strong> ${escapeHtml(deadline || 'not set')}</span>
@@ -75,9 +75,9 @@ export function taskSummary(record = {}) {
 export function taskCardBody(record = {}, fallback = '') {
   const progress = taskProgress(record);
   const next = nextPendingSubtask(record);
-  const deadline = record.final_deadline || record.application_deadline || record.due_date || 'not set';
-  const overdue = isOverdue(record.final_deadline || record.application_deadline || record.due_date, record.status);
-  const nextText = next ? `${next.title} (${next.due_date || 'no due date'})` : 'No pending subtask';
+  const deadline = record.final_deadline_datetime || record.final_deadline || record.application_deadline || record.due_datetime || record.due_date || 'not set';
+  const overdue = isOverdue(deadline, record.status);
+  const nextText = next ? `${next.title} (${next.due_datetime || next.due_date || 'no due date'})` : 'No pending subtask';
   return `Deadline: ${deadline} | ${progress.label} | Next: ${nextText}${overdue ? ' | Overdue' : ''}${fallback ? ` | ${fallback}` : ''}`;
 }
 
@@ -85,12 +85,14 @@ export function subtaskTimeline(record = {}) {
   const subtasks = [...(record.subtasks || [])].sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0));
   if (!subtasks.length) return emptyState('No subtasks', 'Subtasks can be added over time without deleting earlier work.');
   return `<div class="subtask-timeline">${subtasks.map((subtask) => {
-    const overdue = isOverdue(subtask.due_date, subtask.status);
+    const due = subtask.due_datetime || subtask.due_date;
+    const completed = subtask.completed_datetime || subtask.completed_date;
+    const overdue = isOverdue(due, subtask.status);
     return `<article class="${overdue ? 'overdue-card' : ''}">
       <div class="subtask-marker">${escapeHtml(subtask.sequence_order || '')}</div>
       <div>
         <div class="card-head"><strong>${escapeHtml(subtask.title)}</strong>${statusBadge(subtask.status)}</div>
-        <p class="muted">${escapeHtml(slugLabel(subtask.subtask_type || 'subtask'))} | due ${escapeHtml(subtask.due_date || 'not set')} ${subtask.completed_date ? `| completed ${escapeHtml(subtask.completed_date)}` : ''}</p>
+        <p class="muted">${escapeHtml(slugLabel(subtask.subtask_type || 'subtask'))} | due ${escapeHtml(due || 'not set')} ${completed ? `| completed ${escapeHtml(completed)}` : ''}</p>
         <p><strong>Responsible:</strong> ${escapeHtml(subtask.responsible_person || 'not assigned')}</p>
         ${notesPanel(subtask.notes || [])}
         ${timelinePanel(subtask.history || [])}
@@ -105,8 +107,10 @@ export function subtaskForm(kind, id, module = '') {
     <form class="record-form" data-add-subtask="${escapeHtml(kind)}" data-id="${escapeHtml(id)}" data-module="${escapeHtml(module)}">
       <input name="title" required placeholder="Subtask title" />
       <input name="subtask_type" placeholder="Subtask type" />
-      <input name="due_date" type="date" required />
+      <input name="due_datetime" type="datetime-local" required />
+      <input name="completed_datetime" type="datetime-local" />
       <input name="responsible_person" placeholder="Responsible person" />
+      <input name="insert_after_order" type="number" min="0" step="1" placeholder="Insert after sequence no." />
       <select name="status"><option>pending</option><option>ongoing</option><option>completed</option><option>deferred</option><option>cancelled</option></select>
       <input name="notes" placeholder="Append-only note" />
       <button>Add local subtask</button>

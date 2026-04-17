@@ -321,14 +321,18 @@ function addSubtask(kind, id, formData, module = '') {
   if (!record) return;
   record.subtasks = record.subtasks || [];
   const actor = `local-${role.toLowerCase()}`;
-  const nextOrder = record.subtasks.length + 1;
-  record.subtasks.push({
+  const insertAfter = Number(formData.get('insert_after_order') || record.subtasks.length);
+  const dueDatetime = formData.get('due_datetime');
+  const completedDatetime = formData.get('completed_datetime') || (formData.get('status') === 'completed' ? nowIso().slice(0, 16) : '');
+  const subtask = {
     id: uid('subtask'),
     parent_record_id: id,
     title: formData.get('title'),
     subtask_type: formData.get('subtask_type'),
-    due_date: formData.get('due_date'),
-    completed_date: formData.get('status') === 'completed' ? nowIso().slice(0, 10) : '',
+    due_datetime: dueDatetime,
+    due_date: dueDatetime ? dueDatetime.slice(0, 10) : '',
+    completed_datetime: completedDatetime,
+    completed_date: completedDatetime ? completedDatetime.slice(0, 10) : '',
     status: formData.get('status'),
     responsible_person: formData.get('responsible_person'),
     notes: formData.get('notes') ? [{
@@ -344,8 +348,12 @@ function addSubtask(kind, id, formData, module = '') {
       updated_by: actor,
       updated_at: nowIso()
     }],
-    sequence_order: nextOrder
-  });
+    sequence_order: insertAfter + 1
+  };
+  record.subtasks.push(subtask);
+  record.subtasks = record.subtasks
+    .sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0))
+    .map((item, index) => ({ ...item, sequence_order: index + 1 }));
   record.history = record.history || record.revision_history || [];
   record.history.push({
     version: record.history.length + 1,

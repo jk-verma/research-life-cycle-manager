@@ -23,7 +23,7 @@ export function structuredFilter(records, filters) {
       if (!institutionText.includes(filters.institution.toLowerCase())) return false;
     }
     if (filters.academicYear && record.academic_year_current !== filters.academicYear && record.academic_year_start !== filters.academicYear) return false;
-    const date = record.date || record.final_deadline || record.submission_date || record.timestamps?.updated_at?.slice(0, 10);
+    const date = record.date || record.final_deadline_datetime || record.final_deadline || record.due_datetime || record.submission_date || record.timestamps?.updated_at?.slice(0, 10);
     if (filters.overdue === 'yes' && !isOverdue(date, record.status)) return false;
     if (filters.overdue === 'no' && isOverdue(date, record.status)) return false;
     return inDateRange(date, filters.from, filters.to);
