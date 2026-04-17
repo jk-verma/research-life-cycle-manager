@@ -302,6 +302,12 @@ function bindEvents() {
     });
   });
 
+  const candidateForm = document.getElementById('candidate-form');
+  if (candidateForm) candidateForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addCandidate(new FormData(candidateForm));
+  });
+
   document.querySelectorAll('[data-workbench-module]').forEach((form) => {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -556,6 +562,59 @@ function addAcademicLifeRecord(module, formData) {
   });
   store.academicLife.modules[module].unshift(record);
   error = 'Academic life record added locally. Export JSON to commit it.';
+  render();
+}
+
+function phaseTemplate(programmeType) {
+  if (programmeType === 'PhD') return ['Synopsis', 'Progress Reports', 'DAC-1', 'DAC-2', 'DAC-3', 'Pre-submission Viva'];
+  if (programmeType === 'Masters') return ['Synopsis', 'Interim Report', 'Final Report'];
+  if (programmeType === 'Intern') return ['Orientation', 'Weekly Review', 'Final Review'];
+  return ['Planning', 'Progress Review', 'Final Review'];
+}
+
+function addCandidate(formData) {
+  if (!canWrite(store, role)) return;
+  const programmeType = formData.get('programme_type');
+  const startDate = formData.get('start_date');
+  const deadline = formData.get('final_deadline_datetime');
+  const actor = `local-${role.toLowerCase()}`;
+  const year = formData.get('academic_year_current') || academicYearForDate(startDate);
+  const visibility = formData.get('visibility');
+  const candidate = {
+    id: uid('cand'),
+    title: formData.get('name'),
+    name: formData.get('name'),
+    category: 'supervision',
+    sub_type: programmeType,
+    programme_type: programmeType,
+    topic: formData.get('topic'),
+    phase_progress: phaseTemplate(programmeType).map((phase, index) => ({
+      phase,
+      status: index === 0 ? 'active' : 'not_started',
+      updated_at: nowIso().slice(0, 10)
+    })),
+    supervisor: formData.get('supervisor') || 'Dr. Jitendra Kumar Verma',
+    start_date: startDate,
+    final_deadline_datetime: deadline,
+    final_deadline: deadline ? deadline.slice(0, 10) : '',
+    academic_year_start: academicYearForDate(startDate),
+    academic_year_current: year,
+    priority: formData.get('priority'),
+    visibility,
+    status: formData.get('status'),
+    carry_forward: formData.get('status') !== 'completed',
+    created_by: actor,
+    updated_by: actor,
+    timestamps: { created_at: nowIso(), updated_at: nowIso() },
+    notes_append_only: formData.get('note') ? [{ id: uid('note'), text: formData.get('note'), visibility, created_by: actor, created_at: nowIso() }] : [],
+    notes: [],
+    attachments: [],
+    revision_history: [{ version: 1, summary: 'Candidate workspace created locally', updated_by: actor, updated_at: nowIso() }],
+    history: [{ version: 1, summary: 'Candidate workspace created locally', updated_by: actor, updated_at: nowIso() }],
+    subtasks: []
+  };
+  store.candidates.records.unshift(candidate);
+  error = 'Candidate added locally. Export JSON to commit it.';
   render();
 }
 

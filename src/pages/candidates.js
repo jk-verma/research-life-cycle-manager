@@ -11,6 +11,7 @@ const templates = {
 export function candidatesListPage(ctx) {
   const candidates = ctx.visibleCandidates();
   return `${pageHeader('Candidates', 'Research supervision workspaces by programme and phase.')}
+    ${ctx.canWrite() ? candidateForm(ctx) : '<p class="notice">This role is read-only for adding candidates.</p>'}
     <div class="grid">${candidates.map((candidate) => recordCard({
       title: candidate.name,
       meta: `${candidate.programme_type} | ${candidate.status} | final deadline: ${candidate.final_deadline || 'not set'}`,
@@ -18,6 +19,26 @@ export function candidatesListPage(ctx) {
       badges: `${statusBadge(candidate.status)} ${visibilityBadge(candidate.visibility)}`,
       href: `#/candidates/${candidate.id}`
     })).join('') || emptyState('No candidates', 'No candidates are visible for this role.')}</div>`;
+}
+
+function candidateForm(ctx) {
+  return `<section class="panel">
+    <h3>Add student / candidate</h3>
+    <form class="record-form" id="candidate-form">
+      <input name="name" required placeholder="Candidate name" />
+      <select name="programme_type"><option>PhD</option><option>Masters</option><option>Intern</option><option>UG</option></select>
+      <input name="topic" required placeholder="Research topic / work title" />
+      <input name="supervisor" placeholder="Supervisor" value="Dr. Jitendra Kumar Verma" />
+      <input name="start_date" type="date" required />
+      <input name="final_deadline_datetime" type="datetime-local" />
+      <input name="academic_year_current" placeholder="Academic year" value="2025-2026" />
+      <select name="status"><option>active</option><option>planned</option><option>completed</option><option>archived</option></select>
+      <select name="priority"><option>medium</option><option>high</option><option>low</option></select>
+      <select name="visibility">${ctx.store.permissions.visibility_levels.map((item) => `<option>${escapeHtml(item)}</option>`).join('')}</select>
+      <input name="note" placeholder="Initial append-only note" />
+      <button>Add local candidate</button>
+    </form>
+  </section>`;
 }
 
 export function candidateDetailPage(ctx, id) {
