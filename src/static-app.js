@@ -730,7 +730,6 @@ function addActivity(formData) {
     visibility: 'open',
     academic_year_start: academicYearForDate(date),
     academic_year_current: academicYearForDate(date),
-    carry_forward: true,
     history: [{ version: 1, summary: 'Daily activity created locally', updated_by: `local-${role.toLowerCase()}`, updated_at: nowIso() }]
   });
   error = 'Daily activity added locally. Export JSON to commit it.';
@@ -754,7 +753,6 @@ function addCalendarItem(formData) {
     created_by: `local-${role.toLowerCase()}`,
     academic_year_start: academicYearForDate(dueDate),
     academic_year_current: academicYearForDate(dueDate),
-    carry_forward: true,
     visibility: 'open',
     history: [{ version: 1, summary: 'Calendar item created locally', updated_by: `local-${role.toLowerCase()}`, updated_at: nowIso() }]
   });
@@ -775,7 +773,6 @@ function addAcademicLifeRecord(module, formData) {
     final_deadline: formData.get('final_deadline'),
     status: formData.get('status'),
     priority: formData.get('priority'),
-    carry_forward: formData.get('status') !== 'completed',
     notes: formData.get('notes') ? [{
       id: uid('note'),
       text: formData.get('notes'),
@@ -927,7 +924,6 @@ function addCandidate(formData) {
     priority: formData.get('priority'),
     visibility,
     status: formData.get('status'),
-    carry_forward: formData.get('status') !== 'completed',
     created_by: actor,
     updated_by: actor,
     timestamps: { created_at: nowIso(), updated_at: nowIso() },
@@ -965,7 +961,6 @@ function addMentor(formData) {
     academic_year_current: year,
     status: formData.get('status'),
     priority: formData.get('priority'),
-    carry_forward: formData.get('status') !== 'inactive' && formData.get('status') !== 'archived',
     visibility,
     created_by: actor,
     updated_by: actor,
@@ -997,7 +992,6 @@ function addWorkbenchRecord(module, formData) {
     academic_year_current: year,
     status: formData.get('status'),
     priority: formData.get('priority'),
-    carry_forward: formData.get('status') !== 'completed',
     visibility: 'open',
     created_by: actor,
     updated_by: actor,

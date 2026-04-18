@@ -1,6 +1,5 @@
 import { formatDateTime, pageHeader, recordCard, statusBadge, taskCardBody, visibilityBadge } from '../components/ui.js';
 import { isOverdue, todayIso } from '../utils/date.js';
-import { shouldCarryForward } from '../utils/academic-year.js';
 
 export function dashboardPage(ctx) {
   const { store, visibleCandidates, visibleMeetings, visibleWorkbench } = ctx;
@@ -24,7 +23,6 @@ export function dashboardPage(ctx) {
   const activeProjects = workbench.filter((item) => ['projects', 'consultancy'].includes(item.module) && !['completed', 'archived'].includes(item.status));
   const manuscripts = workbench.filter((item) => ['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers'].includes(item.module) && ['drafting', 'submitted', 'under_review', 'revision'].includes(item.status));
   const followups = workbench.filter((item) => JSON.stringify(item).toLowerCase().includes('follow'));
-  const carryForward = ctx.allRecords().filter(shouldCarryForward);
   const academic = ctx.visibleAcademicLife();
   const teaching = academic.filter((item) => item.module === 'teaching');
   const career = academic.filter((item) => item.module === 'career_mobility');
@@ -51,7 +49,6 @@ export function dashboardPage(ctx) {
       ${metric('Manuscripts in progress', manuscripts.length)}
       ${metric('Teaching records', teaching.length)}
       ${metric('Needs follow-up', followups.length)}
-      ${metric('Carry-forward', carryForward.length)}
     </div>
     <div class="grid two">
       <section class="panel"><h3>Today's tasks</h3>${todaysTasks.map((item) => recordCard({

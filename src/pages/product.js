@@ -1,31 +1,27 @@
 import { detailSection, emptyState, pageHeader, recordCard, statusBadge, subtaskTimeline, taskCardBody, visibilityBadge } from '../components/ui.js';
-import { shouldCarryForward } from '../utils/academic-year.js';
 import { escapeHtml } from '../utils/html.js';
 
 export function myWorkPage(ctx) {
-  const carryForward = ctx.allRecords().filter(shouldCarryForward);
   const adminWork = ctx.visibleAcademicLife().filter((item) => item.module === 'admin_work');
   const external = ctx.visibleAcademicLife().filter((item) => item.module === 'external_engagements');
   const planner = ctx.visibleActivities().slice(0, 6);
-  return `${pageHeader('Work', 'Daily planner, academic administration, external engagements, and carry-forward work.')}
+  return `${pageHeader('Work', 'Daily planner, academic administration, and external engagements.')}
     <div class="quick-actions">
       ${quickAction('Daily Planner', '#/planner')}
       ${quickAction('Academic Administration', '#/admin-work')}
       ${quickAction('External Engagements', '#/external')}
-      ${quickAction('Carry Forward Items', '#/years')}
     </div>
     <div class="grid two">
       ${panel('Daily planner', planner.map((item) => recordCard({ title: item.title, meta: `${item.date} | ${item.priority}`, body: item.short_notes, badges: statusBadge(item.status), href: `#/planner/${item.id}` })).join('') || emptyState('No planner items', 'Add daily work from the planner page.'))}
       ${panel('Academic administration', adminWork.map((item) => workCard(item, `#/admin-work/${item.id}`)).join('') || emptyState('No administration records', 'No academic administration records are visible.'))}
       ${panel('External engagements', external.map((item) => workCard(item, `#/external/${item.id}`)).join('') || emptyState('No external engagements', 'No external engagement records are visible.'))}
-      ${panel('Carry-forward items', carryForward.slice(0, 8).map((item) => recordCard({ title: item.name || item.title, meta: `${item.academic_year_current || 'no year'} | ${item.status}`, body: taskCardBody(item, item.topic || item.description_or_abstract || ''), badges: `${statusBadge(item.status || 'active')} ${visibilityBadge(item.visibility || 'open')}`, href: item.route || '#/years' })).join('') || emptyState('No carry-forward items', 'Visible records are completed or closed.'))}
     </div>`;
 }
 
 export function setupHomePage(ctx) {
   return `${pageHeader('Setup', 'Start here, workflow templates, data import/export, and deployment notes.')}
     <div class="grid">
-      ${recordCard({ title: 'Start Here', meta: 'Onboarding', body: 'Understand modules, academic years, carry-forward, and daily use.', badges: statusBadge('guide'), href: '#/start-here' })}
+      ${recordCard({ title: 'Start Here', meta: 'Onboarding', body: 'Understand modules, academic years, and daily use.', badges: statusBadge('guide'), href: '#/start-here' })}
       ${recordCard({ title: 'Workflow Templates', meta: `${ctx.store.workflowTemplates.templates.length} templates`, body: 'Reusable subtask templates for common academic workflows.', badges: statusBadge('templates'), href: '#/templates' })}
       ${recordCard({ title: 'Data / Import-Export', meta: 'Static JSON', body: 'Export browser edits and import JSON bundles.', badges: statusBadge('json'), href: '#/data' })}
     </div>`;
@@ -34,8 +30,8 @@ export function setupHomePage(ctx) {
 export function startHerePage(ctx) {
   return `${pageHeader('Start Here', 'A quick operating guide for Academic Lifecycle Manager.')}
     <div class="grid two">
-      ${detailSection('Daily workflow', '<p>Start from Home, review overdue work, today tasks, upcoming meetings, and carry-forward items. Use quick actions to add tasks, deadlines, candidates, publications, and projects.</p>')}
-      ${detailSection('Academic year workflow', '<p>Each major record stores academic year start/current fields. Incomplete records with carry_forward stay visible in future-year views without duplicating history.</p>')}
+      ${detailSection('Daily workflow', '<p>Start from Home, review overdue work, today tasks, and upcoming meetings. Use quick actions to add tasks, deadlines, candidates, publications, and projects.</p>')}
+      ${detailSection('Academic year workflow', '<p>Each major record stores academic year start/current fields so past and current work can be reviewed clearly.</p>')}
       ${detailSection('Subtasks', '<p>Use subtasks for the real work inside a record: DAC preparation, journal revision, proposal NOC, course feedback, or job-application steps. Subtasks stay inside the parent record as a vertical timeline.</p>')}
       ${detailSection('Static editing', '<p>Prepare local browser edits, export JSON, commit changes to the repository, and GitHub Pages updates the portal.</p>')}
       ${detailSection('Modules', '<p>Use Teaching for courses, Research for publications and projects, Administration for institutional responsibilities, Students for supervision, Work for daily planning, and Reports for summaries.</p>')}

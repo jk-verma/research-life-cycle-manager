@@ -21,7 +21,6 @@
       "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
-      "carry_forward": true,
       "created_by": "u-admin",
       "updated_by": "u-admin",
       "timestamps": {
@@ -65,7 +64,6 @@
       "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
-      "carry_forward": true,
       "created_by": "u-admin",
       "updated_by": "u-admin",
       "timestamps": {
@@ -108,7 +106,6 @@
       "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
-      "carry_forward": true,
       "created_by": "u-admin",
       "updated_by": "u-admin",
       "timestamps": {

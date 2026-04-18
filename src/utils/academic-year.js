@@ -9,7 +9,3 @@ export function academicYearForDate(dateText) {
 export function allAcademicYears(records) {
   return [...new Set(records.flatMap((record) => [record.academic_year_start, record.academic_year_current]).filter(Boolean))].sort().reverse();
 }
-
-export function shouldCarryForward(record) {
-  return Boolean(record.carry_forward) && !['completed', 'closed', 'published', 'accepted', 'archived'].includes(String(record.status).toLowerCase());
-}

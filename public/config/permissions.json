@@ -8,7 +8,6 @@
       "can_close": true,
       "can_review_assistant_data": true,
       "can_manage_calendar": true,
-      "can_manage_carry_forward": true,
       "can_manage_visibility_labels": false,
       "visible_levels": []
     },
@@ -19,7 +18,6 @@
       "can_close": false,
       "can_review_assistant_data": false,
       "can_manage_calendar": true,
-      "can_manage_carry_forward": false,
       "can_manage_visibility_labels": false,
       "visible_levels": []
     },

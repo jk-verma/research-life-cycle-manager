@@ -10,7 +10,7 @@ Academic Lifecycle Manager is a GitHub Pages-friendly academic life management p
 - Mentors for internal collaborators, external collaborators, and student group leaders
 - Administration for co-curricular work, corporate/academic administration, and professional development
 - Miscellaneous for career mobility and subscriptions
-- Academic Year views for past-year tracking and carry-forward work
+- Academic Year views for past-year tracking
 
 ## GitHub Pages Architecture
 
@@ -60,10 +60,9 @@ All core records include:
 
 - `academic_year_start`
 - `academic_year_current`
-- `carry_forward`
 - `status`
 
-Incomplete records with `carry_forward: true` appear in the Academic Years view without duplicating original history. Past academic year records remain editable through the static JSON workflow by appending history entries rather than deleting older data.
+Past academic year records remain editable through the static JSON workflow by appending history entries rather than deleting older data.
 
 ## Task and Subtask Model
 

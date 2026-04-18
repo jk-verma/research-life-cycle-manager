@@ -1,5 +1,4 @@
 import { emptyState, pageHeader, recordCard, statusBadge, visibilityBadge } from '../components/ui.js';
-import { shouldCarryForward } from '../utils/academic-year.js';
 import { isOverdue } from '../utils/date.js';
 
 export function reportsPage(ctx) {
@@ -7,7 +6,6 @@ export function reportsPage(ctx) {
   const completed = records.filter((item) => ['completed', 'published', 'accepted', 'closed'].includes(String(item.status).toLowerCase()));
   const pending = records.filter((item) => !['completed', 'published', 'accepted', 'closed', 'archived'].includes(String(item.status).toLowerCase()));
   const overdue = records.filter((item) => isOverdue(item.due_date || item.final_deadline || item.application_deadline || item.ending_date || item.next_action_date || item.next_meeting_date, item.status));
-  const carryForward = records.filter(shouldCarryForward);
   const years = [...new Set(records.flatMap((item) => [item.academic_year_current, item.academic_year_start]).filter(Boolean))].sort().reverse();
   const research = records.filter((item) => ['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers'].includes(item.module));
   const teaching = records.filter((item) => item.module === 'teaching');
@@ -21,7 +19,6 @@ export function reportsPage(ctx) {
       ${metric('Completed', completed.length)}
       ${metric('Pending', pending.length)}
       ${metric('Overdue', overdue.length, overdue.length ? 'danger' : '')}
-      ${metric('Carry-forward', carryForward.length)}
       ${metric('Research', research.length)}
       ${metric('Teaching', teaching.length)}
       ${metric('Supervision', supervision.length)}
@@ -32,7 +29,6 @@ export function reportsPage(ctx) {
     </div>
     <div class="grid two">
       <section class="panel"><h3>Overdue items</h3>${overdue.map((item) => reportCard(item)).join('') || emptyState('No overdue items', 'No overdue records are visible.')}</section>
-      <section class="panel"><h3>Carry-forward items</h3>${carryForward.map((item) => reportCard(item)).join('') || emptyState('No carry-forward work', 'Everything visible is completed or closed.')}</section>
       <section class="panel"><h3>Research summary</h3>${research.map((item) => reportCard(item)).join('') || emptyState('No research records', 'No research records are visible.')}</section>
       <section class="panel"><h3>Teaching summary</h3>${teaching.map((item) => reportCard(item)).join('') || emptyState('No teaching records', 'No teaching records are visible.')}</section>
       <section class="panel"><h3>Supervision summary</h3>${supervision.map((item) => reportCard(item)).join('') || emptyState('No supervision records', 'No supervision records are visible.')}</section>
@@ -45,7 +41,7 @@ export function reportsPage(ctx) {
         return recordCard({
           title: year,
           meta: `${inYear.length} records`,
-          body: `${inYear.filter(shouldCarryForward).length} carry-forward | ${inYear.filter((item) => completed.includes(item)).length} completed`,
+          body: `${inYear.filter((item) => completed.includes(item)).length} completed | ${inYear.length - inYear.filter((item) => completed.includes(item)).length} pending`,
           badges: statusBadge('year_summary'),
           href: `#/years/${year}`
         });

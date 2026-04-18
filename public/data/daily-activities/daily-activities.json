@@ -19,7 +19,6 @@
       "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
-      "carry_forward": true,
       "history": [
         {"version": 1, "summary": "Daily activity logged by assistant", "updated_by": "u-assistant", "updated_at": "2026-04-15T16:00:00.000Z"}
       ]
@@ -41,7 +40,6 @@
       "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
-      "carry_forward": true,
       "history": [
         {"version": 1, "summary": "Activity created by admin", "updated_by": "u-admin", "updated_at": "2026-04-16T11:00:00.000Z"}
       ]

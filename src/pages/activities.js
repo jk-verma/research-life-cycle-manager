@@ -25,7 +25,7 @@ export function activityDetailPage(ctx, id) {
     <section class="detail printable">
       <div class="metadata">${statusBadge(activity.status)} ${visibilityBadge(activity.visibility)} ${statusBadge(activity.priority)}</div>
       ${detailSection('Activity details', `<p><strong>Subtype:</strong> ${escapeHtml(activity.sub_type)}</p><p><strong>Linked record:</strong> ${escapeHtml(activity.linked_record_id)}</p><p><strong>Next action:</strong> ${escapeHtml(activity.next_action_date)}</p><p>${escapeHtml(activity.short_notes)}</p>`)}
-      ${detailSection('Academic year', `<p>Start: ${escapeHtml(activity.academic_year_start)} | Current: ${escapeHtml(activity.academic_year_current)} | Carry forward: ${escapeHtml(activity.carry_forward)}</p>`)}
+      ${detailSection('Academic year', `<p>Start: ${escapeHtml(activity.academic_year_start)} | Current: ${escapeHtml(activity.academic_year_current)}</p>`)}
       ${detailSection('History', timelinePanel(activity.history))}
     </section>`;
 }

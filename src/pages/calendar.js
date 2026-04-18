@@ -36,7 +36,7 @@ export function calendarDetailPage(ctx, id) {
     <section class="detail printable">
       <div class="metadata">${statusBadge(item.status)} ${statusBadge(item.priority)} ${visibilityBadge(item.visibility)} ${isOverdue(item.due_date, item.status) ? statusBadge('overdue') : ''}</div>
       ${detailSection('Deadline details', `<p><strong>Linked record:</strong> ${escapeHtml(item.linked_record_id)}</p><p><strong>Subtype:</strong> ${escapeHtml(item.sub_type)}</p><p><strong>Reminder:</strong> ${escapeHtml(item.reminder_date)}</p><p>${escapeHtml(item.notes)}</p>`)}
-      ${detailSection('Academic year', `<p>Start: ${escapeHtml(item.academic_year_start)} | Current: ${escapeHtml(item.academic_year_current)} | Carry forward: ${escapeHtml(item.carry_forward)}</p>`)}
+      ${detailSection('Academic year', `<p>Start: ${escapeHtml(item.academic_year_start)} | Current: ${escapeHtml(item.academic_year_current)}</p>`)}
     </section>`;
 }
 
@@ -96,7 +96,6 @@ function subtaskDeadlineItems(records) {
         notes: `Parent: ${record.name || record.title}. Responsible: ${subtask.responsible_person || 'not assigned'}.`,
         academic_year_start: record.academic_year_start,
         academic_year_current: record.academic_year_current,
-        carry_forward: record.carry_forward,
         route: routeForParent(record)
       };
     }));

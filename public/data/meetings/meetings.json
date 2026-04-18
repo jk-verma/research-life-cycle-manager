@@ -80,8 +80,7 @@
                                                  }
                                              ],
                         "academic_year_start":  "2025-2026",
-                        "academic_year_current":  "2025-2026",
-                        "carry_forward":  false
+                        "academic_year_current":  "2025-2026"
                     },
                     {
                         "id":  "meet-meera-dac1-001",
@@ -160,8 +159,7 @@
                                                  }
                                              ],
                         "academic_year_start":  "2025-2026",
-                        "academic_year_current":  "2025-2026",
-                        "carry_forward":  false
+                        "academic_year_current":  "2025-2026"
                     },
                     {
                         "id":  "meet-nina-weekly-001",
@@ -228,8 +226,7 @@
                                                  }
                                              ],
                         "academic_year_start":  "2025-2026",
-                        "academic_year_current":  "2025-2026",
-                        "carry_forward":  false
+                        "academic_year_current":  "2025-2026"
                     }
                 ]
 }

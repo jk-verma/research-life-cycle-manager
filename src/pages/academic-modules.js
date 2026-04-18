@@ -98,7 +98,7 @@ export function academicModulePage(ctx, module, title, subtitle, groups = []) {
       title: item.title,
       meta: `${item.academic_year_current} | ${item.category} | ${item.priority} | final deadline: ${item.final_deadline || item.application_deadline || 'not set'}`,
       body: `${taskProgress(item).label} | ${firstVisibleNote(item)}`,
-      badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}`,
+      badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)}`,
       href: `#/${routeName(module)}/${item.id}`,
       actions: ctx.cardActions('academic', item.id, module)
     })).join('') || emptyState('No records', 'No records are available in this module yet.')}</div>`;
@@ -111,8 +111,8 @@ export function academicModuleDetailPage(ctx, module, id) {
   return `${pageHeader(item.title, `${item.category} | ${item.sub_type}`)}
     ${printActionBar(`<a class="card-link" href="#/${routeName(module)}">Back</a>`)}
     <section class="detail printable">
-      <div class="metadata">${statusBadge(item.status)} ${statusBadge(item.priority)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}</div>
-      ${detailSection('Overall task', `${taskSummary(item)}<p><strong>Academic year:</strong> ${escapeHtml(item.academic_year_current)}</p><p><strong>Carry forward:</strong> ${escapeHtml(item.carry_forward)}</p><p><strong>Created by:</strong> ${escapeHtml(item.created_by)}</p>`)}
+      <div class="metadata">${statusBadge(item.status)} ${statusBadge(item.priority)} ${visibilityBadge(item.visibility)}</div>
+      ${detailSection('Overall task', `${taskSummary(item)}<p><strong>Academic year:</strong> ${escapeHtml(item.academic_year_current)}</p><p><strong>Created by:</strong> ${escapeHtml(item.created_by)}</p>`)}
       ${detailSection('Record summary', recordSummary(item))}
       ${detailSection('Activity / sub-activity timeline', subtaskTimeline(item, { kind: 'academic', id: item.id, module }))}
       ${detailSection('Append-only notes', notesPanel(ctx.maskNotes(item.notes || [])))}
@@ -132,7 +132,7 @@ function moduleListContent(items, hrefFor, actionsFor = () => '') {
       title: item.title,
       meta: `${item.module} | ${item.status} | final deadline: ${item.final_deadline || 'not set'}`,
       body: `${taskProgress(item).label} | ${item.description_or_abstract || firstVisibleNote(item)}`,
-      badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}`,
+      badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)}`,
       href: hrefFor(item),
       actions: actionsFor(item)
     })).join('') || emptyState('No records', 'No records are visible.')}</div>`;
@@ -255,7 +255,7 @@ function teachingDetailPage(ctx, item) {
   return `${pageHeader(item.title, 'Teaching | Course planner')}
     ${printActionBar('<a class="card-link" href="#/teaching">Back</a>')}
     <section class="detail printable">
-      <div class="metadata">${statusBadge(item.status)} ${statusBadge(item.priority)} ${item.carry_forward ? statusBadge('carry_forward') : ''}</div>
+      <div class="metadata">${statusBadge(item.status)} ${statusBadge(item.priority)}</div>
       ${detailSection('Course details', `${courseSummary(item)}${ctx.canWrite() ? `<button class="secondary compact" data-toggle-panel="course-edit-${escapeHtml(item.id)}">Edit</button>` : ''}`)}
       ${ctx.canWrite() ? courseEditForm(item) : ''}
       ${detailSection('Assessment structure', assessmentSummary(item))}

@@ -14,7 +14,6 @@
         "hours": 30,
         "status": "active",
         "priority": "medium",
-        "carry_forward": true,
         "notes": [],
         "feedback": "Collect end-semester feedback after final lab review.",
         "history": [],
@@ -1338,7 +1337,6 @@
         "academic_year_current": "2025-2026",
         "status": "in_progress",
         "priority": "high",
-        "carry_forward": true,
         "notes": [
           {
             "id": "admin-note-1",
@@ -1377,7 +1375,6 @@
         "academic_year_current": "2025-2026",
         "status": "planned",
         "priority": "medium",
-        "carry_forward": true,
         "organization": "City College",
         "engagement_date": "2026-05-08",
         "notes": [
@@ -1424,7 +1421,6 @@
         "application_date": "",
         "status": "planned",
         "priority": "medium",
-        "carry_forward": true,
         "notes": [
           {
             "created_at": "2026-04-18T09:15:00.000Z",
@@ -1507,7 +1503,6 @@
         "payment_status": "due",
         "status": "active",
         "priority": "medium",
-        "carry_forward": true,
         "notes": [
           {
             "created_at": "2026-04-18T09:00:00.000Z",
