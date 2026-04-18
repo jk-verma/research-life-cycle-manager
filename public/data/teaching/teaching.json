@@ -2400,8 +2400,8 @@
       "sub_type": "course",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
-      "final_deadline": "2026-12-10",
-      "status": "on_going",
+      "final_deadline": "2025-12-10",
+      "status": "finished",
       "notes": [],
       "subtasks": [
         {
@@ -3771,12 +3771,18 @@
           "summary": "teaching record created locally",
           "updated_by": "local-admin",
           "updated_at": "2026-04-18T15:48:33.789Z"
+        },
+        {
+          "version": 2,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T16:00:17.158Z"
         }
       ],
       "created_by": "local-admin",
       "timestamps": {
         "created_at": "2026-04-18T15:48:33.789Z",
-        "updated_at": "2026-04-18T15:48:33.789Z"
+        "updated_at": "2026-04-18T16:00:17.158Z"
       },
       "visibility": "open",
       "course_type": "PG Course",
@@ -3791,7 +3797,7 @@
       "external_component_marks": 50,
       "total_marks": 100,
       "course_start_date": "2025-08-18",
-      "course_end_date": "2026-12-10",
+      "course_end_date": "2025-12-10",
       "feedback_score": "0",
       "assessment_components": [
         "Quiz-1: 5",
@@ -3800,7 +3806,8 @@
         "Class Participation: 5",
         "Assignment(s): 10",
         "Project(s): 10"
-      ]
+      ],
+      "updated_by": "local-admin"
     },
     {
       "id": "teaching-1776527099713-c6c4bd",
