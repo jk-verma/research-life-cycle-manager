@@ -1,6 +1,6 @@
 {
   "schema": "academic-lifecycle-manager.academic-life.v1",
-  "updated_at": "2026-04-18T11:00:00.000Z",
+  "updated_at": "2026-04-18T11:30:00.000Z",
   "modules": {
     "teaching": [
       {
@@ -21,7 +21,7 @@
         "created_by": "u-admin",
         "timestamps": {
           "created_at": "2026-04-12T10:00:00.000Z",
-          "updated_at": "2026-04-18T11:00:00.000Z"
+          "updated_at": "2026-04-18T11:30:00.000Z"
         },
         "visibility": "open",
         "final_deadline": "2026-05-15",
@@ -1323,7 +1323,9 @@
           "class_participation": 5,
           "assignments": 10,
           "projects": 10
-        }
+        },
+        "course_start_date": "",
+        "course_end_date": ""
       }
     ],
     "admin_work": [

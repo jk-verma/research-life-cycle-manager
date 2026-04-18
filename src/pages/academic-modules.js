@@ -162,7 +162,8 @@ function academicRecordForm(module, title, ctx) {
 }
 
 function moduleSpecificFields(module) {
-  if (module === 'teaching') return subtypeSelect(teachingGroups);
+  if (module === 'teaching') return `${subtypeSelect(teachingGroups)}
+      ${courseFields()}`;
   if (module === 'admin_work') return subtypeSelect(administrationGroups);
   if (module === 'career_mobility') return `${subtypeSelect(careerGroups)}
       <input name="institution_name" placeholder="Institution name" />
@@ -271,6 +272,8 @@ function courseSummary(item) {
     ['Total lectures', item.total_lectures],
     ['Lecture duration', item.lecture_duration],
     ['Total marks', item.total_marks],
+    ['Course start date', item.course_start_date],
+    ['Course end date', item.course_end_date],
     ['Academic year', item.academic_year_current],
     ['Final deadline', item.final_deadline]
   ].filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '');
@@ -297,9 +300,7 @@ function courseEditForm(item) {
     <h4>Edit course details</h4>
     <form class="record-form" data-update-course="${escapeHtml(item.id)}">
       <input name="course_outline_circulation_date" type="date" value="${escapeHtml(item.course_outline_circulation_date || '')}" />
-      <select name="course_type">
-        ${['UG', 'PG', 'Ph.D.'].map((type) => `<option value="${escapeHtml(type)}" ${item.course_type === type ? 'selected' : ''}>${escapeHtml(type)}</option>`).join('')}
-      </select>
+      ${courseTypeSelect(item.course_type)}
       <input name="total_hours" placeholder="Total hours" value="${escapeHtml(item.total_hours || item.hours || '')}" />
       <input name="total_lectures" type="number" min="1" placeholder="Total lectures" value="${escapeHtml(item.total_lectures || '')}" />
       <input name="lecture_duration" placeholder="Lecture duration" value="${escapeHtml(item.lecture_duration || '')}" />
@@ -311,10 +312,35 @@ function courseEditForm(item) {
       <input name="assignments" type="number" min="0" placeholder="Assignment(s) marks" value="${escapeHtml(internal.assignments || '')}" />
       <input name="projects" type="number" min="0" placeholder="Project(s) marks" value="${escapeHtml(internal.projects || '')}" />
       <input name="external_component_marks" type="number" min="0" placeholder="External component marks" value="${escapeHtml(item.external_component_marks || '')}" />
+      <input name="course_start_date" type="date" value="${escapeHtml(item.course_start_date || '')}" />
+      <input name="course_end_date" type="date" value="${escapeHtml(item.course_end_date || '')}" />
       <input name="note" placeholder="Append note for this course edit" />
       <button>Update course details locally</button>
     </form>
   </section>`;
+}
+
+function courseFields() {
+  return `${courseTypeSelect('UG')}
+      <input name="total_hours" placeholder="Total hours" value="30 Hours" />
+      <input name="total_lectures" type="number" min="1" placeholder="Total lectures" value="20" />
+      <input name="lecture_duration" placeholder="Lecture duration" value="1.5 Hour" />
+      <input name="total_marks" type="number" min="0" placeholder="Total marks" value="100" />
+      <input name="internal_component_marks" type="number" min="0" placeholder="Internal component marks" value="50" />
+      <input name="quiz_1" type="number" min="0" placeholder="Quiz-1 marks" value="5" />
+      <input name="quiz_2" type="number" min="0" placeholder="Quiz-2 marks" value="5" />
+      <input name="class_participation" type="number" min="0" placeholder="Class participation marks" value="5" />
+      <input name="assignments" type="number" min="0" placeholder="Assignment(s) marks" value="10" />
+      <input name="projects" type="number" min="0" placeholder="Project(s) marks" value="10" />
+      <input name="external_component_marks" type="number" min="0" placeholder="External component marks" value="50" />
+      <input name="course_start_date" type="date" />
+      <input name="course_end_date" type="date" />`;
+}
+
+function courseTypeSelect(selected = 'UG') {
+  return `<select name="course_type">
+        ${['UG', 'PG', 'Ph.D.'].map((type) => `<option value="${escapeHtml(type)}" ${selected === type ? 'selected' : ''}>${escapeHtml(type)}</option>`).join('')}
+      </select>`;
 }
 
 function coursePlanAddForm(item) {

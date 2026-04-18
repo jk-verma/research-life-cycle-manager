@@ -830,6 +830,8 @@ function applyCourseFields(course, formData) {
   course.total_marks = Number(formData.get('total_marks') || course.total_marks || 100);
   course.internal_component_marks = Number(formData.get('internal_component_marks') || course.internal_component_marks || 50);
   course.external_component_marks = Number(formData.get('external_component_marks') || course.external_component_marks || 50);
+  course.course_start_date = formData.get('course_start_date') || course.course_start_date || '';
+  course.course_end_date = formData.get('course_end_date') || course.course_end_date || '';
   course.internal_components = {
     quiz_1: Number(formData.get('quiz_1') || course.internal_components?.quiz_1 || 5),
     quiz_2: Number(formData.get('quiz_2') || course.internal_components?.quiz_2 || 5),
