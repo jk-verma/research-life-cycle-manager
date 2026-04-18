@@ -994,7 +994,7 @@ function prepareTeachingCourseForm(course = null) {
   panel.hidden = false;
   form.reset();
   const heading = panel.querySelector('h3');
-  if (heading) heading.textContent = course ? 'Edit course details' : 'Course details';
+  if (heading) heading.textContent = course ? 'Edit Course Details' : 'Course Details';
   const submit = form.querySelector('button');
   if (submit) submit.textContent = course ? 'Update Course' : 'Add Course';
   if (!course) {
@@ -1050,8 +1050,8 @@ function updateCourseDetails(id, formData) {
   course.updated_by = actor;
   course.timestamps = { ...(course.timestamps || {}), updated_at: nowIso() };
   course.history = course.history || [];
-  course.history.push({ version: course.history.length + 1, summary: 'Course details updated locally', updated_by: actor, updated_at: nowIso() });
-  error = 'Course details updated locally. Export JSON to commit it.';
+  course.history.push({ version: course.history.length + 1, summary: 'Course Details updated locally', updated_by: actor, updated_at: nowIso() });
+  error = 'Course Details updated locally. Export JSON to commit it.';
   render();
 }
 

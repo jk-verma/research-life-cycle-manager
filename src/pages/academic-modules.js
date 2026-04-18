@@ -306,7 +306,7 @@ function teachingCardMeta(item) {
     <span>Batch: ${escapeHtml(item.batch || 'not set')}</span>
     <span>Section: ${escapeHtml(item.section || 'not set')}</span>
     <span>Campus: ${escapeHtml(item.campus || 'not set')}</span>
-    <span>Total Particpants: ${escapeHtml(item.total_participants || 'not set')}</span>
+    <span>Total Participants: ${escapeHtml(item.total_participants || 'not set')}</span>
     <span>Duration: ${escapeHtml(item.total_hours || item.hours || 'not set')}</span>
     <span>${escapeHtml(`${progress.completed}/${progress.total} activities completed`)}</span>
     <span class="upcoming-highlight">Upcoming: ${escapeHtml(upcoming?.title || 'none')}</span>
@@ -319,7 +319,7 @@ function teachingCardBody(item) {
 
 function teachingInlineEditor(item) {
   return `<section class="inline-editor" data-inline-editor hidden>
-    <h4>Edit course details</h4>
+    <h4>Edit Course Details</h4>
     <form class="record-form inline-record-form" data-academic-module="teaching">
       <input name="record_id" type="hidden" value="${escapeHtml(item.id)}" />
       <input name="title" required placeholder="Course Title" value="${escapeHtml(item.title || '')}" />
@@ -329,7 +329,7 @@ function teachingInlineEditor(item) {
       <input name="batch" placeholder="Batch, e.g. 2025-30" value="${escapeHtml(item.batch || '')}" />
       <input name="section" placeholder="Section" value="${escapeHtml(item.section || '')}" />
       <input name="campus" placeholder="Campus" value="${escapeHtml(item.campus || '')}" />
-      <input name="total_participants" type="number" min="0" placeholder="Total Particpants" value="${escapeHtml(item.total_participants || '')}" />
+      <input name="total_participants" type="number" min="0" placeholder="Total Participants" value="${escapeHtml(item.total_participants || '')}" />
       <input name="total_hours" type="number" min="0" step="0.25" placeholder="Total Hours" value="${escapeHtml(item.total_hours || item.hours || '')}" />
       <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Duration" value="${escapeHtml(item.lecture_duration || '')}" />
       <input name="total_lectures" type="number" min="1" placeholder="Lecture Count" value="${escapeHtml(calculatedLectureCount(item) || '')}" readonly />
@@ -432,9 +432,9 @@ function teachingDetailPage(ctx, item) {
     ${printActionBar('<button class="secondary" data-copy-json="teaching">Copy JSON</button><a class="button-link" href="https://github.com/jk-verma/academic-lifecycle-manager/edit/main/public/data/teaching/teaching.json" target="_blank" rel="noreferrer">Open GitHub Editor</a><a class="card-link" href="#/teaching">Back</a>')}
     <section class="detail printable">
       <div class="metadata">${statusBadge(courseDateStatus(item))}</div>
-      ${detailSection('Course details', courseSummary(item))}
-      ${detailSection('Assessment structure', assessmentSummary(item))}
-      ${detailSection('Course plan', `${ctx.canWrite() ? `<div class="action-bar"><button class="secondary" data-toggle-panel="course-activity-form">Add Activity</button></div>${coursePlanAddForm(item)}` : ''}${subtaskTimeline(item, { kind: 'academic', id: item.id, module: 'teaching' })}`)}
+      ${detailSection('Course Details', courseSummary(item))}
+      ${detailSection('Assessment Structure', assessmentSummary(item))}
+      ${detailSection('Course Plan', `${ctx.canWrite() ? `<div class="action-bar"><button class="secondary" data-toggle-panel="course-activity-form">Add Activity</button></div>${coursePlanAddForm(item)}` : ''}${subtaskTimeline(item, { kind: 'academic', id: item.id, module: 'teaching' })}`)}
     </section>`;
 }
 
@@ -458,7 +458,7 @@ function courseSummary(item) {
   const internalMarks = calculatedInternalMarks(item);
   const externalMarks = calculatedExternalMarks(item);
   const fields = [
-    ['Total Particpants', item.total_participants],
+    ['Total Participants', item.total_participants],
     ['Course Types', item.course_type],
     ['Programme', item.programme],
     ['Batch', item.batch],
@@ -533,7 +533,7 @@ function courseFields() {
       <input name="batch" placeholder="Batch, e.g. 2025-30" />
       <input name="section" placeholder="Section" />
       <input name="campus" placeholder="Campus" />
-      <input name="total_participants" type="number" min="0" placeholder="Total Particpants" />
+      <input name="total_participants" type="number" min="0" placeholder="Total Participants" />
       <input name="total_hours" type="number" min="0" step="0.25" placeholder="Total Hours" />
       <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Duration" />
       <input name="total_lectures" type="number" min="1" placeholder="Lecture Count" readonly />
