@@ -419,6 +419,51 @@ nav a:hover {
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 }
 
+.comfort-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
+}
+
+.comfort-grid .panel {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.comfort-grid .panel > h3 {
+  margin: 0;
+}
+
+.comfort-grid .card,
+.comfort-grid .empty-state {
+  min-height: auto;
+}
+
+.comfort-grid .card h3 {
+  min-height: auto;
+}
+
+.comfort-grid .card > .muted {
+  min-height: auto;
+}
+
+.comfort-grid .card-actions {
+  margin-top: 8px;
+}
+
+.report-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.calendar-grid {
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+}
+
+.misc-grid {
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+}
+
 .teaching-grid {
   grid-template-columns: repeat(auto-fill, minmax(280px, 380px));
   justify-content: start;
@@ -433,6 +478,8 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .panel h3,
@@ -1038,6 +1085,13 @@ nav a:hover {
   .app-shell,
   .split,
   .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comfort-grid,
+  .report-grid,
+  .calendar-grid,
+  .misc-grid {
     grid-template-columns: 1fr;
   }
 

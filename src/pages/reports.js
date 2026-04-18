@@ -15,7 +15,7 @@ export function reportsPage(ctx) {
   const career = records.filter((item) => item.module === 'career_mobility');
   const subscriptions = records.filter((item) => item.module === 'subscriptions');
   return `${pageHeader('Reports', 'Completed vs pending, overdue items, and academic-year summaries.')}
-    <div class="metrics">
+    <div class="metrics report-metrics">
       ${metric('Completed', completed.length)}
       ${metric('Pending', pending.length)}
       ${metric('Overdue', overdue.length, overdue.length ? 'danger' : '')}
@@ -27,7 +27,7 @@ export function reportsPage(ctx) {
       ${metric('Career', career.length)}
       ${metric('Subscriptions', subscriptions.length)}
     </div>
-    <div class="grid two">
+    <div class="grid comfort-grid report-grid">
       <section class="panel"><h3>Overdue items</h3>${overdue.map((item) => reportCard(item)).join('') || emptyState('No overdue items', 'No overdue records are visible.')}</section>
       <section class="panel"><h3>Research summary</h3>${research.map((item) => reportCard(item)).join('') || emptyState('No research records', 'No research records are visible.')}</section>
       <section class="panel"><h3>Teaching summary</h3>${teaching.map((item) => reportCard(item)).join('') || emptyState('No teaching records', 'No teaching records are visible.')}</section>

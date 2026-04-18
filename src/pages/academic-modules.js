@@ -77,7 +77,7 @@ export function miscellaneousPage(ctx) {
   const career = ctx.visibleAcademicLife().filter((item) => item.module === 'career_mobility');
   const subscriptions = ctx.visibleAcademicLife().filter((item) => item.module === 'subscriptions');
   return `${pageHeader('Miscellaneous', 'Career mobility and subscriptions in one place.')}
-    <div class="grid two">
+    <div class="grid comfort-grid misc-grid">
       <section class="panel">
         <h3>Career Mobility</h3>
         ${structureOverview(careerGroups, () => '#/career')}

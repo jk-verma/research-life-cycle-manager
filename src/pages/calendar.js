@@ -20,7 +20,7 @@ export function calendarPage(ctx) {
   return `${pageHeader('Deadline Calendar', 'Monthly, weekly, overdue, and upcoming deadline management.')}
     ${ctx.renderFilters()}
     ${ctx.canWrite() ? calendarForm(ctx) : '<p class="notice">Calendar writing is currently unavailable in this view.</p>'}
-    <div class="grid">
+    <div class="grid comfort-grid calendar-grid">
       ${calendarSection('Overdue', overdue)}
       ${calendarSection('Upcoming 7 days', upcoming7)}
       ${calendarSection('Upcoming 30 days', upcoming30)}
