@@ -39,7 +39,7 @@ export function dashboardPage(ctx) {
     .slice(0, 6);
 
   return `${pageHeader('Dashboard', "Today's priorities, deadlines, follow-ups, and academic work in one place.", `Data updated ${lastUpdated(store)}`)}
-    <div class="metrics">
+    <div class="metrics dashboard-metrics">
       ${metric('Total candidates', candidates.length)}
       ${metric('Masters / PhD / UG / Intern', `${masters} / ${phd} / ${ug} / ${interns}`)}
       ${metric('Upcoming meetings', upcomingMeetings.length)}
@@ -50,8 +50,8 @@ export function dashboardPage(ctx) {
       ${metric('Teaching records', teaching.length)}
       ${metric('Needs follow-up', followups.length)}
     </div>
-    <div class="grid two">
-      <section class="panel"><h3>Today's tasks</h3>${todaysTasks.map((item) => recordCard({
+    <div class="dashboard-grid">
+      <section class="panel dashboard-panel"><h3>Today's tasks</h3>${todaysTasks.map((item) => recordCard({
         title: item.title,
         meta: item.date || item.due_date,
         body: item.short_notes || item.notes,
@@ -61,19 +61,19 @@ export function dashboardPage(ctx) {
       ${deadlinePanel('Weekly Tasks', weeklyTasks)}
       ${deadlinePanel('Bimonthly Tasks', bimonthlyTasks)}
       ${deadlinePanel('Monthly Tasks', monthlyTasks)}
-      <section class="panel"><h3>Overdue items</h3>${overdueDeadlines.map(deadlineCard).join('') || '<p class="muted">No overdue deadlines.</p>'}</section>
-      <section class="panel"><h3>Upcoming meetings</h3>${upcomingMeetings.map((item) => recordCard({
+      <section class="panel dashboard-panel"><h3>Overdue items</h3>${overdueDeadlines.map(deadlineCard).join('') || '<p class="muted">No overdue deadlines.</p>'}</section>
+      <section class="panel dashboard-panel"><h3>Upcoming meetings</h3>${upcomingMeetings.map((item) => recordCard({
         title: item.title,
         meta: `${item.next_meeting_date} | ${item.phase}`,
         body: item.discussion,
         badges: visibilityBadge(item.visibility),
         href: `#/meetings/${item.id}`
       })).join('') || '<p class="muted">No upcoming meetings.</p>'}</section>
-      <section class="panel"><h3>Research summary</h3>${summaryCards(manuscripts, 'research')}</section>
-      <section class="panel"><h3>Teaching summary</h3>${summaryCards(teaching, 'teaching')}</section>
-      <section class="panel"><h3>Supervision summary</h3>${summaryCards(candidates, 'students')}</section>
-      <section class="panel"><h3>Career mobility</h3>${summaryCards(career, 'career')}</section>
-      <section class="panel"><h3>Recently updated</h3>${recent.map((item) => recordCard({
+      <section class="panel dashboard-panel"><h3>Research summary</h3>${summaryCards(manuscripts, 'research')}</section>
+      <section class="panel dashboard-panel"><h3>Teaching summary</h3>${summaryCards(teaching, 'teaching')}</section>
+      <section class="panel dashboard-panel"><h3>Supervision summary</h3>${summaryCards(candidates, 'students')}</section>
+      <section class="panel dashboard-panel"><h3>Career mobility</h3>${summaryCards(career, 'career')}</section>
+      <section class="panel dashboard-panel"><h3>Recently updated</h3>${recent.map((item) => recordCard({
         title: item.name || item.title,
         meta: item.programme_type || item.module || item.phase || item.category,
         body: item.topic || item.description_or_abstract || item.discussion || item.short_notes || item.notes,
@@ -120,7 +120,7 @@ function metric(label, value, tone = '') {
 }
 
 function deadlinePanel(title, items) {
-  return `<section class="panel"><h3>${title}</h3>${items.slice(0, 8).map(deadlineCard).join('') || '<p class="muted">No tasks in this period.</p>'}</section>`;
+  return `<section class="panel dashboard-panel"><h3>${title}</h3>${items.slice(0, 8).map(deadlineCard).join('') || '<p class="muted">No tasks in this period.</p>'}</section>`;
 }
 
 function deadlineCard(item) {

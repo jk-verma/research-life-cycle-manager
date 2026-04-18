@@ -204,6 +204,47 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
+.dashboard-metrics {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  align-items: stretch;
+}
+
+.dashboard-metrics .metric {
+  min-height: 112px;
+  align-content: center;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+
+.dashboard-panel {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 280px;
+}
+
+.dashboard-panel h3 {
+  margin-bottom: 2px;
+}
+
+.dashboard-panel .card {
+  min-height: auto;
+}
+
+.dashboard-panel .card h3,
+.dashboard-panel .card > .muted {
+  min-height: auto;
+}
+
+.dashboard-panel .card-actions {
+  margin-top: 10px;
+}
+
 .quick-actions {
   display: flex;
   flex-wrap: wrap;
@@ -980,7 +1021,8 @@ nav a:hover {
 
 @media (max-width: 840px) {
   .app-shell,
-  .split {
+  .split,
+  .dashboard-grid {
     grid-template-columns: 1fr;
   }
 
