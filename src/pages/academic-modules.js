@@ -316,15 +316,17 @@ function localDateIso() {
 }
 
 function courseSummary(item) {
+  const internalMarks = calculatedInternalMarks(item);
+  const externalMarks = calculatedExternalMarks(item);
   const fields = [
     ['Total participants', item.total_participants],
     ['Course type', item.course_type],
     ['Total hours', item.total_hours || item.hours],
-    ['Total lectures', item.total_lectures],
+    ['Total lectures', calculatedLectureCount(item)],
     ['Lecture Hour', item.lecture_duration],
-    ['Total marks', item.total_marks],
-    ['Internal marks', item.internal_component_marks],
-    ['External marks', item.external_component_marks],
+    ['Total marks', internalMarks + externalMarks],
+    ['Internal marks', internalMarks],
+    ['External marks', externalMarks],
     ['Course start date', item.course_start_date],
     ['Course end date', item.course_end_date],
     ['Academic year', item.academic_year_current],
@@ -336,7 +338,12 @@ function courseSummary(item) {
 function assessmentSummary(item) {
   const custom = Array.isArray(item.assessment_components) ? item.assessment_components : [];
   if (custom.length) {
-    return `<div class="summary-grid single-row-summary">${custom.map((value, index) => `<article><span>Component ${index + 1}</span><strong>${escapeHtml(value)}</strong></article>`).join('')}</div>`;
+    const fields = [
+      ...custom.map((value, index) => [`Component ${index + 1}`, value]),
+      ['Internal marks', calculatedInternalMarks(item)],
+      ['External Marks', calculatedExternalMarks(item)]
+    ];
+    return `<div class="summary-grid single-row-summary">${fields.map(([label, value]) => `<article><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></article>`).join('')}</div>`;
   }
   const internal = item.internal_components || {};
   const fields = [
@@ -349,6 +356,32 @@ function assessmentSummary(item) {
     ['External Marks', item.external_component_marks]
   ].filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '');
   return `<div class="summary-grid single-row-summary">${fields.map(([label, value]) => `<article><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></article>`).join('')}</div>`;
+}
+
+function calculatedLectureCount(item = {}) {
+  const hours = parseCourseNumber(item.total_hours || item.hours);
+  const lectureHour = parseCourseNumber(item.lecture_duration);
+  if (!hours || !lectureHour) return item.total_lectures || '';
+  return Math.ceil(hours / lectureHour);
+}
+
+function calculatedInternalMarks(item = {}) {
+  if (Array.isArray(item.assessment_components) && item.assessment_components.length) {
+    return item.assessment_components.reduce((sum, value) => {
+      const match = String(value).match(/(-?\d+(?:\.\d+)?)\s*$/);
+      return sum + (match ? Number(match[1]) : 0);
+    }, 0);
+  }
+  return Number(item.internal_component_marks || 0);
+}
+
+function calculatedExternalMarks(item = {}) {
+  return Number(item.external_component_marks || 0);
+}
+
+function parseCourseNumber(value = '') {
+  const parsed = Number.parseFloat(String(value).replace(/[^\d.]/g, ''));
+  return Number.isFinite(parsed) ? parsed : 0;
 }
 
 function courseFields() {
