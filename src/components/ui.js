@@ -90,6 +90,7 @@ export function subtaskTimeline(record = {}, options = {}) {
     const completed = subtask.completed_datetime || subtask.completed_date;
     const overdue = isOverdue(due, subtask.status);
     const contact = subtask.responsible_contact || subtask.contact_number || subtask.mobile_extension;
+    const email = subtask.responsible_email || subtask.email;
     const notes = (subtask.notes || []).filter((note) => note?.text);
     const hierarchyLevel = Math.max(0, Math.min(2, Number(subtask.hierarchy_level || 0)));
     const dragAttrs = options.kind ? `draggable="true" data-reorder-subtask="true" data-kind="${escapeHtml(options.kind)}" data-id="${escapeHtml(options.id || record.id || '')}" data-module="${escapeHtml(options.module || record.module || '')}" data-subtask-id="${escapeHtml(subtask.id)}"` : '';
@@ -103,9 +104,12 @@ export function subtaskTimeline(record = {}, options = {}) {
           <input name="status" type="hidden" value="${escapeHtml(subtask.status || 'pending')}" />
           <input name="parent_subtask_id" type="hidden" value="${escapeHtml(subtask.parent_subtask_id || '')}" />
           <input name="hierarchy_level" type="hidden" value="${escapeHtml(String(subtask.hierarchy_level || 0))}" />
+          <input name="sequence_order" type="number" min="1" step="1" placeholder="Sequence Number" value="${escapeHtml(String(subtask.sequence_order || ''))}" />
           <input name="title" required placeholder="Activity Name" value="${escapeHtml(subtask.title || '')}" />
           <input name="due_datetime" type="date" value="${escapeHtml(dateOnly(due))}" />
           <input name="responsible_person" placeholder="Responsible" value="${escapeHtml(subtask.responsible_person || '')}" />
+          <input name="responsible_contact" placeholder="Responsible Contact" value="${escapeHtml(contact || '')}" />
+          <input name="responsible_email" type="email" placeholder="Responsible Email" value="${escapeHtml(email || '')}" />
           <input name="notes" placeholder="Topic / Notes / Remark" />
           <button>Update Activity</button>
         </form>` : '';
@@ -119,6 +123,7 @@ export function subtaskTimeline(record = {}, options = {}) {
           ${completed ? `<span class="meta-badge"><strong>Completed:</strong> ${escapeHtml(formatDateTime(completed))}</span>` : ''}
           <span class="meta-badge responsible-badge"><strong>Responsible:</strong> ${escapeHtml(subtask.responsible_person || 'not assigned')}</span>
           ${contact ? `<span class="meta-badge"><strong>Mobile / extension:</strong> ${escapeHtml(contact)}</span>` : ''}
+          ${email ? `<span class="meta-badge"><strong>Email:</strong> ${escapeHtml(email)}</span>` : ''}
         </div>
         ${notes.length ? `<div class="subtask-notes">${notes.map((note) => `<p>${escapeHtml(note.text)}</p>`).join('')}</div>` : ''}
         ${actions}

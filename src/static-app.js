@@ -296,7 +296,7 @@ function bindEvents() {
 
   document.querySelectorAll('[data-delete-subtask]').forEach((button) => {
     button.addEventListener('click', () => {
-      if (!confirm('Mark this activity as cancelled locally? History will be preserved.')) return;
+      if (!confirm('Remove this activity locally? Export JSON afterward to commit the change.')) return;
       cancelSubtask(button.dataset.kind, button.dataset.id, button.dataset.module || '', button.dataset.subtaskId);
     });
   });
@@ -448,7 +448,8 @@ function addSubtask(kind, id, formData, module = '') {
   const actor = `local-${role.toLowerCase()}`;
   const editingId = formData.get('subtask_id');
   const existing = editingId ? record.subtasks.find((item) => item.id === editingId) : null;
-  const insertAfterRaw = formData.get('insert_after_order');
+  const sequenceRaw = formData.get('sequence_order');
+  const insertAfterRaw = formData.get('insert_after_order') || (sequenceRaw ? String(Math.max(0, Number(sequenceRaw) - 1)) : '');
   const parentSubtaskId = formData.get('parent_subtask_id') || '';
   const hierarchyLevelRaw = formData.get('hierarchy_level');
   const hierarchyLevelValue = Number(hierarchyLevelRaw === null || hierarchyLevelRaw === '' ? (parentSubtaskId ? 1 : 0) : hierarchyLevelRaw);
@@ -477,6 +478,7 @@ function addSubtask(kind, id, formData, module = '') {
     status: formData.get('status'),
     responsible_person: formData.get('responsible_person'),
     responsible_contact: formData.get('responsible_contact'),
+    responsible_email: formData.get('responsible_email'),
     hierarchy_level: hierarchyLevel,
     parent_subtask_id: hierarchyLevel > 0 ? parentSubtaskId : ''
   });
@@ -489,6 +491,8 @@ function addSubtask(kind, id, formData, module = '') {
   if (!existing) {
     record.subtasks = record.subtasks.map((item) => Number(item.sequence_order || 0) > insertAfter ? { ...item, sequence_order: Number(item.sequence_order || 0) + 1 } : item);
     record.subtasks.push(subtask);
+  } else if (sequenceRaw) {
+    record.subtasks = moveSubtaskToSequence(record.subtasks, subtask.id, Number(sequenceRaw));
   }
   record.subtasks = renumberSubtasks(record.subtasks);
   record.history = record.history || record.revision_history || [];
@@ -570,6 +574,8 @@ function fillSubtaskEditForm(kind, id, module, subtaskId) {
   if (form.elements.status) form.elements.status.value = subtask.status === 'ongoing' ? 'pending' : (subtask.status || 'pending');
   if (form.elements.responsible_person) form.elements.responsible_person.value = subtask.responsible_person || '';
   if (form.elements.responsible_contact) form.elements.responsible_contact.value = subtask.responsible_contact || '';
+  if (form.elements.responsible_email) form.elements.responsible_email.value = subtask.responsible_email || '';
+  if (form.elements.sequence_order) form.elements.sequence_order.value = subtask.sequence_order || '';
   if (form.elements.parent_subtask_id) form.elements.parent_subtask_id.value = subtask.parent_subtask_id || '';
   if (form.elements.hierarchy_level) form.elements.hierarchy_level.value = String(subtask.hierarchy_level || 0);
   if (form.elements.notes) form.elements.notes.value = '';
@@ -606,19 +612,43 @@ function cancelSubtask(kind, id, module, subtaskId) {
   const subtask = record?.subtasks?.find((item) => item.id === subtaskId);
   if (!subtask) return;
   const actor = `local-${role.toLowerCase()}`;
-  subtask.status = 'cancelled';
-  subtask.history = subtask.history || [];
-  subtask.history.push({ version: subtask.history.length + 1, summary: 'Delete action marked this activity as cancelled locally', updated_by: actor, updated_at: nowIso() });
+  const removedIds = descendantSubtaskIds(record.subtasks || [], subtaskId);
+  record.subtasks = renumberSubtasks((record.subtasks || []).filter((item) => !removedIds.has(item.id)));
   record.history = record.history || record.revision_history || [];
-  record.history.push({ version: record.history.length + 1, summary: `Activity cancelled locally: ${subtask.title}`, updated_by: actor, updated_at: nowIso() });
+  record.history.push({ version: record.history.length + 1, summary: `Activity removed locally: ${subtask.title}`, updated_by: actor, updated_at: nowIso() });
   if (record.revision_history && record.revision_history !== record.history) {
-    record.revision_history.push({ version: record.revision_history.length + 1, summary: `Activity cancelled locally: ${subtask.title}`, updated_by: actor, updated_at: nowIso() });
+    record.revision_history.push({ version: record.revision_history.length + 1, summary: `Activity removed locally: ${subtask.title}`, updated_by: actor, updated_at: nowIso() });
   }
   record.timestamps = record.timestamps || {};
   record.timestamps.updated_at = nowIso();
   record.updated_by = actor;
-  error = 'Activity marked cancelled locally. Export JSON to commit it.';
+  error = 'Activity removed locally. Export JSON to commit it.';
   render();
+}
+
+function descendantSubtaskIds(subtasks = [], rootId) {
+  const removed = new Set([rootId]);
+  let changed = true;
+  while (changed) {
+    changed = false;
+    subtasks.forEach((item) => {
+      if (item.parent_subtask_id && removed.has(item.parent_subtask_id) && !removed.has(item.id)) {
+        removed.add(item.id);
+        changed = true;
+      }
+    });
+  }
+  return removed;
+}
+
+function moveSubtaskToSequence(subtasks = [], subtaskId, sequenceNumber) {
+  const sorted = [...subtasks].sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0));
+  const index = sorted.findIndex((item) => item.id === subtaskId);
+  if (index < 0) return subtasks;
+  const [moving] = sorted.splice(index, 1);
+  const nextIndex = Math.max(0, Math.min(sorted.length, Number(sequenceNumber || 1) - 1));
+  sorted.splice(nextIndex, 0, moving);
+  return sorted.map((item, itemIndex) => ({ ...item, sequence_order: itemIndex + 1 }));
 }
 
 function findHierarchyParent(subtasks, movingPosition, hierarchyLevel) {
@@ -1074,9 +1104,8 @@ function parseAssessmentComponents(value = '') {
 }
 
 function defaultCourseSubtasks(parentId, totalLectures = 20) {
-  const now = nowIso();
   const items = [];
-  const add = (id, title, type, parentSubtaskId = '', note = '') => {
+  const add = (id, title, type, parentSubtaskId = '') => {
     const parent = items.find((item) => item.id === parentSubtaskId);
     items.push({
       id: `sub-${parentId}-${id}`,
@@ -1089,39 +1118,44 @@ function defaultCourseSubtasks(parentId, totalLectures = 20) {
       responsible_person: 'Dr. Jitendra Kumar Verma',
       parent_subtask_id: parentSubtaskId,
       hierarchy_level: parent ? Number(parent.hierarchy_level || 0) + 1 : 0,
-      notes: note ? [{ id: uid('note'), text: note, created_by: 'local-admin', created_at: now, visibility: 'open' }] : [],
-      history: [{ version: 1, summary: 'Course plan item created', updated_by: 'local-admin', updated_at: now }],
+      notes: [],
       sequence_order: items.length + 1
     });
   };
-  add('outline-dg', 'Course Outline Circulation DG', 'course_outline');
-  add('outline-pd-students', 'Course Outline Circulation PD/Students', 'course_outline');
   const count = Math.max(1, Number(totalLectures || 20));
-  const midPrepAt = Math.max(1, Math.min(count, Math.ceil(count * 0.35)));
-  const midProcessAt = Math.max(midPrepAt, Math.min(count, Math.ceil(count * 0.5)));
-  const endPrepAt = Math.min(count, Math.max(midProcessAt + 1, Math.ceil(count * 0.85)));
+  const halfCount = Math.max(1, Math.ceil(count / 2));
+  const midPrepAfterLecture = Math.max(1, halfCount - 3);
+  const endPrepAfterLecture = Math.max(1, count - 3);
   for (let lecture = 1; lecture <= count; lecture += 1) {
-    add(`lecture-${lecture}`, `Lecture-${lecture}: Lecture on pre-defined topics`, 'lecture', '', 'Details can be added here.');
-    if (lecture === midPrepAt) add('mid-term-pre-process', 'Mid Term Pre Process Activities', 'pre_process', '', `Activity group before mid term. Due date should match Lecture-${midPrepAt} due date.`);
-    if (lecture === midProcessAt) add('mid-term-process', 'Mid Term Process (If UG Course)', 'mid_term_process');
-    if (lecture === endPrepAt) add('end-term-pre-process', 'End Term Pre Process Activities', 'pre_process', '', `Activity group before end term. Due date should match Lecture-${endPrepAt} due date.`);
+    add(`lecture-${lecture}`, `Lecture-${lecture}`, 'activity');
+    if (lecture === midPrepAfterLecture) {
+      const processParentId = `sub-${parentId}-mid-term-pre-process`;
+      add('mid-term-pre-process', 'Mid-Term Pre Process', 'activity');
+      add('assignment-1', 'Assignment-1', 'sub_activity', processParentId);
+      add('project-1-titles', 'Project-1 Titles', 'sub_activity', processParentId);
+      add('project-groups-mid', 'Project Groups', 'sub_activity', processParentId);
+      add('mid-term-question-paper', 'Mid Term Question Paper Setting', 'sub_activity', processParentId);
+    }
+    if (lecture === halfCount) {
+      const processParentId = `sub-${parentId}-mid-term-process`;
+      add('mid-term-process', 'Mid-Term Process', 'activity');
+      add('mid-term-exam', 'Mid-Term Exam', 'sub_activity', processParentId);
+      add('mid-term-answer-script-collection', 'Mid-Term Answer Script Collection', 'sub_activity', processParentId);
+      add('mid-term-answer-script-evaluation', 'Mid-Term Answer Script Evaluation', 'sub_activity', processParentId);
+    }
+    if (lecture === endPrepAfterLecture) {
+      const processParentId = `sub-${parentId}-end-term-pre-process`;
+      add('end-term-pre-process', 'End-Term Pre Process', 'activity');
+      add('assignment-2', 'Assignment-2', 'sub_activity', processParentId);
+      add('project-2-titles', 'Project-2 Titles', 'sub_activity', processParentId);
+      add('project-groups-end', 'Project Groups', 'sub_activity', processParentId);
+      add('end-term-question-paper', 'End Term Question Paper Setting', 'sub_activity', processParentId);
+    }
   }
-  add('assignment-1', 'Assignment-1 Questions', 'assignment', `sub-${parentId}-mid-term-pre-process`);
-  add('project-set-1', 'Project Title Set-1 + Sample Report (Ranchoddas Shamaldas Chanchad Alias Rancho)', 'project', `sub-${parentId}-mid-term-pre-process`);
-  add('quiz-1', 'Quiz-1 Questions', 'quiz', `sub-${parentId}-mid-term-pre-process`, 'Details can be added here.');
-  add('question-paper-ug', 'Question Paper Setting (If UG Course)', 'question_paper_setting', `sub-${parentId}-mid-term-pre-process`, 'Details can be added here.');
-  add('in-class-quiz-1', 'In-Class Quiz-1', 'quiz', `sub-${parentId}-lecture-${midProcessAt}`, 'Details can be added here.');
-  add('mid-term-exam', 'Mid Term Exam: Held on Date', 'mid_term_exam', `sub-${parentId}-mid-term-process`);
-  add('mid-term-answer-script', 'Answer Script Collection: Collection Date', 'answer_script_collection', `sub-${parentId}-mid-term-process`);
-  add('mid-term-evaluation', 'Evaluation: Target Completion and Display Date (Maximum 20 days)', 'evaluation', `sub-${parentId}-mid-term-process`);
-  add('assignment-2', 'Assignment-2 Questions', 'assignment', `sub-${parentId}-end-term-pre-process`);
-  add('project-set-2', 'Project Title Set-2 + Sample Report (Chatur Ramalingam Alias Silencer)', 'project', `sub-${parentId}-end-term-pre-process`);
-  add('quiz-2', 'Quiz-2 Questions (If needed paper + OMR based)', 'quiz', `sub-${parentId}-end-term-pre-process`);
-  add('end-term-question-paper', 'Question Paper Setting', 'question_paper_setting', `sub-${parentId}-end-term-pre-process`);
-  add('end-term-exam', 'End-Term Exam: Held on', 'end_term_exam');
-  add('end-term-answer-script', 'Answer Script Collection: Collection Date', 'answer_script_collection');
-  add('end-term-evaluation', 'Evaluation: Target Completion and Display Date (Maximum 20 days)', 'evaluation');
-  add('course-notes', 'Notes: Exceptional Students, Undisciplined Students, Majority of Batch is Undisciplined then Difficult Question Paper', 'note');
+  add('end-term-process', 'End Term Process', 'activity');
+  add('end-term-exam', 'End-Term Exam', 'sub_activity', `sub-${parentId}-end-term-process`);
+  add('end-term-answer-script-collection', 'End-Term Answer Script Collection', 'sub_activity', `sub-${parentId}-end-term-process`);
+  add('end-term-answer-script-evaluation', 'End-Term Answer Script Evaluation', 'sub_activity', `sub-${parentId}-end-term-process`);
   return renumberSubtasks(items);
 }
 

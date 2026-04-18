@@ -297,8 +297,8 @@ function teachingCard(item, ctx) {
 }
 
 function teachingCardMeta(item) {
-  const progress = taskProgress(item);
-  const upcoming = nextPendingSubtask(item);
+  const progress = activityProgress(item);
+  const upcoming = nextPendingActivity(item);
   return `<p class="muted teaching-card-meta">
     <span>${escapeHtml(courseAcademicYear(item))}</span>
     <span>${escapeHtml(item.course_type || 'course')}</span>
@@ -429,13 +429,12 @@ function recordSummary(item) {
 
 function teachingDetailPage(ctx, item) {
   return `${pageHeader(item.title, 'Teaching | Course planner')}
-    ${printActionBar('<a class="card-link" href="#/teaching">Back</a>')}
+    ${printActionBar('<button class="secondary" data-copy-json="teaching">Copy JSON</button><a class="button-link" href="https://github.com/jk-verma/academic-lifecycle-manager/edit/main/public/data/teaching/teaching.json" target="_blank" rel="noreferrer">Open GitHub Editor</a><a class="card-link" href="#/teaching">Back</a>')}
     <section class="detail printable">
       <div class="metadata">${statusBadge(courseDateStatus(item))}</div>
       ${detailSection('Course details', courseSummary(item))}
       ${detailSection('Assessment structure', assessmentSummary(item))}
-      ${detailSection('Course plan', `${ctx.canWrite() ? '<div class="action-bar"><button class="secondary" data-toggle-panel="course-activity-form">Add Activity</button></div>' : ''}${subtaskTimeline(item, { kind: 'academic', id: item.id, module: 'teaching' })}`)}
-      ${ctx.canWrite() ? coursePlanAddForm(item) : ''}
+      ${detailSection('Course plan', `${ctx.canWrite() ? `<div class="action-bar"><button class="secondary" data-toggle-panel="course-activity-form">Add Activity</button></div>${coursePlanAddForm(item)}` : ''}${subtaskTimeline(item, { kind: 'academic', id: item.id, module: 'teaching' })}`)}
     </section>`;
 }
 
@@ -589,11 +588,32 @@ function coursePlanAddForm(item) {
       <input name="status" type="hidden" value="pending" />
       <input name="hierarchy_level" type="hidden" value="0" />
       <input name="parent_subtask_id" type="hidden" value="" />
+      <input name="sequence_order" type="number" min="1" step="1" placeholder="Sequence Number" />
       <input name="title" required placeholder="Activity Name" />
       <input name="due_datetime" type="date" />
       <input name="responsible_person" placeholder="Responsible" value="${escapeHtml(item.supervisor || 'Dr. Jitendra Kumar Verma')}" />
+      <input name="responsible_contact" placeholder="Responsible Contact" />
+      <input name="responsible_email" type="email" placeholder="Responsible Email" />
       <input name="notes" placeholder="Topic / Notes / Remark" />
       <button>Add Activity</button>
     </form>
   </section>`;
+}
+
+function activityProgress(item = {}) {
+  const activities = topLevelActivities(item);
+  return {
+    completed: activities.filter((activity) => activity.status === 'completed').length,
+    total: activities.length
+  };
+}
+
+function nextPendingActivity(item = {}) {
+  return topLevelActivities(item)
+    .filter((activity) => !['completed', 'cancelled'].includes(String(activity.status).toLowerCase()))
+    .sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0))[0];
+}
+
+function topLevelActivities(item = {}) {
+  return [...(item.subtasks || [])].filter((activity) => Number(activity.hierarchy_level || 0) === 0 && !activity.parent_subtask_id);
 }
