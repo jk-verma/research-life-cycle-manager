@@ -112,11 +112,11 @@ export function academicModuleDetailPage(ctx, module, id) {
     <section class="detail printable">
       <div class="metadata">${statusBadge(item.status)} ${statusBadge(item.priority)} ${visibilityBadge(item.visibility)} ${item.carry_forward ? statusBadge('carry_forward') : ''}</div>
       ${detailSection('Overall task', `${taskSummary(item)}<p><strong>Academic year:</strong> ${escapeHtml(item.academic_year_current)}</p><p><strong>Carry forward:</strong> ${escapeHtml(item.carry_forward)}</p><p><strong>Created by:</strong> ${escapeHtml(item.created_by)}</p>`)}
+      ${detailSection('Record summary', recordSummary(item))}
       ${detailSection('Activity / sub-activity timeline', subtaskTimeline(item, { kind: 'academic', id: item.id, module }))}
-      ${ctx.canWrite() ? ctx.subtaskForm('academic', item.id, module) : ''}
-      ${detailSection('Details', `<pre>${escapeHtml(JSON.stringify(stripLargeArrays(item), null, 2))}</pre>`)}
       ${detailSection('Append-only notes', notesPanel(ctx.maskNotes(item.notes || [])))}
       ${detailSection('History', timelinePanel(item.history || []))}
+      ${ctx.canWrite() ? ctx.subtaskForm('academic', item.id, module) : ''}
     </section>`;
 }
 
@@ -195,11 +195,6 @@ function firstVisibleNote(item) {
   return note?.text || item.feedback || item.responsibility || item.organization || '';
 }
 
-function stripLargeArrays(item) {
-  const { notes, history, subtasks, visibility, masked, ...rest } = item;
-  return rest;
-}
-
 function routeName(module) {
   if (module === 'admin_work') return 'admin-work';
   if (module === 'external_engagements') return 'external';
@@ -227,4 +222,27 @@ function structureOverview(groups, hrefFor = () => '') {
 
 function subtypeSelect(groups) {
   return `<select name="sub_type">${optionList(groups).map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('')}</select>`;
+}
+
+function recordSummary(item) {
+  const fields = [
+    ['Category', item.category],
+    ['Subtype', slugLabel(item.sub_type || '')],
+    ['Programme', item.programme],
+    ['Hours', item.hours],
+    ['Feedback / next review', item.feedback],
+    ['Responsibility', item.responsibility],
+    ['Organization', item.organization],
+    ['Institution', item.institution_name],
+    ['Role', item.role_title],
+    ['Application deadline', item.application_deadline],
+    ['Starting date', item.starting_date],
+    ['Ending date', item.ending_date],
+    ['Payment', item.payment],
+    ['Payment status', item.payment_status],
+    ['Updated', item.timestamps?.updated_at]
+  ].filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '');
+
+  if (!fields.length) return '<p class="muted">No additional record details are available.</p>';
+  return `<div class="summary-grid">${fields.map(([label, value]) => `<article><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></article>`).join('')}</div>`;
 }

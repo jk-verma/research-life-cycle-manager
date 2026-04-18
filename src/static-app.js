@@ -139,16 +139,23 @@ function shell(content) {
   const nav = [
     ['dashboard', 'Home'],
     ['teaching', 'Teaching'],
-    ['research', 'Research'],
-    ['projects', 'Projects'],
-    ['supervision', 'Supervision'],
-    ['mentors', 'Mentors'],
+    ['research', 'Research', [
+      ['research', 'Publications'],
+      ['projects', 'Projects'],
+      ['supervision', 'Supervision'],
+      ['mentors', 'Mentors']
+    ]],
     ['admin-work', 'Administration'],
     ['miscellaneous', 'Miscellaneous'],
     ['calendar', 'Calendar'],
     ['reports', 'Reports'],
     ['setup', 'Setup']
-  ].map(([id, label]) => `<a class="${current.startsWith(id) || (current === '' && id === 'dashboard') ? 'active' : ''}" href="#/${id}">${label}</a>`).join('');
+  ].map(([id, label, children]) => {
+    const active = current.startsWith(id) || (current === '' && id === 'dashboard') || (children || []).some(([childId]) => current.startsWith(childId));
+    const link = `<a class="${active ? 'active' : ''}" href="#/${id}">${label}</a>`;
+    const childLinks = children ? `<div class="nav-sublist">${children.map(([childId, childLabel]) => `<a class="${current.startsWith(childId) ? 'active' : ''}" href="#/${childId}">${childLabel}</a>`).join('')}</div>` : '';
+    return `<div class="${children ? 'nav-group' : ''}">${link}${childLinks}</div>`;
+  }).join('');
 
   root.innerHTML = `<div class="app-shell">
     <aside class="sidebar">
