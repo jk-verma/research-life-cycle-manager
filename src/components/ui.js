@@ -88,7 +88,7 @@ export function subtaskTimeline(record = {}, options = {}) {
   return `<div class="subtask-timeline">${subtasks.map((subtask) => {
     const due = subtask.due_datetime || subtask.due_date;
     const completed = subtask.completed_datetime || subtask.completed_date;
-    const displayStatus = activityDateStatus(subtask);
+    const displayStatus = activityDateStatus(subtask, record);
     const overdue = displayStatus === 'overdue';
     const contact = subtask.responsible_contact || subtask.contact_number || subtask.mobile_extension;
     const email = subtask.responsible_email || subtask.email;
@@ -139,10 +139,13 @@ function dateOnly(value = '') {
   return value ? String(value).slice(0, 10) : '';
 }
 
-function activityDateStatus(subtask = {}) {
+function activityDateStatus(subtask = {}, record = {}) {
   const completed = subtask.completed_datetime || subtask.completed_date;
   if (completed || ['completed', 'finished'].includes(String(subtask.status || '').toLowerCase())) return 'finished';
   const due = subtask.due_datetime || subtask.due_date;
+  const dueDate = dateOnly(due);
+  const courseStart = dateOnly(record.course_start_date || record.start_date);
+  if (courseStart && dueDate && dueDate < courseStart) return 'pending';
   if (isOverdue(due, subtask.status)) return 'overdue';
   return 'pending';
 }
