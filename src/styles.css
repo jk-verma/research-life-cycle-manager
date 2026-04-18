@@ -212,6 +212,8 @@ nav a:hover {
 .dashboard-metrics .metric {
   min-height: 112px;
   align-content: center;
+  justify-items: center;
+  text-align: center;
 }
 
 .dashboard-grid {
