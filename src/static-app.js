@@ -903,13 +903,13 @@ function updateCourseDetails(id, formData) {
 
 function applyCourseFields(course, formData) {
   course.course_type = formData.get('course_type') || course.course_type || '';
-  course.total_hours = formData.get('total_hours') || course.total_hours || '';
-  course.hours = Number.parseFloat(String(course.total_hours).replace(/[^\d.]/g, '')) || course.hours || 0;
+  course.total_hours = parseNumber(formData.get('total_hours')) || parseNumber(course.total_hours);
+  course.hours = course.total_hours;
   course.total_participants = formData.get('total_participants') || course.total_participants || '';
-  course.lecture_duration = formData.get('lecture_duration') || course.lecture_duration || '';
+  course.lecture_duration = parseNumber(formData.get('lecture_duration')) || parseNumber(course.lecture_duration);
   course.total_lectures = calculateCourseLectureCount(course.total_hours, course.lecture_duration);
   course.internal_component_marks = sumAssessmentMarks(formData.get('assessment_components')) || 0;
-  course.external_component_marks = Number(formData.get('external_component_marks') || course.external_component_marks || 0);
+  course.external_component_marks = parseNumber(formData.get('external_component_marks')) || parseNumber(course.external_component_marks);
   course.total_marks = course.internal_component_marks + course.external_component_marks;
   course.course_start_date = formData.get('course_start_date') || course.course_start_date || '';
   course.course_end_date = formData.get('course_end_date') || course.course_end_date || '';

@@ -388,7 +388,7 @@ function courseFields() {
   return `<input name="sub_type" type="hidden" value="course" />
       ${courseTypeSelect()}
       <input name="total_participants" type="number" min="0" placeholder="Total Participants" />
-      <input name="total_hours" placeholder="Total Hours" />
+      <input name="total_hours" type="number" min="0" step="0.25" placeholder="Total Hours" />
       <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Hour" />
       <input name="total_lectures" type="number" min="1" placeholder="Total lectures" readonly />
       <textarea name="assessment_components" placeholder="Assessment components, one per line. Example: Quiz-1: 5"></textarea>
