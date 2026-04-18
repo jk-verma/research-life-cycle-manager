@@ -1163,15 +1163,21 @@
           "summary": "teaching record created locally",
           "updated_by": "local-admin",
           "updated_at": "2026-04-18T16:09:34.189Z"
+        },
+        {
+          "version": 2,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T16:15:44.017Z"
         }
       ],
       "created_by": "local-admin",
       "timestamps": {
         "created_at": "2026-04-18T16:09:34.190Z",
-        "updated_at": "2026-04-18T16:09:34.190Z"
+        "updated_at": "2026-04-18T16:15:44.017Z"
       },
       "visibility": "open",
-      "course_type": "",
+      "course_type": "Executive Course (Weekends)",
       "programme": "PGDMIB",
       "batch": "2025-26",
       "section": "B",
@@ -1193,7 +1199,8 @@
         "Class Participation: 5",
         "Assignment(s): 10",
         "Project(s): 10"
-      ]
+      ],
+      "updated_by": "local-admin"
     },
     {
       "id": "teaching-1776527764003-3b7622",
