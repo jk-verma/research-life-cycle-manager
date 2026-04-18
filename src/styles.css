@@ -351,6 +351,16 @@ nav a:hover {
   border-top: 1px solid var(--line);
 }
 
+.card-actions .card-link,
+.card-actions button {
+  justify-content: center;
+  min-width: 76px;
+  min-height: 34px;
+  padding: 7px 10px;
+  font-size: 12px;
+  line-height: 1;
+}
+
 .record-line {
   display: flex;
   justify-content: space-between;
