@@ -331,12 +331,12 @@ function teachingInlineEditor(item) {
       <input name="campus" placeholder="Campus" value="${escapeHtml(item.campus || '')}" />
       <input name="total_participants" type="number" min="0" placeholder="Total Participants" value="${escapeHtml(item.total_participants || '')}" />
       <input name="total_hours" type="number" min="0" step="0.25" placeholder="Total Hours" value="${escapeHtml(item.total_hours || item.hours || '')}" />
-      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Hour" value="${escapeHtml(item.lecture_duration || '')}" />
-      <input name="total_lectures" type="number" min="1" placeholder="Total lectures" value="${escapeHtml(calculatedLectureCount(item) || '')}" readonly />
+      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Duration" value="${escapeHtml(item.lecture_duration || '')}" />
+      <input name="total_lectures" type="number" min="1" placeholder="Lecture Count" value="${escapeHtml(calculatedLectureCount(item) || '')}" readonly />
       <textarea name="assessment_components" placeholder="Assessment components, one per line. Example: Quiz-1: 5">${escapeHtml(assessmentLines(item))}</textarea>
-      <input name="internal_component_marks" type="number" min="0" placeholder="Internal marks" value="${escapeHtml(calculatedInternalMarks(item) || '')}" readonly />
+      <input name="internal_component_marks" type="number" min="0" placeholder="Internal Marks" value="${escapeHtml(calculatedInternalMarks(item) || '')}" readonly />
       <input name="external_component_marks" type="number" min="0" placeholder="External Marks" value="${escapeHtml(calculatedExternalMarks(item) || '')}" />
-      <input name="total_marks" type="number" min="0" placeholder="Total marks" value="${escapeHtml((calculatedInternalMarks(item) + calculatedExternalMarks(item)) || '')}" readonly />
+      <input name="total_marks" type="number" min="0" placeholder="Total Marks" value="${escapeHtml((calculatedInternalMarks(item) + calculatedExternalMarks(item)) || '')}" readonly />
       <input name="course_start_date" type="date" value="${escapeHtml(item.course_start_date || '')}" />
       <input name="course_end_date" type="date" value="${escapeHtml(item.course_end_date || '')}" />
       <input name="feedback_score" placeholder="Feedback Score" value="${escapeHtml(item.feedback_score || '')}" />
@@ -464,14 +464,14 @@ function courseSummary(item) {
     ['Batch', item.batch],
     ['Section', item.section],
     ['Campus', item.campus],
-    ['Total hours', item.total_hours || item.hours],
-    ['Total lectures', calculatedLectureCount(item)],
-    ['Lecture Hour', item.lecture_duration],
-    ['Total marks', internalMarks + externalMarks],
-    ['Internal marks', internalMarks],
-    ['External marks', externalMarks],
-    ['Course start date', item.course_start_date],
-    ['Course end date', item.course_end_date],
+    ['Total Hours', item.total_hours || item.hours],
+    ['Lecture Count', calculatedLectureCount(item)],
+    ['Lecture Duration', item.lecture_duration],
+    ['Total Marks', internalMarks + externalMarks],
+    ['Internal Marks', internalMarks],
+    ['External Marks', externalMarks],
+    ['Start Date', item.course_start_date],
+    ['End Date', item.course_end_date],
     ['Feedback score', item.feedback_score]
   ].filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '');
   return `<div class="summary-grid single-row-summary">${fields.map(([label, value]) => `<article><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></article>`).join('')}</div>`;
@@ -482,7 +482,7 @@ function assessmentSummary(item) {
   if (custom.length) {
     const fields = [
       ...custom.map((value, index) => [`Component ${index + 1}`, value]),
-      ['Internal marks', calculatedInternalMarks(item)],
+      ['Internal Marks', calculatedInternalMarks(item)],
       ['External Marks', calculatedExternalMarks(item)]
     ];
     return `<div class="summary-grid single-row-summary">${fields.map(([label, value]) => `<article><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></article>`).join('')}</div>`;
@@ -535,12 +535,12 @@ function courseFields() {
       <input name="campus" placeholder="Campus" />
       <input name="total_participants" type="number" min="0" placeholder="Total Participants" />
       <input name="total_hours" type="number" min="0" step="0.25" placeholder="Total Hours" />
-      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Hour" />
-      <input name="total_lectures" type="number" min="1" placeholder="Total lectures" readonly />
+      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Duration" />
+      <input name="total_lectures" type="number" min="1" placeholder="Lecture Count" readonly />
       <textarea name="assessment_components" placeholder="Assessment components, one per line. Example: Quiz-1: 5"></textarea>
-      <input name="internal_component_marks" type="number" min="0" placeholder="Internal marks" readonly />
+      <input name="internal_component_marks" type="number" min="0" placeholder="Internal Marks" readonly />
       <input name="external_component_marks" type="number" min="0" placeholder="External Marks" />
-      <input name="total_marks" type="number" min="0" placeholder="Total marks" readonly />
+      <input name="total_marks" type="number" min="0" placeholder="Total Marks" readonly />
       <input name="course_start_date" type="date" />
       <input name="course_end_date" type="date" />`;
 }
