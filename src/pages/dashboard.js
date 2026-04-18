@@ -38,7 +38,7 @@ export function dashboardPage(ctx) {
     .sort((a, b) => recentValue(b).localeCompare(recentValue(a)))
     .slice(0, 6);
 
-  return `${pageHeader('Home', "Today's priorities, deadlines, follow-ups, and academic work in one place.", `Data updated ${lastUpdated(store)}`)}
+  return `${pageHeader('Dashboard', "Today's priorities, deadlines, follow-ups, and academic work in one place.", `Data updated ${lastUpdated(store)}`)}
     <div class="metrics">
       ${metric('Total candidates', candidates.length)}
       ${metric('Masters / PhD / UG / Intern', `${masters} / ${phd} / ${ug} / ${interns}`)}

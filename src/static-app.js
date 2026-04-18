@@ -141,7 +141,7 @@ function ctx() {
 function shell(content) {
   const current = routeKey();
   const nav = [
-    ['dashboard', 'Home'],
+    ['dashboard', 'Dashboard'],
     ['teaching', 'Teaching'],
     ['research', 'Research', [
       ['research', 'Publications'],
