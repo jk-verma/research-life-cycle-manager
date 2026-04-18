@@ -258,6 +258,12 @@ nav a:hover {
   margin: 0;
 }
 
+.ribbon-head button {
+  min-height: 42px;
+  padding: 11px 14px;
+  font-size: 14px;
+}
+
 .teaching-ribbon {
   grid-column: 1 / -1;
 }

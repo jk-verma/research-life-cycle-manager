@@ -820,14 +820,19 @@ function bindCourseCalculations(form) {
   const update = () => {
     const totalHours = parseNumber(form.elements.total_hours?.value);
     const lectureDuration = parseNumber(form.elements.lecture_duration?.value);
+    const internalMarks = sumAssessmentMarks(form.elements.assessment_components?.value || '');
+    const externalMarks = parseNumber(form.elements.external_component_marks?.value);
     if (form.elements.total_lectures) {
       form.elements.total_lectures.value = totalHours && lectureDuration ? String(Math.ceil(totalHours / lectureDuration)) : '';
     }
     if (form.elements.internal_component_marks) {
-      form.elements.internal_component_marks.value = String(sumAssessmentMarks(form.elements.assessment_components?.value || '') || '');
+      form.elements.internal_component_marks.value = internalMarks ? String(internalMarks) : '';
+    }
+    if (form.elements.total_marks) {
+      form.elements.total_marks.value = internalMarks || externalMarks ? String(internalMarks + externalMarks) : '';
     }
   };
-  ['total_hours', 'lecture_duration', 'assessment_components'].forEach((name) => {
+  ['total_hours', 'lecture_duration', 'assessment_components', 'external_component_marks'].forEach((name) => {
     if (form.elements[name]) form.elements[name].addEventListener('input', update);
   });
   update();
@@ -897,15 +902,15 @@ function updateCourseDetails(id, formData) {
 }
 
 function applyCourseFields(course, formData) {
-  course.course_type = formData.get('course_type') || course.course_type || 'UG';
-  course.total_hours = formData.get('total_hours') || course.total_hours || course.hours || '30 Hours';
-  course.hours = Number.parseFloat(String(course.total_hours).replace(/[^\d.]/g, '')) || course.hours || 30;
+  course.course_type = formData.get('course_type') || course.course_type || '';
+  course.total_hours = formData.get('total_hours') || course.total_hours || '';
+  course.hours = Number.parseFloat(String(course.total_hours).replace(/[^\d.]/g, '')) || course.hours || 0;
   course.total_participants = formData.get('total_participants') || course.total_participants || '';
-  course.lecture_duration = formData.get('lecture_duration') || course.lecture_duration || '1.5 Hour';
+  course.lecture_duration = formData.get('lecture_duration') || course.lecture_duration || '';
   course.total_lectures = calculateCourseLectureCount(course.total_hours, course.lecture_duration);
-  course.total_marks = Number(formData.get('total_marks') || course.total_marks || 100);
   course.internal_component_marks = sumAssessmentMarks(formData.get('assessment_components')) || 0;
-  course.external_component_marks = Number(formData.get('external_component_marks') || course.external_component_marks || 50);
+  course.external_component_marks = Number(formData.get('external_component_marks') || course.external_component_marks || 0);
+  course.total_marks = course.internal_component_marks + course.external_component_marks;
   course.course_start_date = formData.get('course_start_date') || course.course_start_date || '';
   course.course_end_date = formData.get('course_end_date') || course.course_end_date || '';
   course.final_deadline = course.course_end_date || course.final_deadline || '';
@@ -917,13 +922,13 @@ function applyCourseFields(course, formData) {
 function courseStatusFromDates(formData) {
   const endDate = formData.get('course_end_date');
   if (!endDate) return 'pending';
-  return new Date(endDate) < new Date(nowIso().slice(0, 10)) ? 'completed' : 'pending';
+  return new Date(endDate) < new Date(nowIso().slice(0, 10)) ? 'finished' : 'pending';
 }
 
 function calculateCourseLectureCount(totalHours, lectureDuration) {
   const hours = parseNumber(totalHours);
   const duration = parseNumber(lectureDuration);
-  if (!hours || !duration) return 20;
+  if (!hours || !duration) return 0;
   return Math.max(1, Math.ceil(hours / duration));
 }
 

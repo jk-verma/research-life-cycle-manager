@@ -237,7 +237,7 @@ function teachingRibbon(ctx) {
     <section class="structure-panel teaching-ribbon">
       <div class="ribbon-head">
         <h3>${escapeHtml(group.title)}</h3>
-        ${ctx.canWrite() ? '<button class="compact" data-new-course="true">Add Course</button>' : ''}
+        ${ctx.canWrite() ? '<button data-new-course="true">Add Course</button>' : ''}
       </div>
       <div class="chip-list">${group.items.map(([, label]) => `<span class="chip">${escapeHtml(label)}</span>`).join('')}</div>
     </section>
@@ -306,7 +306,7 @@ function courseSummary(item) {
     ['Course type', item.course_type],
     ['Total hours', item.total_hours || item.hours],
     ['Total lectures', item.total_lectures],
-    ['Lecture duration (Hour)', item.lecture_duration],
+    ['Lecture Hour', item.lecture_duration],
     ['Total marks', item.total_marks],
     ['Internal marks', item.internal_component_marks],
     ['External marks', item.external_component_marks],
@@ -343,13 +343,13 @@ function courseEditForm(item) {
       <input name="title" required placeholder="Course Title" value="${escapeHtml(item.title || '')}" />
       ${courseTypeSelect(item.course_type)}
       <input name="total_participants" type="number" min="0" placeholder="Total Participants" value="${escapeHtml(item.total_participants || '')}" />
-      <input name="total_hours" placeholder="Total hours" value="${escapeHtml(item.total_hours || item.hours || '')}" />
-      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Duration (Hour)" value="${escapeHtml(item.lecture_duration || '')}" />
+      <input name="total_hours" placeholder="Total Hours" value="${escapeHtml(item.total_hours || item.hours || '')}" />
+      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Hour" value="${escapeHtml(item.lecture_duration || '')}" />
       <input name="total_lectures" type="number" min="1" placeholder="Total lectures" value="${escapeHtml(item.total_lectures || '')}" readonly />
-      <input name="total_marks" type="number" min="0" placeholder="Total marks" value="${escapeHtml(item.total_marks || '')}" />
       <textarea name="assessment_components" placeholder="Assessment components, one per line">${escapeHtml(assessmentLines(item))}</textarea>
       <input name="internal_component_marks" type="number" min="0" placeholder="Internal marks" value="${escapeHtml(item.internal_component_marks || '')}" readonly />
       <input name="external_component_marks" type="number" min="0" placeholder="External component marks" value="${escapeHtml(item.external_component_marks || '')}" />
+      <input name="total_marks" type="number" min="0" placeholder="Total marks" value="${escapeHtml(item.total_marks || '')}" readonly />
       <input name="course_start_date" type="date" value="${escapeHtml(item.course_start_date || '')}" />
       <input name="course_end_date" type="date" value="${escapeHtml(item.course_end_date || '')}" />
       ${academicYearSelect(item.academic_year_current)}
@@ -363,13 +363,13 @@ function courseFields() {
   return `<input name="sub_type" type="hidden" value="course" />
       ${courseTypeSelect()}
       <input name="total_participants" type="number" min="0" placeholder="Total Participants" />
-      <input name="total_hours" placeholder="Total hours" />
-      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Duration (Hour)" />
+      <input name="total_hours" placeholder="Total Hours" />
+      <input name="lecture_duration" type="number" min="0.1" step="0.1" placeholder="Lecture Hour" />
       <input name="total_lectures" type="number" min="1" placeholder="Total lectures" readonly />
-      <input name="total_marks" type="number" min="0" placeholder="Total marks" />
       <textarea name="assessment_components" placeholder="Assessment components, one per line. Example: Quiz-1: 5"></textarea>
       <input name="internal_component_marks" type="number" min="0" placeholder="Internal marks" readonly />
       <input name="external_component_marks" type="number" min="0" placeholder="External component marks" />
+      <input name="total_marks" type="number" min="0" placeholder="Total marks" readonly />
       <input name="course_start_date" type="date" />
       <input name="course_end_date" type="date" />`;
 }

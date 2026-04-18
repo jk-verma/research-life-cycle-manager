@@ -3,8 +3,8 @@ import { isOverdue } from '../utils/date.js';
 
 export function reportsPage(ctx) {
   const records = ctx.allRecords();
-  const completed = records.filter((item) => ['completed', 'published', 'accepted', 'closed'].includes(String(item.status).toLowerCase()));
-  const pending = records.filter((item) => !['completed', 'published', 'accepted', 'closed', 'archived'].includes(String(item.status).toLowerCase()));
+  const completed = records.filter((item) => ['completed', 'finished', 'published', 'accepted', 'closed'].includes(String(item.status).toLowerCase()));
+  const pending = records.filter((item) => !['completed', 'finished', 'published', 'accepted', 'closed', 'archived'].includes(String(item.status).toLowerCase()));
   const overdue = records.filter((item) => isOverdue(item.due_date || item.final_deadline || item.application_deadline || item.ending_date || item.next_action_date || item.next_meeting_date, item.status));
   const years = [...new Set(records.flatMap((item) => [item.academic_year_current, item.academic_year_start]).filter(Boolean))].sort().reverse();
   const research = records.filter((item) => ['journal_articles', 'authored_books', 'edited_books', 'book_chapters', 'conference_papers'].includes(item.module));
