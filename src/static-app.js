@@ -343,6 +343,7 @@ function bindEvents() {
   });
 
   document.querySelectorAll('[data-academic-module]').forEach((form) => {
+    if (form.dataset.academicModule === 'teaching') bindCourseCalculations(form);
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       addAcademicLifeRecord(form.dataset.academicModule, new FormData(form));
@@ -350,6 +351,7 @@ function bindEvents() {
   });
 
   document.querySelectorAll('[data-update-course]').forEach((form) => {
+    bindCourseCalculations(form);
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       updateCourseDetails(form.dataset.updateCourse, new FormData(form));
@@ -786,8 +788,8 @@ function addAcademicLifeRecord(module, formData) {
     sub_type: formData.get('sub_type'),
     academic_year_start: year,
     academic_year_current: year,
-    final_deadline: formData.get('final_deadline') || formData.get('course_end_date') || '',
-    status: formData.get('status') || 'pending',
+    final_deadline: formData.get('course_end_date') || formData.get('final_deadline') || '',
+    status: module === 'teaching' ? courseStatusFromDates(formData) : (formData.get('status') || 'pending'),
     priority: formData.get('priority') || 'medium',
     notes: formData.get('notes') ? [{
       id: uid('note'),
@@ -812,6 +814,23 @@ function addAcademicLifeRecord(module, formData) {
   store.academicLife.modules[module].unshift(record);
   error = 'Academic life record added locally. Export JSON to commit it.';
   render();
+}
+
+function bindCourseCalculations(form) {
+  const update = () => {
+    const totalHours = parseNumber(form.elements.total_hours?.value);
+    const lectureDuration = parseNumber(form.elements.lecture_duration?.value);
+    if (form.elements.total_lectures) {
+      form.elements.total_lectures.value = totalHours && lectureDuration ? String(Math.ceil(totalHours / lectureDuration)) : '';
+    }
+    if (form.elements.internal_component_marks) {
+      form.elements.internal_component_marks.value = String(sumAssessmentMarks(form.elements.assessment_components?.value || '') || '');
+    }
+  };
+  ['total_hours', 'lecture_duration', 'assessment_components'].forEach((name) => {
+    if (form.elements[name]) form.elements[name].addEventListener('input', update);
+  });
+  update();
 }
 
 function prepareTeachingCourseForm(course = null) {
@@ -842,21 +861,18 @@ function prepareTeachingCourseForm(course = null) {
   const values = {
     record_id: course.id,
     title: course.title,
-    course_outline_circulation_date: course.course_outline_circulation_date,
     course_type: course.course_type,
     total_hours: course.total_hours || course.hours,
-    total_lectures: course.total_lectures,
     lecture_duration: course.lecture_duration,
+    total_lectures: course.total_lectures,
     total_marks: course.total_marks,
     internal_component_marks: course.internal_component_marks,
     assessment_components: assessmentComponents,
     external_component_marks: course.external_component_marks,
     course_start_date: course.course_start_date,
     course_end_date: course.course_end_date,
-    final_deadline: course.final_deadline,
-    notes: '',
     academic_year_current: course.academic_year_current,
-    status: course.status
+    feedback_score: course.feedback_score
   };
   Object.entries(values).forEach(([key, value]) => {
     if (form.elements[key]) form.elements[key].value = value || '';
@@ -870,35 +886,57 @@ function updateCourseDetails(id, formData) {
   if (!course) return;
   applyCourseFields(course, formData);
   course.academic_year_current = formData.get('academic_year_current') || course.academic_year_current;
-  course.status = formData.get('status') || course.status;
+  course.status = courseStatusFromDates(formData);
   const actor = `local-${role.toLowerCase()}`;
   course.updated_by = actor;
   course.timestamps = { ...(course.timestamps || {}), updated_at: nowIso() };
   course.history = course.history || [];
   course.history.push({ version: course.history.length + 1, summary: 'Course details updated locally', updated_by: actor, updated_at: nowIso() });
-  const note = formData.get('note');
-  if (note) {
-    course.notes = course.notes || [];
-    course.notes.push({ id: uid('note'), text: note, created_by: actor, created_at: nowIso(), visibility: 'open' });
-  }
   error = 'Course details updated locally. Export JSON to commit it.';
   render();
 }
 
 function applyCourseFields(course, formData) {
-  course.course_outline_circulation_date = formData.get('course_outline_circulation_date') || course.course_outline_circulation_date || '';
   course.course_type = formData.get('course_type') || course.course_type || 'UG';
   course.total_hours = formData.get('total_hours') || course.total_hours || course.hours || '30 Hours';
   course.hours = Number.parseFloat(String(course.total_hours).replace(/[^\d.]/g, '')) || course.hours || 30;
-  course.total_lectures = Number(formData.get('total_lectures') || course.total_lectures || 20);
+  course.total_participants = formData.get('total_participants') || course.total_participants || '';
   course.lecture_duration = formData.get('lecture_duration') || course.lecture_duration || '1.5 Hour';
+  course.total_lectures = calculateCourseLectureCount(course.total_hours, course.lecture_duration);
   course.total_marks = Number(formData.get('total_marks') || course.total_marks || 100);
-  course.internal_component_marks = Number(formData.get('internal_component_marks') || course.internal_component_marks || 50);
+  course.internal_component_marks = sumAssessmentMarks(formData.get('assessment_components')) || 0;
   course.external_component_marks = Number(formData.get('external_component_marks') || course.external_component_marks || 50);
   course.course_start_date = formData.get('course_start_date') || course.course_start_date || '';
   course.course_end_date = formData.get('course_end_date') || course.course_end_date || '';
+  course.final_deadline = course.course_end_date || course.final_deadline || '';
+  course.feedback_score = formData.get('feedback_score') || course.feedback_score || '';
   course.assessment_components = parseAssessmentComponents(formData.get('assessment_components'));
   course.internal_components = {};
+}
+
+function courseStatusFromDates(formData) {
+  const endDate = formData.get('course_end_date');
+  if (!endDate) return 'pending';
+  return new Date(endDate) < new Date(nowIso().slice(0, 10)) ? 'completed' : 'pending';
+}
+
+function calculateCourseLectureCount(totalHours, lectureDuration) {
+  const hours = parseNumber(totalHours);
+  const duration = parseNumber(lectureDuration);
+  if (!hours || !duration) return 20;
+  return Math.max(1, Math.ceil(hours / duration));
+}
+
+function parseNumber(value = '') {
+  const parsed = Number.parseFloat(String(value).replace(/[^\d.]/g, ''));
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function sumAssessmentMarks(value = '') {
+  return parseAssessmentComponents(value).reduce((sum, item) => {
+    const match = item.match(/(-?\d+(?:\.\d+)?)\s*$/);
+    return sum + (match ? Number(match[1]) : 0);
+  }, 0);
 }
 
 function parseAssessmentComponents(value = '') {
