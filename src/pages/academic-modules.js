@@ -260,8 +260,6 @@ function teachingDetailPage(ctx, item) {
       ${detailSection('Assessment structure', assessmentSummary(item))}
       ${detailSection('Lecture, exam, and task plan', subtaskTimeline(item, { kind: 'academic', id: item.id, module: 'teaching' }))}
       ${ctx.canWrite() ? courseItemEditForm(item) : ''}
-      ${detailSection('Append-only notes', notesPanel(ctx.maskNotes(item.notes || [])))}
-      ${detailSection('History', timelinePanel(item.history || []))}
     </section>`;
 }
 
