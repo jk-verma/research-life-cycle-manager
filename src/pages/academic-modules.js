@@ -24,7 +24,7 @@ export function teachingPage(ctx) {
       title: item.title,
       meta: teachingCardMeta(item),
       body: `Feedback Score: ${item.feedback_score || 'not set'}`,
-      badges: `${statusBadge(item.status)} ${visibilityBadge(item.visibility)}`,
+      badges: `${statusBadge(courseDateStatus(item))} ${visibilityBadge(item.visibility)}`,
       href: `#/teaching/${item.id}`,
       actions: ctx.cardActions('academic', item.id, 'teaching')
     })).join('') || emptyState('No records', 'No teaching records are available yet.')}</div>`;
@@ -291,12 +291,28 @@ function teachingDetailPage(ctx, item) {
   return `${pageHeader(item.title, 'Teaching | Course planner')}
     ${printActionBar('<a class="card-link" href="#/teaching">Back</a>')}
     <section class="detail printable">
-      <div class="metadata">${statusBadge(item.status)}</div>
+      <div class="metadata">${statusBadge(courseDateStatus(item))}</div>
       ${detailSection('Course details', courseSummary(item))}
       ${detailSection('Assessment structure', assessmentSummary(item))}
       ${detailSection('Course plan', subtaskTimeline(item, { kind: 'academic', id: item.id, module: 'teaching' }))}
       ${ctx.canWrite() ? coursePlanAddForm(item) : ''}
     </section>`;
+}
+
+function courseDateStatus(item = {}) {
+  const today = localDateIso();
+  const start = item.course_start_date || '';
+  const end = item.course_end_date || item.final_deadline || '';
+  if (start && today < start) return 'about_to_start';
+  if (end && today > end) return 'finished';
+  if (start && today >= start && (!end || today <= end)) return 'on_going';
+  return item.status || 'pending';
+}
+
+function localDateIso() {
+  const date = new Date();
+  const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  return localDate.toISOString().slice(0, 10);
 }
 
 function courseSummary(item) {

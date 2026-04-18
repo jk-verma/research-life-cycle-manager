@@ -920,9 +920,19 @@ function applyCourseFields(course, formData) {
 }
 
 function courseStatusFromDates(formData) {
+  const startDate = formData.get('course_start_date');
   const endDate = formData.get('course_end_date');
-  if (!endDate) return 'pending';
-  return new Date(endDate) < new Date(nowIso().slice(0, 10)) ? 'finished' : 'pending';
+  const today = localDateIso();
+  if (startDate && today < startDate) return 'about_to_start';
+  if (endDate && today > endDate) return 'finished';
+  if (startDate && today >= startDate && (!endDate || today <= endDate)) return 'on_going';
+  return 'pending';
+}
+
+function localDateIso() {
+  const date = new Date();
+  const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  return localDate.toISOString().slice(0, 10);
 }
 
 function calculateCourseLectureCount(totalHours, lectureDuration) {
