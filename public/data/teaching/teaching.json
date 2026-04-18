@@ -1163,12 +1163,18 @@
           "summary": "teaching record created locally",
           "updated_by": "local-admin",
           "updated_at": "2026-04-18T14:31:31.004Z"
+        },
+        {
+          "version": 2,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:07:53.604Z"
         }
       ],
       "created_by": "local-admin",
       "timestamps": {
         "created_at": "2026-04-18T14:31:31.004Z",
-        "updated_at": "2026-04-18T14:31:31.004Z"
+        "updated_at": "2026-04-18T15:07:53.604Z"
       },
       "visibility": "open",
       "course_type": "",
@@ -1176,13 +1182,24 @@
       "total_participants": "",
       "lecture_duration": 0,
       "total_lectures": 0,
-      "internal_component_marks": 0,
+      "internal_component_marks": 50,
       "external_component_marks": 0,
-      "total_marks": 0,
+      "total_marks": 50,
       "course_start_date": "",
       "course_end_date": "",
       "feedback_score": "",
-      "assessment_components": []
+      "assessment_components": [
+        "Quiz-1: 5",
+        "Quiz-2: 5",
+        "Mid Term Exam: 15",
+        "Class Participation: 5",
+        "Assignment(s): 10",
+        "Project(s): 10"
+      ],
+      "programme": "",
+      "batch": "",
+      "section": "",
+      "updated_by": "local-admin"
     },
     {
       "id": "teaching-1776522679898-a07f0b",
@@ -2345,12 +2362,18 @@
           "summary": "teaching record created locally",
           "updated_by": "local-admin",
           "updated_at": "2026-04-18T14:31:19.898Z"
+        },
+        {
+          "version": 2,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:07:59.561Z"
         }
       ],
       "created_by": "local-admin",
       "timestamps": {
         "created_at": "2026-04-18T14:31:19.898Z",
-        "updated_at": "2026-04-18T14:31:19.898Z"
+        "updated_at": "2026-04-18T15:07:59.561Z"
       },
       "visibility": "open",
       "course_type": "",
@@ -2358,13 +2381,24 @@
       "total_participants": "",
       "lecture_duration": 0,
       "total_lectures": 0,
-      "internal_component_marks": 0,
+      "internal_component_marks": 50,
       "external_component_marks": 0,
-      "total_marks": 0,
+      "total_marks": 50,
       "course_start_date": "",
       "course_end_date": "",
       "feedback_score": "",
-      "assessment_components": []
+      "assessment_components": [
+        "Quiz-1: 5",
+        "Quiz-2: 5",
+        "Mid Term Exam: 15",
+        "Class Participation: 5",
+        "Assignment(s): 10",
+        "Project(s): 10"
+      ],
+      "programme": "",
+      "batch": "",
+      "section": "",
+      "updated_by": "local-admin"
     },
     {
       "id": "teach-ai-ml-2025",
@@ -2374,7 +2408,7 @@
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
       "final_deadline": "2026-05-15",
-      "status": "pending",
+      "status": "about_to_start",
       "priority": "medium",
       "subtasks": [
         {
@@ -3347,7 +3381,7 @@
       "created_by": "u-admin",
       "timestamps": {
         "created_at": "2026-04-12T10:00:00.000Z",
-        "updated_at": "2026-04-18T11:30:00.000Z"
+        "updated_at": "2026-04-18T15:07:47.784Z"
       },
       "course_type": "UG Course",
       "total_hours": 30,
@@ -3356,15 +3390,36 @@
       "assessment_components": [
         "Quiz-1: 5",
         "Quiz-2: 5",
+        "Mid Term Exam: 15",
         "Class Participation: 5",
         "Assignment(s): 10",
         "Project(s): 10"
       ],
-      "internal_component_marks": 35,
+      "internal_component_marks": 50,
       "external_component_marks": 50,
-      "total_marks": 85,
+      "total_marks": 100,
       "course_start_date": "2026-04-20",
-      "course_end_date": "2026-05-15"
+      "course_end_date": "2026-05-15",
+      "programme": "BBA",
+      "batch": "2025-30",
+      "section": "A",
+      "total_participants": "50",
+      "feedback_score": "",
+      "updated_by": "local-admin",
+      "history": [
+        {
+          "version": 1,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:07:38.232Z"
+        },
+        {
+          "version": 2,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:07:47.784Z"
+        }
+      ]
     }
   ]
 }
