@@ -375,7 +375,7 @@ function courseFields() {
 }
 
 function courseTypeSelect(selected = '') {
-  const types = ['UG', 'PG', 'Doctorate', 'FDP', 'MDP', 'Certificate Course'];
+  const types = ['UG Course', 'PG Course', 'Doctorate Course', 'FDP Course', 'MDP Course', 'Certificate Course'];
   return `<select name="course_type"><option value="">Course Type</option>${types.map((type) => `<option value="${escapeHtml(type)}" ${selected === type ? 'selected' : ''}>${escapeHtml(type)}</option>`).join('')}</select>`;
 }
 
