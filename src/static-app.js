@@ -343,13 +343,6 @@ function bindEvents() {
     });
   });
 
-  document.querySelectorAll('[data-update-course-item]').forEach((form) => {
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      updateCourseItem(form.dataset.updateCourseItem, new FormData(form));
-    });
-  });
-
   const candidateForm = document.getElementById('candidate-form');
   if (candidateForm) candidateForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -506,7 +499,11 @@ function fillSubtaskEditForm(kind, id, module, subtaskId) {
   const record = findTaskRecord(kind, id, module);
   const subtask = record?.subtasks?.find((item) => item.id === subtaskId);
   if (!subtask) return;
-  const form = document.querySelector(`[data-update-course-item="${CSS.escape(id)}"]`) || document.querySelector(`[data-add-subtask="${CSS.escape(kind)}"][data-id="${CSS.escape(id)}"]`);
+  const form = document.querySelector(`[data-add-subtask="${CSS.escape(kind)}"][data-id="${CSS.escape(id)}"]`);
+  if (!form) {
+    promptSubtaskEdit(record, subtask);
+    return;
+  }
   if (!form) return;
   if (form.elements.subtask_id) form.elements.subtask_id.value = subtask.id;
   if (form.elements.title) form.elements.title.value = subtask.title || '';
@@ -518,6 +515,30 @@ function fillSubtaskEditForm(kind, id, module, subtaskId) {
   if (form.elements.responsible_contact) form.elements.responsible_contact.value = subtask.responsible_contact || '';
   if (form.elements.notes) form.elements.notes.value = '';
   form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function promptSubtaskEdit(record, subtask) {
+  if (!canWrite(store, role)) return;
+  const title = prompt('Activity title', subtask.title || '');
+  if (title === null) return;
+  const status = prompt('Status: pending, completed, deferred, cancelled', subtask.status === 'ongoing' ? 'pending' : (subtask.status || 'pending'));
+  if (status === null) return;
+  const normalized = ['pending', 'completed', 'deferred', 'cancelled'].includes(status.trim()) ? status.trim() : 'pending';
+  const actor = `local-${role.toLowerCase()}`;
+  subtask.title = title.trim() || subtask.title;
+  subtask.status = normalized;
+  subtask.history = subtask.history || [];
+  subtask.history.push({ version: subtask.history.length + 1, summary: 'Activity edited locally', updated_by: actor, updated_at: nowIso() });
+  record.history = record.history || record.revision_history || [];
+  record.history.push({ version: record.history.length + 1, summary: `Activity edited locally: ${subtask.title}`, updated_by: actor, updated_at: nowIso() });
+  if (record.revision_history && record.revision_history !== record.history) {
+    record.revision_history.push({ version: record.revision_history.length + 1, summary: `Activity edited locally: ${subtask.title}`, updated_by: actor, updated_at: nowIso() });
+  }
+  record.timestamps = record.timestamps || {};
+  record.timestamps.updated_at = nowIso();
+  record.updated_by = actor;
+  error = 'Activity edited locally. Export JSON to commit it.';
+  render();
 }
 
 function cancelSubtask(kind, id, module, subtaskId) {
@@ -732,42 +753,6 @@ function updateCourseDetails(id, formData) {
     course.notes.push({ id: uid('note'), text: note, created_by: actor, created_at: nowIso(), visibility: 'open' });
   }
   error = 'Course details updated locally. Export JSON to commit it.';
-  render();
-}
-
-function updateCourseItem(id, formData) {
-  if (!canWrite(store, role)) return;
-  const course = store.academicLife.modules.teaching?.find((item) => item.id === id);
-  if (!course) return;
-  course.subtasks = course.subtasks || [];
-  const actor = `local-${role.toLowerCase()}`;
-  const subtaskId = formData.get('subtask_id');
-  let subtask = course.subtasks.find((item) => item.id === subtaskId);
-  const created = !subtask;
-  if (!subtask) {
-    subtask = { id: uid('course-item'), parent_record_id: course.id, sequence_order: course.subtasks.length + 1, notes: [], history: [] };
-    course.subtasks.push(subtask);
-  }
-  subtask.title = formData.get('title');
-  subtask.subtask_type = formData.get('subtask_type');
-  subtask.due_datetime = formData.get('due_datetime');
-  subtask.due_date = subtask.due_datetime ? subtask.due_datetime.slice(0, 10) : subtask.due_date || '';
-  subtask.completed_datetime = formData.get('completed_datetime');
-  subtask.completed_date = subtask.completed_datetime ? subtask.completed_datetime.slice(0, 10) : subtask.completed_date || '';
-  subtask.status = formData.get('status');
-  subtask.responsible_person = formData.get('responsible_person') || subtask.responsible_person || 'Dr. Jitendra Kumar Verma';
-  const note = formData.get('notes');
-  if (note) {
-    subtask.notes = subtask.notes || [];
-    subtask.notes.push({ id: uid('note'), text: note, created_by: actor, created_at: nowIso(), visibility: 'open' });
-  }
-  subtask.history = subtask.history || [];
-  subtask.history.push({ version: subtask.history.length + 1, summary: created ? 'Course inner item created locally' : 'Course inner item updated locally', updated_by: actor, updated_at: nowIso() });
-  course.history = course.history || [];
-  course.history.push({ version: course.history.length + 1, summary: `Course item updated: ${subtask.title}`, updated_by: actor, updated_at: nowIso() });
-  course.updated_by = actor;
-  course.timestamps = { ...(course.timestamps || {}), updated_at: nowIso() };
-  error = 'Course lecture/task item updated locally. Export JSON to commit it.';
   render();
 }
 

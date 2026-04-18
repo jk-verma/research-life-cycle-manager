@@ -259,7 +259,6 @@ function teachingDetailPage(ctx, item) {
       ${ctx.canWrite() ? courseEditForm(item) : ''}
       ${detailSection('Assessment structure', assessmentSummary(item))}
       ${detailSection('Lecture, exam, and task plan', subtaskTimeline(item, { kind: 'academic', id: item.id, module: 'teaching' }))}
-      ${ctx.canWrite() ? courseItemEditForm(item) : ''}
     </section>`;
 }
 
@@ -313,39 +312,6 @@ function courseEditForm(item) {
       <input name="external_component_marks" type="number" min="0" placeholder="External component marks" value="${escapeHtml(item.external_component_marks || '')}" />
       <input name="note" placeholder="Append note for this course edit" />
       <button>Update course details locally</button>
-    </form>
-  </section>`;
-}
-
-function courseItemEditForm(item) {
-  const subtasks = [...(item.subtasks || [])].sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0));
-  return `<section class="append-panel">
-    <h4>Edit lecture / exam / inner task</h4>
-    <form class="record-form" data-update-course-item="${escapeHtml(item.id)}">
-      <select name="subtask_id">
-        <option value="">Add new lecture or task</option>
-        ${subtasks.map((subtask) => `<option value="${escapeHtml(subtask.id)}">${escapeHtml(subtask.sequence_order || '')}. ${escapeHtml(subtask.title)}</option>`).join('')}
-      </select>
-      <input name="title" required placeholder="Lecture, exam, or task title" />
-      <select name="subtask_type">
-        <option>lecture</option>
-        <option>course_outline</option>
-        <option>assignment</option>
-        <option>project</option>
-        <option>quiz</option>
-        <option>question_paper_setting</option>
-        <option>mid_term_exam</option>
-        <option>end_term_exam</option>
-        <option>answer_script_collection</option>
-        <option>evaluation</option>
-        <option>discipline_note</option>
-      </select>
-      <input name="due_datetime" type="datetime-local" />
-      <input name="completed_datetime" type="datetime-local" />
-      <select name="status"><option>pending</option><option>completed</option><option>deferred</option><option>cancelled</option></select>
-      <input name="responsible_person" placeholder="Responsible person" />
-      <input name="notes" placeholder="Append-only note" />
-      <button>Update inner item locally</button>
     </form>
   </section>`;
 }
