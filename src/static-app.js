@@ -458,7 +458,10 @@ function addSubtask(kind, id, formData, module = '') {
     ? nextSubtaskInsertOrder(record.subtasks, parentSubtaskId)
     : Number(insertAfterRaw);
   const dueDatetime = formData.get('due_datetime');
-  const completedDatetime = formData.get('completed_datetime') || (formData.get('status') === 'completed' ? nowIso().slice(0, 16) : '');
+  const completedDatetime = formData.has('completed_datetime')
+    ? formData.get('completed_datetime')
+    : (existing?.completed_datetime || existing?.completed_date || '');
+  const nextStatus = deriveSubtaskStatus(dueDatetime, completedDatetime);
   const subtask = existing || {
     id: uid('subtask'),
     parent_record_id: id,
@@ -475,16 +478,18 @@ function addSubtask(kind, id, formData, module = '') {
     due_date: dueDatetime ? dueDatetime.slice(0, 10) : '',
     completed_datetime: completedDatetime,
     completed_date: completedDatetime ? completedDatetime.slice(0, 10) : '',
-    status: formData.get('status'),
+    status: nextStatus,
     responsible_person: formData.get('responsible_person'),
     responsible_contact: formData.get('responsible_contact'),
     responsible_email: formData.get('responsible_email'),
     hierarchy_level: hierarchyLevel,
     parent_subtask_id: hierarchyLevel > 0 ? parentSubtaskId : ''
   });
-  if (formData.get('notes')) {
-    subtask.notes = subtask.notes || [];
-    subtask.notes.push({ id: uid('note'), text: formData.get('notes'), created_by: actor, created_at: nowIso(), visibility: record.visibility || 'open' });
+  if (formData.has('notes')) {
+    const noteText = String(formData.get('notes') || '').trim();
+    subtask.notes = noteText
+      ? [{ id: subtask.notes?.[0]?.id || uid('note'), text: noteText, created_by: actor, created_at: subtask.notes?.[0]?.created_at || nowIso(), visibility: record.visibility || 'open' }]
+      : [];
   }
   subtask.history = subtask.history || [];
   subtask.history.push({ version: subtask.history.length + 1, summary: existing ? 'Subtask updated locally' : 'Subtask added locally', updated_by: actor, updated_at: nowIso() });
@@ -515,6 +520,15 @@ function addSubtask(kind, id, formData, module = '') {
   record.updated_by = actor;
   error = `${existing ? 'Subtask updated' : 'Subtask added'} locally. Export JSON to commit it.`;
   render();
+}
+
+function deriveSubtaskStatus(dueDatetime = '', completedDatetime = '') {
+  if (completedDatetime) return 'finished';
+  if (!dueDatetime) return 'pending';
+  const due = String(dueDatetime);
+  const checkpoint = due.includes('T') ? due.slice(0, 16) : due.slice(0, 10);
+  const now = new Date().toISOString().slice(0, due.includes('T') ? 16 : 10);
+  return checkpoint < now ? 'overdue' : 'pending';
 }
 
 function reorderSubtask(source, targetSubtaskId, hierarchyLevel = 0) {

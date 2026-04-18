@@ -88,10 +88,12 @@ export function subtaskTimeline(record = {}, options = {}) {
   return `<div class="subtask-timeline">${subtasks.map((subtask) => {
     const due = subtask.due_datetime || subtask.due_date;
     const completed = subtask.completed_datetime || subtask.completed_date;
-    const overdue = isOverdue(due, subtask.status);
+    const displayStatus = activityDateStatus(subtask);
+    const overdue = displayStatus === 'overdue';
     const contact = subtask.responsible_contact || subtask.contact_number || subtask.mobile_extension;
     const email = subtask.responsible_email || subtask.email;
     const notes = (subtask.notes || []).filter((note) => note?.text);
+    const remark = notes.map((note) => note.text).join('\n');
     const hierarchyLevel = Math.max(0, Math.min(2, Number(subtask.hierarchy_level || 0)));
     const dragAttrs = options.kind ? `draggable="true" data-reorder-subtask="true" data-kind="${escapeHtml(options.kind)}" data-id="${escapeHtml(options.id || record.id || '')}" data-module="${escapeHtml(options.module || record.module || '')}" data-subtask-id="${escapeHtml(subtask.id)}"` : '';
     const actions = options.kind ? `<div class="subtask-actions">
@@ -110,19 +112,19 @@ export function subtaskTimeline(record = {}, options = {}) {
           <input name="responsible_person" placeholder="Responsible" value="${escapeHtml(subtask.responsible_person || '')}" />
           <input name="responsible_contact" placeholder="Responsible Contact" value="${escapeHtml(contact || '')}" />
           <input name="responsible_email" type="email" placeholder="Responsible Email" value="${escapeHtml(email || '')}" />
-          <input name="notes" placeholder="Topic / Notes / Remark" />
+          <textarea name="notes" placeholder="Topic / Notes / Remark">${escapeHtml(remark)}</textarea>
           <button>Update Activity</button>
         </form>` : '';
     const displayOrder = subtask.display_order || subtask.sequence_order || '';
     return `<article class="${overdue ? 'overdue-card' : ''} ${options.kind ? 'draggable-subtask' : ''} hierarchy-level-${hierarchyLevel}" ${dragAttrs}>
       <div class="subtask-marker">${escapeHtml(displayOrder)}</div>
       <div class="subtask-body">
-        <div class="card-head"><strong>${escapeHtml(subtask.title)}</strong><span>${statusBadge(subtask.status)}${overdue ? statusBadge('overdue') : ''}</span></div>
+        <div class="card-head"><strong>${escapeHtml(subtask.title)}</strong><span>${statusBadge(displayStatus)}</span></div>
         <div class="subtask-meta">
           <span class="meta-badge due-date-badge"><strong>Due date:</strong> ${escapeHtml(formatDateTime(due) || 'not set')}</span>
           ${completed ? `<span class="meta-badge"><strong>Completed:</strong> ${escapeHtml(formatDateTime(completed))}</span>` : ''}
           <span class="meta-badge responsible-badge"><strong>Responsible:</strong> ${escapeHtml(subtask.responsible_person || 'not assigned')}</span>
-          ${contact ? `<span class="meta-badge"><strong>Mobile / extension:</strong> ${escapeHtml(contact)}</span>` : ''}
+          ${contact ? `<span class="meta-badge"><strong>Mobile / Extension:</strong> ${escapeHtml(contact)}</span>` : ''}
           ${email ? `<span class="meta-badge"><strong>Email:</strong> ${escapeHtml(email)}</span>` : ''}
         </div>
         ${notes.length ? `<div class="subtask-notes">${notes.map((note) => `<p>${escapeHtml(note.text)}</p>`).join('')}</div>` : ''}
@@ -137,6 +139,14 @@ function dateOnly(value = '') {
   return value ? String(value).slice(0, 10) : '';
 }
 
+function activityDateStatus(subtask = {}) {
+  const completed = subtask.completed_datetime || subtask.completed_date;
+  if (completed || ['completed', 'finished'].includes(String(subtask.status || '').toLowerCase())) return 'finished';
+  const due = subtask.due_datetime || subtask.due_date;
+  if (isOverdue(due, subtask.status)) return 'overdue';
+  return 'pending';
+}
+
 export function subtaskForm(kind, id, module = '') {
   return `<section class="append-panel">
     <h4>Add activity / sub-activity</h4>
@@ -147,7 +157,7 @@ export function subtaskForm(kind, id, module = '') {
       <input name="due_datetime" type="datetime-local" required />
       <input name="completed_datetime" type="datetime-local" />
       <input name="responsible_person" placeholder="Responsible person" />
-      <input name="responsible_contact" placeholder="Mobile or extension number" />
+      <input name="responsible_contact" placeholder="Mobile / Extension" />
       <input name="insert_after_order" type="number" min="0" step="1" placeholder="Insert after sequence no." />
       <input name="parent_subtask_id" placeholder="Parent activity id for sub-activity" />
       <select name="hierarchy_level"><option value="0">Activity</option><option value="1">Sub-activity</option><option value="2">Sub-sub-activity</option></select>

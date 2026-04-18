@@ -64,7 +64,7 @@ export function templateDetailPage(ctx, id) {
       completed_datetime: '',
       status: 'pending',
       responsible_person: 'Assign when used',
-      responsible_contact: 'Add mobile or extension when used',
+      responsible_contact: 'Add Mobile / Extension when used',
       hierarchy_level: 0,
       parent_subtask_id: '',
       notes: [],

@@ -30,7 +30,7 @@ export function mentorDetailPage(ctx, id) {
         ${summaryItem('Designation', mentor.designation)}
         ${summaryItem('Organization', mentor.organization)}
         ${summaryItem('Email', mentor.email)}
-        ${summaryItem('Mobile / extension', mentor.mobile_or_extension)}
+        ${summaryItem('Mobile / Extension', mentor.mobile_or_extension)}
         ${summaryItem('Academic year', mentor.academic_year_current)}
       </div><p>${escapeHtml(mentor.role_description || '')}</p>`)}
       ${detailSection('Assigned students', candidates.map((candidate) => recordCard({
@@ -55,7 +55,7 @@ function mentorForm(ctx) {
       <input name="designation" placeholder="Designation" />
       <input name="organization" placeholder="Organization" />
       <input name="email" type="email" placeholder="Email" />
-      <input name="mobile_or_extension" placeholder="Mobile or extension" />
+      <input name="mobile_or_extension" placeholder="Mobile / Extension" />
       <input name="specialization" placeholder="Specialization / support area" />
       <input name="assigned_candidate_ids" placeholder="Candidate IDs, comma separated" />
       <input name="role_description" placeholder="Mentor role description" />
