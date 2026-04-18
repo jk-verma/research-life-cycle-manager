@@ -3,14 +3,1213 @@
   "updated_at": "2026-04-18T11:30:00.000Z",
   "records": [
     {
-      "id": "teaching-1776522691004-01a128",
-      "title": "XYZ",
+      "id": "teaching-1776525490115-b5fe81",
+      "title": "IT Applications in Management",
       "category": "teaching",
       "sub_type": "course",
-      "academic_year_start": "2025-2026",
-      "academic_year_current": "2025-2026",
-      "final_deadline": "",
-      "status": "pending",
+      "academic_year_start": "2026-2027",
+      "academic_year_current": "2026-2027",
+      "final_deadline": "2026-03-15",
+      "status": "about_to_start",
+      "notes": [],
+      "subtasks": [
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-outline-dg",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Course Outline Circulation DG",
+          "subtask_type": "course_outline",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 1,
+          "display_order": "1"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-outline-pd-students",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Course Outline Circulation PD/Students",
+          "subtask_type": "course_outline",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 2,
+          "display_order": "2"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-1",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-1: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-c9d4a7",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 3,
+          "display_order": "3"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-2",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-2: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-92c136",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 4,
+          "display_order": "4"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-3",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-3: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-1841db",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 5,
+          "display_order": "5"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-4",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-4: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-30a4b4",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 6,
+          "display_order": "6"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-5",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-5: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-649062",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 7,
+          "display_order": "7"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-6",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-6: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-898875",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 8,
+          "display_order": "8"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-7",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-7: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-ab5003",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 9,
+          "display_order": "9"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-mid-term-pre-process",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Mid Term Pre Process Activities",
+          "subtask_type": "pre_process",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-339260",
+              "text": "Activity group before mid term. Due date should match Lecture-7 due date.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 10,
+          "display_order": "10"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-8",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-8: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-2bf0b7",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 11,
+          "display_order": "11"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-9",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-9: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-b75fe0",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 12,
+          "display_order": "12"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-10",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-10: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-aec839",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 13,
+          "display_order": "13"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-mid-term-process",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Mid Term Process (If UG Course)",
+          "subtask_type": "mid_term_process",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 14,
+          "display_order": "14"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-11",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-11: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-955366",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 15,
+          "display_order": "15"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-12",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-12: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-fe6e91",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 16,
+          "display_order": "16"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-13",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-13: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-e0cded",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 17,
+          "display_order": "17"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-14",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-14: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-c2aa78",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 18,
+          "display_order": "18"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-15",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-15: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-58d4b5",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 19,
+          "display_order": "19"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-16",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-16: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-80b659",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 20,
+          "display_order": "20"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-17",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-17: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-3a9c31",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 21,
+          "display_order": "21"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-end-term-pre-process",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "End Term Pre Process Activities",
+          "subtask_type": "pre_process",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-e0c2b1",
+              "text": "Activity group before end term. Due date should match Lecture-17 due date.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 22,
+          "display_order": "22"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-18",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-18: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-133c18",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 23,
+          "display_order": "23"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-19",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-19: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-70b94b",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 24,
+          "display_order": "24"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-lecture-20",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Lecture-20: Lecture on pre-defined topics",
+          "subtask_type": "lecture",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [
+            {
+              "id": "note-1776525490116-3fb1ee",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 25,
+          "display_order": "25"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-assignment-1",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Assignment-1 Questions",
+          "subtask_type": "assignment",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-mid-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 26,
+          "display_order": "10.1"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-project-set-1",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Project Title Set-1 + Sample Report (Ranchoddas Shamaldas Chanchad Alias Rancho)",
+          "subtask_type": "project",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-mid-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 27,
+          "display_order": "10.2"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-quiz-1",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Quiz-1 Questions",
+          "subtask_type": "quiz",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-mid-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [
+            {
+              "id": "note-1776525490116-bc138c",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 28,
+          "display_order": "10.3"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-question-paper-ug",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Question Paper Setting (If UG Course)",
+          "subtask_type": "question_paper_setting",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-mid-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [
+            {
+              "id": "note-1776525490116-a49a2a",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 29,
+          "display_order": "10.4"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-in-class-quiz-1",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "In-Class Quiz-1",
+          "subtask_type": "quiz",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-lecture-10",
+          "hierarchy_level": 1,
+          "notes": [
+            {
+              "id": "note-1776525490116-c05ac9",
+              "text": "Details can be added here.",
+              "created_by": "local-admin",
+              "created_at": "2026-04-18T15:18:10.116Z",
+              "visibility": "open"
+            }
+          ],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 30,
+          "display_order": "13.1"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-mid-term-exam",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Mid Term Exam: Held on Date",
+          "subtask_type": "mid_term_exam",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-mid-term-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 31,
+          "display_order": "14.1"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-mid-term-answer-script",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Answer Script Collection: Collection Date",
+          "subtask_type": "answer_script_collection",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-mid-term-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 32,
+          "display_order": "14.2"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-mid-term-evaluation",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Evaluation: Target Completion and Display Date (Maximum 20 days)",
+          "subtask_type": "evaluation",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-mid-term-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 33,
+          "display_order": "14.3"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-assignment-2",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Assignment-2 Questions",
+          "subtask_type": "assignment",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-end-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 34,
+          "display_order": "22.1"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-project-set-2",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Project Title Set-2 + Sample Report (Chatur Ramalingam Alias Silencer)",
+          "subtask_type": "project",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-end-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 35,
+          "display_order": "22.2"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-quiz-2",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Quiz-2 Questions (If needed paper + OMR based)",
+          "subtask_type": "quiz",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-end-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 36,
+          "display_order": "22.3"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-end-term-question-paper",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Question Paper Setting",
+          "subtask_type": "question_paper_setting",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "sub-teaching-1776525490115-b5fe81-end-term-pre-process",
+          "hierarchy_level": 1,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 37,
+          "display_order": "22.4"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-end-term-exam",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "End-Term Exam: Held on",
+          "subtask_type": "end_term_exam",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 38,
+          "display_order": "26"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-end-term-answer-script",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Answer Script Collection: Collection Date",
+          "subtask_type": "answer_script_collection",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 39,
+          "display_order": "27"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-end-term-evaluation",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Evaluation: Target Completion and Display Date (Maximum 20 days)",
+          "subtask_type": "evaluation",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 40,
+          "display_order": "28"
+        },
+        {
+          "id": "sub-teaching-1776525490115-b5fe81-course-notes",
+          "parent_record_id": "teaching-1776525490115-b5fe81",
+          "title": "Notes: Exceptional Students, Undisciplined Students, Majority of Batch is Undisciplined then Difficult Question Paper",
+          "subtask_type": "note",
+          "due_date": "",
+          "completed_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "parent_subtask_id": "",
+          "hierarchy_level": 0,
+          "notes": [],
+          "history": [
+            {
+              "version": 1,
+              "summary": "Course plan item created",
+              "updated_by": "local-admin",
+              "updated_at": "2026-04-18T15:18:10.116Z"
+            }
+          ],
+          "sequence_order": 41,
+          "display_order": "29"
+        }
+      ],
+      "history": [
+        {
+          "version": 1,
+          "summary": "teaching record created locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:18:10.116Z"
+        },
+        {
+          "version": 2,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:18:51.799Z"
+        }
+      ],
+      "created_by": "local-admin",
+      "timestamps": {
+        "created_at": "2026-04-18T15:18:10.116Z",
+        "updated_at": "2026-04-18T15:18:51.799Z"
+      },
+      "visibility": "open",
+      "course_type": "PG Course",
+      "programme": "MBA(IB)",
+      "batch": "2026-28",
+      "section": "A",
+      "total_hours": 30,
+      "total_participants": "50",
+      "lecture_duration": 1.5,
+      "total_lectures": 20,
+      "internal_component_marks": 50,
+      "external_component_marks": 50,
+      "total_marks": 100,
+      "course_start_date": "2027-01-15",
+      "course_end_date": "2026-03-15",
+      "feedback_score": "0",
+      "assessment_components": [
+        "Quiz-1: 5",
+        "Quiz-2: 10",
+        "Quiz-3: 10",
+        "Class Participation: 5",
+        "Assignment(s): 10",
+        "Project(s): 10"
+      ],
+      "updated_by": "local-admin"
+    },
+    {
+      "id": "teaching-1776522691004-01a128",
+      "title": "Data and Database Management Systems",
+      "category": "teaching",
+      "sub_type": "course",
+      "academic_year_start": "2026-2027",
+      "academic_year_current": "2026-2027",
+      "final_deadline": "2026-11-16",
+      "status": "about_to_start",
       "notes": [],
       "subtasks": [
         {
@@ -1169,25 +2368,43 @@
           "summary": "Course details updated locally",
           "updated_by": "local-admin",
           "updated_at": "2026-04-18T15:07:53.604Z"
+        },
+        {
+          "version": 3,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:12:14.165Z"
+        },
+        {
+          "version": 4,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:12:26.296Z"
+        },
+        {
+          "version": 5,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:13:56.087Z"
         }
       ],
       "created_by": "local-admin",
       "timestamps": {
         "created_at": "2026-04-18T14:31:31.004Z",
-        "updated_at": "2026-04-18T15:07:53.604Z"
+        "updated_at": "2026-04-18T15:13:56.087Z"
       },
       "visibility": "open",
-      "course_type": "",
-      "total_hours": 0,
-      "total_participants": "",
-      "lecture_duration": 0,
-      "total_lectures": 0,
+      "course_type": "PG Course",
+      "total_hours": 40,
+      "total_participants": "50",
+      "lecture_duration": 1.5,
+      "total_lectures": 27,
       "internal_component_marks": 50,
       "external_component_marks": 0,
       "total_marks": 50,
-      "course_start_date": "",
-      "course_end_date": "",
-      "feedback_score": "",
+      "course_start_date": "2026-07-15",
+      "course_end_date": "2026-11-16",
+      "feedback_score": "0",
       "assessment_components": [
         "Quiz-1: 5",
         "Quiz-2: 5",
@@ -1196,20 +2413,20 @@
         "Assignment(s): 10",
         "Project(s): 10"
       ],
-      "programme": "",
-      "batch": "",
-      "section": "",
+      "programme": "IPM",
+      "batch": "2026-31",
+      "section": "A",
       "updated_by": "local-admin"
     },
     {
       "id": "teaching-1776522679898-a07f0b",
-      "title": "XYZ",
+      "title": "Management Information Systems",
       "category": "teaching",
       "sub_type": "course",
-      "academic_year_start": "2025-2026",
-      "academic_year_current": "2025-2026",
-      "final_deadline": "",
-      "status": "pending",
+      "academic_year_start": "2026-2027",
+      "academic_year_current": "2026-2027",
+      "final_deadline": "2026-10-15",
+      "status": "about_to_start",
       "notes": [],
       "subtasks": [
         {
@@ -2368,46 +3585,58 @@
           "summary": "Course details updated locally",
           "updated_by": "local-admin",
           "updated_at": "2026-04-18T15:07:59.561Z"
+        },
+        {
+          "version": 3,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:16:51.654Z"
+        },
+        {
+          "version": 4,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:18:18.797Z"
         }
       ],
       "created_by": "local-admin",
       "timestamps": {
         "created_at": "2026-04-18T14:31:19.898Z",
-        "updated_at": "2026-04-18T15:07:59.561Z"
+        "updated_at": "2026-04-18T15:18:18.797Z"
       },
       "visibility": "open",
-      "course_type": "",
-      "total_hours": 0,
-      "total_participants": "",
-      "lecture_duration": 0,
-      "total_lectures": 0,
+      "course_type": "PG Course",
+      "total_hours": 30,
+      "total_participants": "50",
+      "lecture_duration": 1.5,
+      "total_lectures": 20,
       "internal_component_marks": 50,
       "external_component_marks": 0,
       "total_marks": 50,
-      "course_start_date": "",
-      "course_end_date": "",
-      "feedback_score": "",
+      "course_start_date": "2026-07-15",
+      "course_end_date": "2026-10-15",
+      "feedback_score": "0",
       "assessment_components": [
         "Quiz-1: 5",
-        "Quiz-2: 5",
-        "Mid Term Exam: 15",
+        "Quiz-2: 10",
+        "Quiz-3: 10",
         "Class Participation: 5",
         "Assignment(s): 10",
         "Project(s): 10"
       ],
-      "programme": "",
-      "batch": "",
-      "section": "",
+      "programme": "MBA(IB)",
+      "batch": "2026-28",
+      "section": "A",
       "updated_by": "local-admin"
     },
     {
       "id": "teach-ai-ml-2025",
-      "title": "Artificial Intelligence and Machine Learning",
+      "title": "MS Excel",
       "category": "teaching",
       "sub_type": "course",
-      "academic_year_start": "2025-2026",
-      "academic_year_current": "2025-2026",
-      "final_deadline": "2026-05-15",
+      "academic_year_start": "2026-2027",
+      "academic_year_current": "2026-2027",
+      "final_deadline": "2026-11-16",
       "status": "about_to_start",
       "priority": "medium",
       "subtasks": [
@@ -3381,9 +4610,9 @@
       "created_by": "u-admin",
       "timestamps": {
         "created_at": "2026-04-12T10:00:00.000Z",
-        "updated_at": "2026-04-18T15:07:47.784Z"
+        "updated_at": "2026-04-18T15:13:08.900Z"
       },
-      "course_type": "UG Course",
+      "course_type": "PG Course",
       "total_hours": 30,
       "lecture_duration": 1.5,
       "total_lectures": 20,
@@ -3398,13 +4627,13 @@
       "internal_component_marks": 50,
       "external_component_marks": 50,
       "total_marks": 100,
-      "course_start_date": "2026-04-20",
-      "course_end_date": "2026-05-15",
-      "programme": "BBA",
+      "course_start_date": "2026-07-15",
+      "course_end_date": "2026-11-16",
+      "programme": "IPM",
       "batch": "2025-30",
       "section": "A",
       "total_participants": "50",
-      "feedback_score": "",
+      "feedback_score": "0",
       "updated_by": "local-admin",
       "history": [
         {
@@ -3418,6 +4647,24 @@
           "summary": "Course details updated locally",
           "updated_by": "local-admin",
           "updated_at": "2026-04-18T15:07:47.784Z"
+        },
+        {
+          "version": 3,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:09:28.585Z"
+        },
+        {
+          "version": 4,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:10:02.224Z"
+        },
+        {
+          "version": 5,
+          "summary": "Course details updated locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-18T15:13:08.900Z"
         }
       ]
     }
