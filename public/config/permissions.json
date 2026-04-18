@@ -1,40 +1,20 @@
 {
-  "visibility_levels": [],
   "roles": {
     "ADMIN": {
       "can_edit_local": true,
-      "can_archive": true,
-      "can_correct": true,
-      "can_close": true,
-      "can_review_assistant_data": true,
-      "can_manage_calendar": true,
-      "can_manage_visibility_labels": false,
-      "visible_levels": []
+      "can_archive": true
     },
     "ASSISTANT": {
       "can_edit_local": true,
-      "can_archive": false,
-      "can_correct": false,
-      "can_close": false,
-      "can_review_assistant_data": false,
-      "can_manage_calendar": true,
-      "can_manage_visibility_labels": false,
-      "visible_levels": []
+      "can_archive": false
     },
     "VIEWER": {
       "can_edit_local": false,
-      "can_archive": false,
-      "can_manage_visibility_labels": false,
-      "visible_levels": []
+      "can_archive": false
     },
     "RESTRICTED_EXTERNAL": {
       "can_edit_local": false,
-      "can_archive": false,
-      "can_manage_visibility_labels": false,
-      "visible_levels": []
+      "can_archive": false
     }
-  },
-  "protected_settings_roles": ["ADMIN"],
-  "writing_roles": ["ADMIN", "ASSISTANT"],
-  "masked_text": ""
+  }
 }

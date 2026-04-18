@@ -9,7 +9,6 @@
       "designation": "Senior PhD candidate",
       "organization": "Research group",
       "email": "meera.iyer@example.edu",
-      "mobile_or_extension": "",
       "specialization": "Federated learning, biomedical AI, research writing",
       "assigned_candidate_ids": [
         "cand-ms-asha",
@@ -18,7 +17,6 @@
       "role_description": "Supports literature review structure, weekly research hygiene, and early draft feedback for assigned students.",
       "status": "active",
       "priority": "medium",
-      "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
       "created_by": "u-admin",
@@ -31,7 +29,6 @@
         {
           "id": "mentor-note-meera-1",
           "text": "Senior student mentor for Masters and intern research process support.",
-          "visibility": "open",
           "created_by": "u-admin",
           "created_at": "2026-04-17T18:00:00.000Z"
         }
@@ -61,7 +58,6 @@
       "role_description": "Coordinates milestone readiness, internal review preparation, and documentation follow-up.",
       "status": "active",
       "priority": "high",
-      "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
       "created_by": "u-admin",
@@ -74,7 +70,6 @@
         {
           "id": "mentor-note-anita-1",
           "text": "Junior faculty mentor for milestone coordination and follow-up support.",
-          "visibility": "open",
           "created_by": "u-admin",
           "created_at": "2026-04-17T18:00:00.000Z"
         }
@@ -95,7 +90,6 @@
       "designation": "External collaborator",
       "organization": "Industry analytics lab",
       "email": "r.sen@example.org",
-      "mobile_or_extension": "",
       "specialization": "Responsible recommender systems, applied analytics, external validation",
       "assigned_candidate_ids": [
         "cand-phd-kabir"
@@ -103,7 +97,6 @@
       "role_description": "Provides external perspective on applied validation and responsible AI evaluation.",
       "status": "active",
       "priority": "medium",
-      "visibility": "open",
       "academic_year_start": "2025-2026",
       "academic_year_current": "2025-2026",
       "created_by": "u-admin",
@@ -116,7 +109,6 @@
         {
           "id": "mentor-note-sen-1",
           "text": "External collaborator mentor for selected PhD work.",
-          "visibility": "open",
           "created_by": "u-admin",
           "created_at": "2026-04-17T18:00:00.000Z"
         }

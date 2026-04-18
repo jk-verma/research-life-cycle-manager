@@ -13,24 +13,19 @@
         "final_deadline": "2026-05-15",
         "status": "pending",
         "priority": "medium",
-        "notes": [],
         "subtasks": [
           {
             "id": "sub-teach-ai-ml-outline-dg",
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Course Outline Circulation DG",
             "subtask_type": "course_outline",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-outline-dg-details",
                 "text": "Due date can be entered when announced.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -50,17 +45,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Course Outline Circulation PD/Students",
             "subtask_type": "course_outline",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-outline-pd-students-details",
                 "text": "Due date can be entered when announced.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -80,17 +71,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-1: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "completed",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-1-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -110,17 +97,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-2: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "completed",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-2-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -140,17 +123,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-3: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "completed",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-3-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -170,17 +149,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-4: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-4-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -200,17 +175,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-5: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-5-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -230,17 +201,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-6: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-6-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -260,17 +227,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-7: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-7-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -290,17 +253,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Mid Term Pre Process Activities",
             "subtask_type": "pre_process",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-mid-term-pre-process-details",
                 "text": "Activity group for Assignment-1 questions, project title set-1, Quiz-1 questions, and UG question paper setting. Due date should match Lecture-7 due date.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -320,13 +279,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Assignment-1 Questions",
             "subtask_type": "assignment",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-mid-term-pre-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -342,13 +298,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Project Title Set-1 + Sample Report (Ranchoddas Shamaldas Chanchad Alias Rancho)",
             "subtask_type": "project",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-mid-term-pre-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -364,8 +317,6 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Quiz-1 Questions",
             "subtask_type": "quiz",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-mid-term-pre-process",
@@ -374,7 +325,6 @@
               {
                 "id": "sub-teach-ai-ml-quiz-1-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -394,8 +344,6 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Question Paper Setting (If UG Course)",
             "subtask_type": "question_paper_setting",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-mid-term-pre-process",
@@ -404,7 +352,6 @@
               {
                 "id": "sub-teach-ai-ml-question-paper-ug-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -424,17 +371,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-8: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-8-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -454,17 +397,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-9: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-9-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -484,17 +423,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-10: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-10-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -514,8 +449,6 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "In-Class Quiz-1",
             "subtask_type": "quiz",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-lecture-10",
@@ -524,7 +457,6 @@
               {
                 "id": "sub-teach-ai-ml-in-class-quiz-1-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -544,13 +476,9 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Mid Term Process (If UG Course)",
             "subtask_type": "mid_term_process",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -566,13 +494,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Mid Term Exam: Held on Date",
             "subtask_type": "mid_term_exam",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-mid-term-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -588,13 +513,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Answer Script Collection: Collection Date",
             "subtask_type": "answer_script_collection",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-mid-term-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -610,13 +532,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Evaluation: Target Completion and Display Date (Maximum 20 days)",
             "subtask_type": "evaluation",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-mid-term-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -632,17 +551,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-11: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-11-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -662,17 +577,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-12: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-12-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -692,17 +603,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-13: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-13-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -722,17 +629,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-14: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-14-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -752,17 +655,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-15: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-15-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -782,17 +681,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-16: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-16-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -812,17 +707,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-17: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-17-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -842,17 +733,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "End Term Pre Process Activities",
             "subtask_type": "pre_process",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-end-term-pre-process-details",
                 "text": "Activity group for Assignment-2 questions, project title set-2, Quiz-2 questions, and end-term question paper setting. Due date should match Lecture-17 due date.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -872,13 +759,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Assignment-2 Questions",
             "subtask_type": "assignment",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-end-term-pre-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -894,13 +778,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Project Title Set-2 + Sample Report (Chatur Ramalingam Alias Silencer)",
             "subtask_type": "project",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-end-term-pre-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -916,13 +797,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Quiz-2 Questions (If needed paper + OMR based)",
             "subtask_type": "quiz",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-end-term-pre-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -938,13 +816,10 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Question Paper Setting",
             "subtask_type": "question_paper_setting",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "parent_subtask_id": "sub-teach-ai-ml-end-term-pre-process",
             "hierarchy_level": 1,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -960,17 +835,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-18: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-18-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -990,17 +861,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-19: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-19-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -1020,17 +887,13 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Lecture-20: Lecture on pre-defined topics",
             "subtask_type": "lecture",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
             "notes": [
               {
                 "id": "sub-teach-ai-ml-lecture-20-details",
                 "text": "Details can be added here.",
-                "visibility": "open",
                 "created_by": "u-admin",
                 "created_at": "2026-04-18T10:00:00.000Z"
               }
@@ -1050,13 +913,9 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "End-Term Exam: Held on",
             "subtask_type": "end_term_exam",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -1072,13 +931,9 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Answer Script Collection: Collection Date",
             "subtask_type": "answer_script_collection",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -1094,13 +949,9 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Evaluation: Target Completion and Display Date (Maximum 20 days)",
             "subtask_type": "evaluation",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -1116,13 +967,9 @@
             "parent_record_id": "teach-ai-ml-2025",
             "title": "Notes: Exceptional Students, Undisciplined Students, Majority of Batch is Undisciplined then Difficult Question Paper",
             "subtask_type": "note",
-            "due_date": "",
-            "completed_date": "",
             "status": "pending",
             "responsible_person": "Dr. Jitendra Kumar Verma",
-            "parent_subtask_id": "",
             "hierarchy_level": 0,
-            "notes": [],
             "history": [
               {
                 "version": 1,
@@ -1134,15 +981,12 @@
             "sequence_order": 41
           }
         ],
-        "history": [],
         "created_by": "u-admin",
         "timestamps": {
           "created_at": "2026-04-12T10:00:00.000Z",
           "updated_at": "2026-04-18T11:30:00.000Z"
         },
-        "visibility": "open",
         "course_type": "UG Course",
-        "total_participants": "",
         "total_hours": 30,
         "lecture_duration": 1.5,
         "total_lectures": 20,
@@ -1157,9 +1001,7 @@
         "external_component_marks": 50,
         "total_marks": 85,
         "course_start_date": "2026-04-20",
-        "course_end_date": "2026-05-15",
-        "feedback_score": "",
-        "internal_components": {}
+        "course_end_date": "2026-05-15"
       }
     ],
     "admin_work": [
@@ -1177,8 +1019,7 @@
             "id": "admin-note-1",
             "text": "Assistant compiled first draft of research supervision evidence.",
             "created_by": "u-assistant",
-            "created_at": "2026-04-16T15:00:00.000Z",
-            "visibility": "open"
+            "created_at": "2026-04-16T15:00:00.000Z"
           }
         ],
         "responsibility": "Department research documentation",
@@ -1195,9 +1036,7 @@
           "created_at": "2026-04-16T15:00:00.000Z",
           "updated_at": "2026-04-16T15:00:00.000Z"
         },
-        "visibility": "open",
-        "final_deadline": "2026-05-30",
-        "subtasks": []
+        "final_deadline": "2026-05-30"
       }
     ],
     "external_engagements": [
@@ -1217,8 +1056,7 @@
             "id": "external-note-1",
             "text": "Topic and abstract shared with host coordinator.",
             "created_by": "u-admin",
-            "created_at": "2026-04-17T09:30:00.000Z",
-            "visibility": "open"
+            "created_at": "2026-04-17T09:30:00.000Z"
           }
         ],
         "history": [
@@ -1234,9 +1072,7 @@
           "created_at": "2026-04-17T09:30:00.000Z",
           "updated_at": "2026-04-17T09:30:00.000Z"
         },
-        "visibility": "open",
-        "final_deadline": "2026-05-08",
-        "subtasks": []
+        "final_deadline": "2026-05-08"
       }
     ],
     "career_mobility": [
@@ -1253,13 +1089,11 @@
         "academic_year_start": "2025-2026",
         "academic_year_current": "2025-2026",
         "application_deadline": "2026-06-15",
-        "application_date": "",
         "status": "planned",
         "priority": "medium",
         "notes": [
           {
             "created_at": "2026-04-18T09:15:00.000Z",
-            "visibility": "open",
             "id": "career-vf-note-1",
             "text": "Prepare profile, teaching areas, and availability before approaching the institute.",
             "created_by": "u-admin"
@@ -1278,14 +1112,12 @@
           "created_at": "2026-04-18T09:15:00.000Z",
           "updated_at": "2026-04-18T09:15:00.000Z"
         },
-        "visibility": "open",
         "final_deadline": "2026-06-15",
         "subtasks": [
           {
             "sequence_order": 1,
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "id": "career-vf-profile",
-            "completed_date": "",
             "history": [
               {
                 "summary": "Subtask created",
@@ -1295,7 +1127,6 @@
               }
             ],
             "parent_record_id": "career-visiting-faculty-2026",
-            "notes": [],
             "subtask_type": "profile",
             "status": "pending",
             "title": "Update academic profile and course list",
@@ -1305,7 +1136,6 @@
             "sequence_order": 2,
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "id": "career-vf-application",
-            "completed_date": "",
             "history": [
               {
                 "summary": "Subtask created",
@@ -1315,7 +1145,6 @@
               }
             ],
             "parent_record_id": "career-visiting-faculty-2026",
-            "notes": [],
             "subtask_type": "application",
             "status": "pending",
             "title": "Submit visiting faculty expression of interest",
@@ -1341,7 +1170,6 @@
         "notes": [
           {
             "created_at": "2026-04-18T09:00:00.000Z",
-            "visibility": "open",
             "id": "sub-ieee-note-1",
             "text": "Track renewal window, payment proof, and receipt upload.",
             "created_by": "u-admin"
@@ -1360,14 +1188,12 @@
           "created_at": "2026-04-18T09:00:00.000Z",
           "updated_at": "2026-04-18T09:00:00.000Z"
         },
-        "visibility": "open",
         "final_deadline": "2026-12-31",
         "subtasks": [
           {
             "sequence_order": 1,
             "responsible_person": "Dr. Jitendra Kumar Verma",
             "id": "sub-ieee-payment",
-            "completed_date": "",
             "history": [
               {
                 "summary": "Subtask created",
@@ -1377,7 +1203,6 @@
               }
             ],
             "parent_record_id": "sub-ieee-2026",
-            "notes": [],
             "subtask_type": "payment",
             "status": "pending",
             "title": "Complete subscription payment",
@@ -1387,7 +1212,6 @@
             "sequence_order": 2,
             "responsible_person": "Faculty Assistant",
             "id": "sub-ieee-receipt",
-            "completed_date": "",
             "history": [
               {
                 "summary": "Subtask created",
@@ -1397,7 +1221,6 @@
               }
             ],
             "parent_record_id": "sub-ieee-2026",
-            "notes": [],
             "subtask_type": "documentation",
             "status": "pending",
             "title": "Archive receipt and membership proof",

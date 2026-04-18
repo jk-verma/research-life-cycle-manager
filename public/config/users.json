@@ -1,33 +1,3 @@
 {
-  "active_role": "ADMIN",
-  "users": [
-    {
-      "id": "u-admin",
-      "name": "Dr. Jitendra Kumar Verma",
-      "role": "ADMIN",
-      "email": "jitendra.verma@example.edu",
-      "note": "Primary faculty admin. Static GitHub Pages role profile; this is not authentication."
-    },
-    {
-      "id": "u-assistant",
-      "name": "Faculty Assistant",
-      "role": "ASSISTANT",
-      "email": "assistant@example.edu",
-      "note": "Optional assistant role for data entry, daily logs, deadlines, follow-up notes, meeting details, attendees, and action items."
-    },
-    {
-      "id": "u-viewer",
-      "name": "Department Viewer",
-      "role": "VIEWER",
-      "email": "viewer@example.edu",
-      "note": "Read-only portal role."
-    },
-    {
-      "id": "u-restricted-external",
-      "name": "Restricted External Reviewer",
-      "role": "RESTRICTED_EXTERNAL",
-      "email": "external@example.edu",
-      "note": "Sanitized preview role. Confidential content is masked."
-    }
-  ]
+  "active_role": "ADMIN"
 }
