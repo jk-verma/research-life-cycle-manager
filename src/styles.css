@@ -563,6 +563,7 @@ nav a:hover {
   flex: 1 1 0;
   min-width: 0;
   padding: 7px 8px;
+  text-align: center;
 }
 
 .single-row-summary span {
