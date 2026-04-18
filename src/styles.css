@@ -640,13 +640,24 @@ nav a:hover {
   gap: 6px;
 }
 
-.subtask-meta span {
+.subtask-meta .meta-badge {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 4px 8px;
   background: #f8fbfb;
   color: var(--muted);
   font-size: 12px;
+}
+
+.subtask-meta .due-date-badge,
+.subtask-meta .responsible-badge {
+  border-color: #b9d7d8;
+  background: #eef8f8;
+  color: var(--ink);
+}
+
+.subtask-meta strong {
+  color: var(--accent);
 }
 
 .subtask-notes {

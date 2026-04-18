@@ -110,12 +110,12 @@ export function subtaskTimeline(record = {}, options = {}) {
       <div class="subtask-body">
         <div class="card-head"><strong>${escapeHtml(subtask.title)}</strong><span>${statusBadge(subtask.status)}${overdue ? statusBadge('overdue') : ''}</span></div>
         <div class="subtask-meta">
-          <span>${escapeHtml(hierarchyLabel)}</span>
-          <span>${escapeHtml(slugLabel(subtask.subtask_type || 'subtask'))}</span>
-          <span>Due date: ${escapeHtml(formatDateTime(due) || 'not set')}</span>
-          ${completed ? `<span>Completed: ${escapeHtml(formatDateTime(completed))}</span>` : ''}
-          <span>Responsible: ${escapeHtml(subtask.responsible_person || 'not assigned')}</span>
-          ${contact ? `<span>Mobile / extension: ${escapeHtml(contact)}</span>` : ''}
+          <span class="meta-badge">${escapeHtml(hierarchyLabel)}</span>
+          <span class="meta-badge">${escapeHtml(slugLabel(subtask.subtask_type || 'subtask'))}</span>
+          <span class="meta-badge due-date-badge"><strong>Due date:</strong> ${escapeHtml(formatDateTime(due) || 'not set')}</span>
+          ${completed ? `<span class="meta-badge"><strong>Completed:</strong> ${escapeHtml(formatDateTime(completed))}</span>` : ''}
+          <span class="meta-badge responsible-badge"><strong>Responsible:</strong> ${escapeHtml(subtask.responsible_person || 'not assigned')}</span>
+          ${contact ? `<span class="meta-badge"><strong>Mobile / extension:</strong> ${escapeHtml(contact)}</span>` : ''}
         </div>
         ${notes.length ? `<div class="subtask-notes">${notes.map((note) => `<p>${escapeHtml(note.text)}</p>`).join('')}</div>` : ''}
         ${actions}
