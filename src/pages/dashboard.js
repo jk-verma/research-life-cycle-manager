@@ -40,8 +40,7 @@ export function dashboardPage(ctx) {
 
   return `${pageHeader('Dashboard', "Today's priorities, deadlines, follow-ups, and academic work in one place.", `Data updated ${lastUpdated(store)}`)}
     <div class="metrics dashboard-metrics">
-      ${metric('Total candidates', candidates.length)}
-      ${metric('Masters / PhD / UG / Intern', `${masters} / ${phd} / ${ug} / ${interns}`)}
+      ${metric('PhD / Masters / UG / Intern', `${phd} / ${masters} / ${ug} / ${interns}`)}
       ${metric('Upcoming meetings', upcomingMeetings.length)}
       ${metric('Today tasks', todaysTasks.length)}
       ${metric('Overdue deadlines', overdueDeadlines.length + overdueActions.length, overdueDeadlines.length + overdueActions.length ? 'danger' : '')}
