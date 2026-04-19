@@ -42,7 +42,7 @@ export function teachingPage(ctx) {
   const form = ctx.canWrite() ? academicRecordForm('teaching', 'Teaching', ctx, { hidden: true }) : '';
   return `${pageHeader('Teaching', 'Manage course plans, activities, assessments, and teaching deadlines.')}
     ${teachingRibbon(ctx, allItems, selectedYear, selectedCampus, selectedCourseType)}
-    ${form ? `<div class="grid teaching-grid course-form-wrap">${form}</div>` : '<p class="notice">Local data entry is currently unavailable in this view.</p>'}
+    ${form ? `<div class="structure-grid course-form-wrap">${form}</div>` : '<p class="notice">Local data entry is currently unavailable in this view.</p>'}
     ${selectedYear === 'all'
       ? teachingYearSections(items, ctx)
       : teachingYearSection(selectedYear, items, ctx, { hideWhenEmpty: false })}`;
@@ -182,7 +182,7 @@ function academicRecordForm(module, title, ctx, options = {}) {
   const heading = module === 'teaching' ? 'Course details' : `Add ${title} record`;
   const panelAttrs = options.hidden ? ` id="teaching-course-form" hidden` : '';
   const panelClass = module === 'teaching'
-    ? 'card course-form-card collapsible-panel'
+    ? 'structure-panel teaching-ribbon course-form-ribbon collapsible-panel'
     : (options.hidden ? 'panel collapsible-panel' : 'panel');
   return `<section class="${panelClass}"${panelAttrs}>
     <h3>${escapeHtml(heading)}</h3>

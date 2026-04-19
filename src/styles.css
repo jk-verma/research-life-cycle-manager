@@ -317,6 +317,24 @@ nav a:hover {
   grid-column: 1 / -1;
 }
 
+.course-form-wrap {
+  margin-bottom: 18px;
+}
+
+.course-form-ribbon h3 {
+  margin: 0 0 12px;
+}
+
+.course-form-ribbon .record-form {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: stretch;
+  margin-bottom: 0;
+}
+
+.course-form-ribbon textarea {
+  min-height: 44px;
+}
+
 .ribbon-filter {
   display: grid;
   place-items: center;
