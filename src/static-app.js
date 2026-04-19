@@ -554,6 +554,8 @@ function normalizeExplicitActivityStatus(status = '') {
   const normalized = String(status || '').toLowerCase().trim();
   if (normalized === 'overdue') return 'overdue';
   if (['completed', 'finished'].includes(normalized)) return 'finished';
+  if (['deferred', 'differed'].includes(normalized)) return 'deferred';
+  if (['cancelled', 'canceled'].includes(normalized)) return 'cancelled';
   return 'pending';
 }
 
@@ -626,7 +628,7 @@ function promptSubtaskEdit(record, subtask) {
   if (!canWrite(store, role)) return;
   const title = prompt('Activity title', subtask.title || '');
   if (title === null) return;
-  const status = prompt('Status: pending, overdue, finished', subtask.status === 'ongoing' ? 'pending' : (subtask.status || 'pending'));
+  const status = prompt('Status: pending, overdue, finished, deferred, cancelled', subtask.status === 'ongoing' ? 'pending' : (subtask.status || 'pending'));
   if (status === null) return;
   const normalized = normalizeExplicitActivityStatus(status);
   const actor = `local-${role.toLowerCase()}`;

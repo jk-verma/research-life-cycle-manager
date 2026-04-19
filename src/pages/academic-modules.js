@@ -728,6 +728,8 @@ function coursePlanAddForm(item) {
         <option value="pending">Pending</option>
         <option value="overdue">Overdue</option>
         <option value="finished">Finished</option>
+        <option value="deferred">Deferred</option>
+        <option value="cancelled">Cancelled</option>
       </select>
       <input name="hierarchy_level" type="hidden" value="0" />
       <input name="parent_subtask_id" type="hidden" value="" />
@@ -780,10 +782,10 @@ function activityProgress(item = {}) {
 }
 
 function nextPendingActivity(item = {}) {
-  return topLevelActivities(item)
-    .filter((activity) => !['completed', 'finished', 'cancelled'].includes(String(activity.status).toLowerCase()))
-    .sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0))[0];
-}
+    return topLevelActivities(item)
+      .filter((activity) => !['completed', 'finished', 'deferred', 'differed', 'cancelled', 'canceled'].includes(String(activity.status).toLowerCase()))
+      .sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0))[0];
+  }
 
 function topLevelActivities(item = {}) {
   return [...(item.subtasks || [])].filter((activity) => Number(activity.hierarchy_level || 0) === 0 && !activity.parent_subtask_id && activity.subtask_type !== 'note');

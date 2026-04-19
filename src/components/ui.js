@@ -59,7 +59,7 @@ export function taskProgress(record = {}) {
 
 export function nextPendingSubtask(record = {}) {
   return [...(record.subtasks || [])]
-    .filter((item) => !['completed', 'cancelled'].includes(String(item.status).toLowerCase()))
+    .filter((item) => !['completed', 'finished', 'deferred', 'differed', 'cancelled', 'canceled'].includes(String(item.status).toLowerCase()))
     .sort((a, b) => Number(a.sequence_order || 0) - Number(b.sequence_order || 0))[0];
 }
 
@@ -144,6 +144,8 @@ function explicitActivityStatus(status = '') {
   const normalized = String(status || '').toLowerCase();
   if (normalized === 'overdue') return 'overdue';
   if (['completed', 'finished'].includes(normalized)) return 'finished';
+  if (['deferred', 'differed'].includes(normalized)) return 'deferred';
+  if (['cancelled', 'canceled'].includes(normalized)) return 'cancelled';
   return 'pending';
 }
 
@@ -158,6 +160,8 @@ function subtaskStatusSelect(selected = 'pending') {
     <option value="pending" ${active === 'pending' ? 'selected' : ''}>Pending</option>
     <option value="overdue" ${active === 'overdue' ? 'selected' : ''}>Overdue</option>
     <option value="finished" ${active === 'finished' ? 'selected' : ''}>Finished</option>
+    <option value="deferred" ${active === 'deferred' || active === 'differed' ? 'selected' : ''}>Deferred</option>
+    <option value="cancelled" ${active === 'cancelled' || active === 'canceled' ? 'selected' : ''}>Cancelled</option>
   </select>`;
 }
 
