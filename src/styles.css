@@ -640,6 +640,18 @@ nav a:hover {
   grid-column: 1 / -1;
   width: 100%;
   max-width: none;
+  min-height: auto;
+  background: #fbfefd;
+}
+
+.teaching-card.editing-course h3,
+.teaching-card.editing-course > .muted,
+.teaching-card.editing-course .teaching-card-meta {
+  min-height: auto;
+}
+
+.teaching-card.editing-course .teaching-feedback {
+  margin-top: 0;
 }
 
 .inline-editor {
@@ -659,19 +671,31 @@ nav a:hover {
 .course-inline-editor {
   display: block;
   margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--paper);
 }
 
 .course-inline-editor .inline-record-form {
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
   align-items: stretch;
+  gap: 10px;
 }
 
 .course-inline-editor textarea {
+  grid-column: span 2;
   min-height: 44px;
 }
 
 .course-inline-editor button {
   min-height: 44px;
+}
+
+@media (max-width: 760px) {
+  .course-inline-editor textarea {
+    grid-column: 1 / -1;
+  }
 }
 
 .inline-record-form textarea[name="json"] {
