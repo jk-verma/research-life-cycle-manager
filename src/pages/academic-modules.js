@@ -14,14 +14,16 @@ export function researchPage(ctx) {
   const selectedType = ctx.filters.publicationType || '';
   const selectedCandidate = ctx.filters.publicationCandidate || '';
   const selectedMentor = ctx.filters.publicationMentor || '';
+  const selectedStatus = ctx.filters.publicationStatus || '';
   const items = allItems
     .filter((item) => selectedYear === 'all' || publicationAcademicYear(item) === selectedYear)
     .filter((item) => !selectedType || item.module === selectedType)
     .filter((item) => publicationMatchesCandidate(ctx, item, selectedCandidate))
-    .filter((item) => publicationMatchesMentor(ctx, item, selectedMentor));
+    .filter((item) => publicationMatchesMentor(ctx, item, selectedMentor))
+    .filter((item) => !selectedStatus || item.status === selectedStatus);
   const form = ctx.canWrite() ? publicationRecordForm(ctx) : '';
   return `${pageHeader('Research', 'Publications: journal articles, conference papers, books, edited books, and book chapters.')}
-    ${publicationRibbon(ctx, allItems, selectedYear, selectedType, selectedCandidate, selectedMentor)}
+    ${publicationRibbon(ctx, allItems, selectedYear, selectedType, selectedCandidate, selectedMentor, selectedStatus)}
     ${form}
     ${moduleListContent(items, (item) => `#/workbench/${item.module}/${item.id}`, (item) => ctx.cardActions('workbench', item.id, item.module))}`;
 }
@@ -274,7 +276,7 @@ function teachingRibbon(ctx, records = [], selectedYear = currentAcademicYear(),
   </div>`;
 }
 
-function publicationRibbon(ctx, records = [], selectedYear = 'all', selectedType = '', selectedCandidate = '', selectedMentor = '') {
+function publicationRibbon(ctx, records = [], selectedYear = 'all', selectedType = '', selectedCandidate = '', selectedMentor = '', selectedStatus = '') {
   const group = researchGroups[0];
   return `<div class="structure-grid">
     <section class="structure-panel teaching-ribbon">
@@ -285,6 +287,7 @@ function publicationRibbon(ctx, records = [], selectedYear = 'all', selectedType
           <label class="ribbon-filter"><span>Publication Type</span>${publicationTypeSelect(selectedType)}</label>
           <label class="ribbon-filter"><span>Supervising Candidate</span>${publicationCandidateSelect(ctx.visibleCandidates(), selectedCandidate)}</label>
           <label class="ribbon-filter"><span>Mentor</span>${publicationMentorSelect(ctx.visibleMentors(), selectedMentor)}</label>
+          <label class="ribbon-filter"><span>Status</span>${publicationStatusSelect(records, selectedStatus)}</label>
           ${ctx.canWrite() ? '<button type="button" data-toggle-panel="publication-details-form">Add Publication</button>' : ''}
           <button type="button" class="secondary" data-copy-json="publications">Copy JSON</button>
           <a class="button-link" href="https://github.com/jk-verma/academic-lifecycle-manager/edit/main/public/data/publications/publications.json" target="_blank" rel="noreferrer">Open GitHub Editor</a>
@@ -441,6 +444,12 @@ function publicationMentorSelect(mentors = [], selected = '', name = '') {
   const attr = name ? ` name="${escapeHtml(name)}"` : ' id="filter-publicationMentor"';
   const first = `<option value="">${name ? 'Link mentor' : 'All mentors'}</option>`;
   return `<select${attr}>${first}${mentors.map((mentor) => `<option value="${escapeHtml(mentor.id)}" ${selected === mentor.id ? 'selected' : ''}>${escapeHtml(mentor.name)}</option>`).join('')}</select>`;
+}
+
+function publicationStatusSelect(records = [], selected = '') {
+  const defaults = ['idea', 'drafting', 'submitted', 'under_review', 'revision', 'accepted', 'published', 'completed', 'rejected'];
+  const statuses = [...new Set([...defaults, ...records.map((item) => item.status).filter(Boolean)])];
+  return `<select id="filter-publicationStatus"><option value="">All statuses</option>${statuses.map((status) => `<option value="${escapeHtml(status)}" ${selected === status ? 'selected' : ''}>${escapeHtml(slugLabel(status))}</option>`).join('')}</select>`;
 }
 
 function dataSectionForAcademicModule(module) {
