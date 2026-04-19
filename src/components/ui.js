@@ -171,7 +171,7 @@ export function subtaskForm(kind, id, module = '') {
       <input name="subtask_type" placeholder="Activity type" />
       <input name="due_datetime" type="datetime-local" required />
       <input name="completed_datetime" type="datetime-local" />
-      <input name="responsible_person" placeholder="Responsible person" />
+      <input name="responsible_person" placeholder="Responsible Person" />
       <input name="responsible_contact" placeholder="Mobile / Extension" />
       <input name="insert_after_order" type="number" min="0" step="1" placeholder="Insert after sequence no." />
       <input name="parent_subtask_id" placeholder="Parent activity id for sub-activity" />
