@@ -1509,544 +1509,1141 @@
       "feedback_score": "0",
       "subtasks": [
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-1",
+          "id": "subtask-1776579101430-a27437",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-1",
           "subtask_type": "activity",
+          "due_datetime": "2026-08-01",
+          "due_date": "2026-08-01",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000000",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 1,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101430-0e3fd7",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.430Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 1,
           "display_order": "1"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-2",
+          "id": "subtask-1776579101430-09e8bd",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-2",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000001",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 2,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101430-a3a659",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.430Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 2,
           "display_order": "2"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-3",
+          "id": "subtask-1776579101430-5c1b72",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-3",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000002",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 3,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101430-72c9e3",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.430Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 3,
           "display_order": "3"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-4",
+          "id": "subtask-1776579101430-66f1af",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-4",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000003",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 4,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101430-4e1c8d",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.430Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 4,
           "display_order": "4"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-5",
+          "id": "subtask-1776579101430-b4ec23",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-5",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000004",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 5,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101430-700a64",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.430Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 5,
           "display_order": "5"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-6",
+          "id": "subtask-1776579101430-7166cb",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-6",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000005",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 6,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101430-1bc570",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.430Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 6,
           "display_order": "6"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-7",
+          "id": "subtask-1776579101430-b6f149",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Quiz-1",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000005",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101430-7166cb",
+          "notes": [
+            {
+              "id": "note-1776579101430-1c2929",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 7,
+          "display_order": "6.1"
+        },
+        {
+          "id": "subtask-1776579101431-5c8c63",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-7",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000006",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 7,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-96a044",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 8,
           "display_order": "7"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-8",
+          "id": "subtask-1776579101431-98f5f8",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-8",
-          "subtask_type": "activity",
+          "title": "Mid-Term Pre-Process",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000007",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 8,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-6d25ae",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 9,
           "display_order": "8"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-9",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-9",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 9,
-          "parent_subtask_id": "",
-          "display_order": "9"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-lecture-10",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-10",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 10,
-          "parent_subtask_id": "",
-          "display_order": "10"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-lecture-11",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-11",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 11,
-          "parent_subtask_id": "",
-          "display_order": "11"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-mid-term-pre-process",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Mid-Term Pre Process",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 12,
-          "parent_subtask_id": "",
-          "display_order": "12"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-assignment-1",
+          "id": "subtask-1776579101431-3f32bc",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Assignment-1",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000008",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-98f5f8",
+          "notes": [
+            {
+              "id": "note-1776579101431-fa5a86",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 10,
+          "display_order": "8.1"
+        },
+        {
+          "id": "subtask-1776579101431-bb02af",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Project-1 Topics",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000009",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-98f5f8",
+          "notes": [
+            {
+              "id": "note-1776579101431-e0919f",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 11,
+          "display_order": "8.2"
+        },
+        {
+          "id": "subtask-1776579101431-231fea",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Project Groups-1",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000010",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-98f5f8",
+          "notes": [
+            {
+              "id": "note-1776579101431-b29b3f",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 12,
+          "display_order": "8.3"
+        },
+        {
+          "id": "subtask-1776579101431-1812fd",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Mid-Term Question Paper Setting",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000011",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-98f5f8",
+          "notes": [
+            {
+              "id": "note-1776579101431-0f31f7",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 13,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-mid-term-pre-process",
-          "display_order": "12.1"
+          "display_order": "8.4"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-project-1-titles",
+          "id": "subtask-1776579101431-315b7f",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Project-1 Titles",
+          "title": "Mid-Term Question Paper Solution",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000012",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-98f5f8",
+          "notes": [
+            {
+              "id": "note-1776579101431-d129a0",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 14,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-mid-term-pre-process",
-          "display_order": "12.2"
+          "display_order": "8.5"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-project-groups-mid",
+          "id": "subtask-1776579101431-310c57",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Project Groups",
-          "subtask_type": "sub_activity",
+          "title": "Lecture-8",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 1,
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000013",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-087dc1",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 15,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-mid-term-pre-process",
-          "display_order": "12.3"
+          "display_order": "9"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-mid-term-question-paper",
+          "id": "subtask-1776579101431-a491ee",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Mid Term Question Paper Setting",
-          "subtask_type": "sub_activity",
+          "title": "Lecture-9",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 1,
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000014",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-af1dec",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 16,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-mid-term-pre-process",
-          "display_order": "12.4"
+          "display_order": "10"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-12",
+          "id": "subtask-1776579101431-a6c63b",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-12",
+          "title": "Lecture-10",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000015",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-2058bc",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 17,
-          "parent_subtask_id": "",
-          "display_order": "13"
+          "display_order": "11"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-13",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-13",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 18,
-          "parent_subtask_id": "",
-          "display_order": "14"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-lecture-14",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-14",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 19,
-          "parent_subtask_id": "",
-          "display_order": "15"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-mid-term-process",
+          "id": "subtask-1776579101431-701624",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Mid-Term Process",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000016",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 20,
           "parent_subtask_id": "",
-          "display_order": "16"
+          "notes": [
+            {
+              "id": "note-1776579101431-ad1edc",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 18,
+          "display_order": "12"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-mid-term-exam",
+          "id": "subtask-1776579101431-9ae321",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Mid-Term Exam",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000017",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
-          "sequence_order": 21,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-mid-term-process",
-          "display_order": "16.1"
+          "parent_subtask_id": "subtask-1776579101431-701624",
+          "notes": [
+            {
+              "id": "note-1776579101431-743df9",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 19,
+          "display_order": "12.1"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-mid-term-answer-script-collection",
+          "id": "subtask-1776579101431-be6b9c",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Mid-Term Answer Script Collection",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000018",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
-          "sequence_order": 22,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-mid-term-process",
-          "display_order": "16.2"
+          "parent_subtask_id": "subtask-1776579101431-701624",
+          "notes": [
+            {
+              "id": "note-1776579101431-36776b",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 20,
+          "display_order": "12.2"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-mid-term-answer-script-evaluation",
+          "id": "subtask-1776579101431-33b051",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Mid-Term Answer Script Evaluation",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000019",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
-          "sequence_order": 23,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-mid-term-process",
-          "display_order": "16.3"
+          "parent_subtask_id": "subtask-1776579101431-701624",
+          "notes": [
+            {
+              "id": "note-1776579101431-55ea44",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 21,
+          "display_order": "12.3"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-15",
+          "id": "subtask-1776579101431-fbfdb9",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Lecture-11",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000020",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-b0bd57",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 22,
+          "display_order": "13"
+        },
+        {
+          "id": "subtask-1776579101431-bdecd7",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Lecture-12",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000021",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-0dab0a",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 23,
+          "display_order": "14"
+        },
+        {
+          "id": "subtask-1776579101431-bf0007",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Lecture-13",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000022",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-d2d6e6",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 24,
+          "display_order": "15"
+        },
+        {
+          "id": "subtask-1776579101431-3a1e2c",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Lecture-14",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000023",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-0aa1c1",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 25,
+          "display_order": "16"
+        },
+        {
+          "id": "subtask-1776579101431-1f31c7",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-15",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000024",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 24,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-0d1291",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 26,
           "display_order": "17"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-16",
+          "id": "subtask-1776579101431-a3bab4",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Lecture-16",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000025",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 25,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-6f2679",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 27,
           "display_order": "18"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-17",
+          "id": "subtask-1776579101431-0f4691",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-17",
-          "subtask_type": "activity",
+          "title": "Quiz-2",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 26,
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000027",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-aad5d2",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 28,
           "display_order": "19"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-18",
+          "id": "subtask-1776579101431-86bec8",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-18",
+          "title": "Lecture-17",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000026",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 27,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-1de4af",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 29,
           "display_order": "20"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-19",
+          "id": "subtask-1776579101431-040f10",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-19",
-          "subtask_type": "activity",
+          "title": "End-Term Pre-Process",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000027",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
-          "sequence_order": 28,
           "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-586d1d",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 30,
           "display_order": "21"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-20",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-20",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 29,
-          "parent_subtask_id": "",
-          "display_order": "22"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-lecture-21",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-21",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 30,
-          "parent_subtask_id": "",
-          "display_order": "23"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-lecture-22",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-22",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 31,
-          "parent_subtask_id": "",
-          "display_order": "24"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-lecture-23",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-23",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 32,
-          "parent_subtask_id": "",
-          "display_order": "25"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-lecture-24",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-24",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 33,
-          "parent_subtask_id": "",
-          "display_order": "26"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-end-term-pre-process",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "End-Term Pre Process",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 34,
-          "parent_subtask_id": "",
-          "display_order": "27"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-assignment-2",
+          "id": "subtask-1776579101431-239d86",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "Assignment-2",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000028",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-040f10",
+          "notes": [
+            {
+              "id": "note-1776579101431-e3af64",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 31,
+          "display_order": "21.1"
+        },
+        {
+          "id": "subtask-1776579101431-967fa3",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Project-2 Topics",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000029",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-040f10",
+          "notes": [
+            {
+              "id": "note-1776579101431-1e4a5a",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 32,
+          "display_order": "21.2"
+        },
+        {
+          "id": "subtask-1776579101431-82dfd4",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Project Groups-2",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000030",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-040f10",
+          "notes": [
+            {
+              "id": "note-1776579101431-98822b",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 33,
+          "display_order": "21.3"
+        },
+        {
+          "id": "subtask-1776579101431-faa8e5",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "End-Term Question Paper Setting",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000031",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-040f10",
+          "notes": [
+            {
+              "id": "note-1776579101431-d48d41",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 34,
+          "display_order": "21.4"
+        },
+        {
+          "id": "subtask-1776579101431-4c592d",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "End-Term Question Paper Solution",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000032",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-040f10",
+          "notes": [
+            {
+              "id": "note-1776579101431-4a5947",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 35,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-end-term-pre-process",
-          "display_order": "27.1"
+          "display_order": "21.5"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-project-2-titles",
+          "id": "subtask-1776579101431-0bb3d3",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Project-2 Titles",
-          "subtask_type": "sub_activity",
+          "title": "Lecture-18",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 1,
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000033",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-40160f",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 36,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-end-term-pre-process",
-          "display_order": "27.2"
+          "display_order": "22"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-project-groups-end",
+          "id": "subtask-1776579101431-fea3ee",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Project Groups",
-          "subtask_type": "sub_activity",
+          "title": "Lecture-19",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 1,
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000034",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-04fbb9",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 37,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-end-term-pre-process",
-          "display_order": "27.3"
+          "display_order": "23"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-end-term-question-paper",
+          "id": "subtask-1776579101431-39d679",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "End Term Question Paper Setting",
-          "subtask_type": "sub_activity",
+          "title": "Lecture-20",
+          "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 1,
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000035",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-1be43b",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 38,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-end-term-pre-process",
-          "display_order": "27.4"
+          "display_order": "24"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-25",
+          "id": "subtask-1776579101431-3eb83f",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-25",
-          "subtask_type": "activity",
+          "title": "Quiz-2",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000036",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-742546",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 39,
-          "parent_subtask_id": "",
-          "display_order": "28"
+          "display_order": "25"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-26",
+          "id": "subtask-1776579101431-98c427",
           "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-26",
+          "title": "End-Term Process",
           "subtask_type": "activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000037",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-ff98d3",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 40,
-          "parent_subtask_id": "",
-          "display_order": "29"
+          "display_order": "26"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-lecture-27",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "Lecture-27",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 41,
-          "parent_subtask_id": "",
-          "display_order": "30"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-end-term-process",
-          "parent_record_id": "teaching-1776527313789-498de3",
-          "title": "End Term Process",
-          "subtask_type": "activity",
-          "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
-          "hierarchy_level": 0,
-          "sequence_order": 42,
-          "parent_subtask_id": "",
-          "display_order": "31"
-        },
-        {
-          "id": "sub-teaching-1776527313789-498de3-end-term-exam",
+          "id": "subtask-1776579101431-c7dae9",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "End-Term Exam",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000037",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
-          "sequence_order": 43,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-end-term-process",
-          "display_order": "31.1"
+          "parent_subtask_id": "subtask-1776579101431-98c427",
+          "notes": [
+            {
+              "id": "note-1776579101431-e3d132",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 41,
+          "display_order": "26.1"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-end-term-answer-script-collection",
+          "id": "subtask-1776579101431-6a4003",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Internal Marks Calculation",
+          "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000038",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-98c427",
+          "notes": [
+            {
+              "id": "note-1776579101431-e52b92",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 42,
+          "display_order": "26.2"
+        },
+        {
+          "id": "subtask-1776579101431-401b26",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "End-Term Answer Script Collection",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000038",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
-          "sequence_order": 44,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-end-term-process",
-          "display_order": "31.2"
+          "parent_subtask_id": "subtask-1776579101431-98c427",
+          "notes": [
+            {
+              "id": "note-1776579101431-163c97",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 43,
+          "display_order": "26.3"
         },
         {
-          "id": "sub-teaching-1776527313789-498de3-end-term-answer-script-evaluation",
+          "id": "subtask-1776579101431-be0d03",
           "parent_record_id": "teaching-1776527313789-498de3",
           "title": "End-Term Answer Script Evaluation",
           "subtask_type": "sub_activity",
+          "due_datetime": "",
+          "due_date": "",
           "status": "pending",
-          "responsible_person": "Dr. Jitendra Kumar Verma",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000039",
+          "responsible_email": "v-rajaraman@gmail.com",
           "hierarchy_level": 1,
+          "parent_subtask_id": "subtask-1776579101431-98c427",
+          "notes": [
+            {
+              "id": "note-1776579101431-46d580",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
+          "sequence_order": 44,
+          "display_order": "26.4"
+        },
+        {
+          "id": "subtask-1776579101431-d1863a",
+          "parent_record_id": "teaching-1776527313789-498de3",
+          "title": "Notes / Remark",
+          "subtask_type": "note",
+          "due_datetime": "",
+          "due_date": "",
+          "status": "pending",
+          "responsible_person": "Dr. V. Rajaraman",
+          "responsible_contact": "91-0000000040",
+          "responsible_email": "v-rajaraman@gmail.com",
+          "hierarchy_level": 0,
+          "parent_subtask_id": "",
+          "notes": [
+            {
+              "id": "note-1776579101431-870dae",
+              "text": "Lecture topic or remark",
+              "created_by": "local-admin",
+              "created_at": "2026-04-19T06:11:41.431Z",
+              "visibility": "open"
+            }
+          ],
           "sequence_order": 45,
-          "parent_subtask_id": "sub-teaching-1776527313789-498de3-end-term-process",
-          "display_order": "31.3"
+          "display_order": "27"
+        }
+      ],
+      "timestamps": {
+        "updated_at": "2026-04-19T06:11:41.431Z"
+      },
+      "updated_by": "local-admin",
+      "history": [
+        {
+          "version": 1,
+          "summary": "Course activities imported from CSV locally",
+          "updated_by": "local-admin",
+          "updated_at": "2026-04-19T06:11:41.432Z"
         }
       ]
     },
